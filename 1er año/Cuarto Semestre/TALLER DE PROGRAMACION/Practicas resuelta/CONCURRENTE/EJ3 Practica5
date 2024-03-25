@@ -1,0 +1,83 @@
+programa ej3prac5
+areas
+  areaRecolector1: AreaP(1,3,100,3)
+  areaRecolector2: AreaP(1,4,100,4)
+  areaCosechador: AreaP(1,5,1,5)
+  areaDeposito: AreaC(10,10,10,10)
+robots
+  robot Recolector
+  variables
+    quien: numero
+    flores: numero
+    movimientos: numero
+    calle: numero
+    avenida: numero
+    listo: boolean
+  comenzar
+    RecibirMensaje(quien,Cosechador)
+    derecha
+    flores:= 0
+    movimientos:= 0
+    mientras (PosAv <> 100)
+      mientras (flores < 10) || (movimientos < 5)
+        si (HayFlorEnLaEsquina)
+          tomarFlor
+          flores:= flores + 1
+        si (flores <> 10) & (PosAv <> 100)
+          mover
+          movimientos:= movimientos + 1
+      calle:= PosCa
+      avenida:= PosAv
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      mientras (HayFlorEnLaBolsa)
+        depositarFlor
+      Pos(avenida,calle)
+      LiberarEsquina(10,10)
+      EnviarMensaje(listo,Cosechador)
+      si (PosAv = 100)
+        EnviarMensaje(0,Cosechador)
+      sino
+        EnviarMensaje(quien,Cosechador)
+      flores:= 0
+      movimientos:= 0
+  fin
+  robot Cosechador
+  variables
+    robotsListos: numero
+    listo: boolean
+    movimientos: numero
+    flores: numero
+    ID: numero
+  comenzar
+    EnviarMensaje(1,Recolector1)
+    EnviarMensaje(2,Recolector2)
+    robotsListos:= 0
+    mientras (robotsListos <> 2)
+      RecibirMensaje(listo,*)
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+        flores:= flores + 1
+      Pos(1,5)
+      LiberarEsquina(10,10)
+      RecibirMensaje(ID,*)
+      si (ID = 0)
+        robotsListos:= robotsListos + 1
+  fin
+variables
+  Cosechador: Cosechador
+  Recolector1: Recolector
+  Recolector2: Recolector
+comenzar
+  AsignarArea(Cosechador,areaCosechador)
+  AsignarArea(Cosechador,areaDeposito)
+  AsignarArea(Recolector1,areaRecolector1)
+  AsignarArea(Recolector1,areaDeposito)
+  AsignarArea(Recolector2,areaRecolector2)
+  AsignarArea(Recolector2,areaDeposito)
+  Iniciar(Cosechador,1,5)
+  Iniciar(Recolector1,1,3)
+  Iniciar(Recolector2,1,4)
+fin

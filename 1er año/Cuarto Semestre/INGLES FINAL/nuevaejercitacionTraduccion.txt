@@ -1,0 +1,43 @@
+OPCION A:
+
+The design decisions made in 1984 will dominate our personal computing environments, but they no longer reflect the way in which computers are actually used.
+The fundamental assumptions of interactive computing must be reconsidered.
+We now use personal computers to deal with large amounts of information, many people across the Internet, and an increasing variety of computing platforms.
+The chaos induced by the diversity of information, collaborators, and interactive platforms is a main issue to consider.
+To resolve the problems created by such diversity we must focus on representations that are naturally convergent.
+Such convergence will be driven not by computational forces or mandates for standards but by the bounds of human sensory and motor capabilities.
+Although the size and diversity of computing will continue to grow, human capabilities to use such facilities will remain constant.
+
+El diseño de las decisiones hecho en 1984 van a dominar nuestro entorno personal de computacion, pero no van a reflejar el modo en que las computadoras actualmente son usadas.
+Las suposiciones fundamentales de la computacion interactiva tienen que ser reconsideradas.
+Ahora usamos las computadoras personales para lidiar con mucha informacion, mucha gente a traves de internet, y un incremento variado de plataformas virtuales.
+el caos inducido por la diversidad de informacion, los colaboradores, y plataformas interactivas es la razon principal a considerar.
+Para resolver el problema crado por la diversidad, tenemos que enfocarnos en representaciones que son naturalmente convergentes.
+La convergencia no va a ser dirigida por fuerzas o mandatos computacionales de estandares sino por los limites de las capacidades motoras y sensoriales de los seres humanos.
+Ademas el tamaño y la diversidad de la computacion continuaran creciendo, las capacidades humanas para usar esas facilidades seran constantes.
+
+
+OPCION B:
+
+The following lists some technical issues in Web Services, some of which will be  the main focus of this chapter. 
+ Defining and Building Atomic Services: An atomic service generally solves an individual, specific problem.
+ The granularity of what are chosen as atomic services has to be defined carefully.
+ If an atomic service is too complicated, it may not be easy to employ it in a variety of applications
+ So, it becomes less useful.
+ It may also mean that similar atomic services, differing only in a few subtle ways, may have to be created to cove the range of possible circumstances,
+ which will result in a large library of atomic services being established.
+
+ Cooperation Between Services: By combining atomic series, one can create more complicated services.
+ This should be a design goal for future Web Services development. 
+
+La siguiente lista contiene algunos problemas tecnicos en servicios web, algunos que seran el enfoque de este capitulo.
+ Definiendo y Construyendo Servicios Atomicos: Un servicio atomico generalmente resuelve un problema individual y especifico.
+ La granularidad en el que se elijen como servicios atomicos tienen que ser definidos con cuidado.
+ Si un servicio atomico es muy complicado, puede que no sea facil aplicarlo en una variedad de aplicaciones.
+ Asi que se vuelve menos util.
+ Tambien puede ser similar en otros servicios atomicos, diferenciando solo un par de formas sutiles, puede que se cree para cubrir el rango de posibles circuntancias,
+ que va a resultar en el establecimiento de una larga libreria de servicios atomicos.
+
+ Cooperaion entre Servicios: Al combinar servicios atomicos, se pueden crear servicios mas complicados.
+ Esto deberia ser un diseño a seguir para el futuro desarrollo de los Servicios Web.
+ 

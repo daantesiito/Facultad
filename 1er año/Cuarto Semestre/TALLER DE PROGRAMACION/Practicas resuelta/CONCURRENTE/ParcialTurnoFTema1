@@ -1,0 +1,163 @@
+programa parcialTurnoFTema1
+procesos
+  proceso moverse
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+    mover
+  fin
+  proceso depositarFlores(ES AvIni: numero;ES CaIni: numero)
+  comenzar
+    BloquearEsquina(20,20)
+    Pos(20,20)
+    mientras (HayFlorEnLaBolsa)
+      depositarFlor
+    Pos(AvIni,CaIni)
+    LiberarEsquina(20,20)
+  fin
+  proceso recorridoRobot1
+  comenzar
+    derecha
+    repetir 10
+      moverse
+    derecha
+    derecha
+    derecha
+    repetir 8
+      moverse
+  fin
+  proceso recorridoRobot2
+  comenzar
+    derecha
+    derecha
+    derecha
+    repetir 10
+      moverse
+    derecha
+    derecha
+    derecha
+    repetir 8
+      moverse
+  fin
+  proceso juntarFlores(ES flores: numero)
+  comenzar
+    BloquearEsquina(20,20)
+    Pos(20,20)
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    Pos(30,1)
+    LiberarEsquina(20,20)
+  fin
+areas
+  areaEquipoA: AreaPC(1,1,11,10)
+  areaEquipoB: AreaPC(13,1,23,10)
+  areaFiscalizador: AreaP(30,1,30,1)
+  areaDeposito: AreaC(20,20,20,20)
+robots
+  robot Equipo
+  variables
+    flores: numero
+    quien: numero
+    empeza: numero
+    AvIni: numero
+    CaIni: numero
+    listo: numero
+    go: numero
+  comenzar
+    RecibirMensaje(quien,Fiscalizador)
+    si (quien = 1)
+      AvIni:= PosAv
+      CaIni:= PosCa
+      recorridoRobot1
+      EnviarMensaje(empeza,robot2EquipoA)
+      EnviarMensaje(quien,Fiscalizador)
+      RecibirMensaje(go,Fiscalizador)
+      depositarFlores(AvIni,CaIni)
+      EnviarMensaje(listo,Fiscalizador)
+    si (quien = 2)
+      RecibirMensaje(empeza,robot1EquipoA)
+      AvIni:= PosAv
+      CaIni:= PosCa
+      recorridoRobot2
+      EnviarMensaje(quien,Fiscalizador)
+      RecibirMensaje(go,Fiscalizador)
+      depositarFlores(AvIni,CaIni)
+      EnviarMensaje(listo,Fiscalizador)
+    si (quien = 3)
+      AvIni:= PosAv
+      CaIni:= PosCa
+      recorridoRobot1
+      EnviarMensaje(empeza,robot2EquipoB)
+      EnviarMensaje(quien,Fiscalizador)
+      RecibirMensaje(go,Fiscalizador)
+      depositarFlores(AvIni,CaIni)
+      EnviarMensaje(listo,Fiscalizador)
+    si (quien = 4)
+      RecibirMensaje(empeza,robot1EquipoB)
+      AvIni:= PosAv
+      CaIni:= PosCa
+      recorridoRobot2
+      EnviarMensaje(quien,Fiscalizador)
+      RecibirMensaje(go,Fiscalizador)
+      depositarFlores(AvIni,CaIni)
+      EnviarMensaje(listo,Fiscalizador)
+  fin
+  robot Fiscalizador
+  variables
+    listo: numero
+    flores1: numero
+    flores2: numero
+    quien: numero
+    go: numero
+  comenzar
+    EnviarMensaje(1,robot1EquipoA)
+    EnviarMensaje(2,robot2EquipoA)
+    EnviarMensaje(3,robot1EquipoB)
+    EnviarMensaje(4,robot2EquipoB)
+    repetir 4
+      RecibirMensaje(quien,*)
+      si (quien = 1)
+        EnviarMensaje(go,robot1EquipoA)
+        RecibirMensaje(listo,robot1EquipoA)
+        juntarFlores(flores1)
+      si (quien = 2)
+        EnviarMensaje(go,robot2EquipoA)
+        RecibirMensaje(listo,robot2EquipoA)
+        juntarFlores(flores1)
+      si (quien = 3)
+        EnviarMensaje(go,robot1EquipoB)
+        RecibirMensaje(listo,robot1EquipoB)
+        juntarFlores(flores2)
+      si (quien = 4)
+        EnviarMensaje(go,robot2EquipoB)
+        RecibirMensaje(listo,robot2EquipoB)
+        juntarFlores(flores2)
+    si flores1 > flores2
+      Informar('Flores_juntadas_por_equipo_ganador', flores1)
+    sino
+      Informar('Flores_juntadas_por_equipo_ganador', flores2)
+  fin
+variables
+  robot1EquipoA: Equipo
+  robot2EquipoA: Equipo
+  robot1EquipoB: Equipo
+  robot2EquipoB: Equipo
+  Fiscalizador: Fiscalizador
+comenzar
+  AsignarArea(robot1EquipoA,areaEquipoA)
+  AsignarArea(robot2EquipoA,areaEquipoA)
+  AsignarArea(Fiscalizador,areaFiscalizador)
+  AsignarArea(robot1EquipoA,areaDeposito)
+  AsignarArea(robot2EquipoA,areaDeposito)
+  AsignarArea(Fiscalizador,areaDeposito)
+  AsignarArea(robot1EquipoB,areaEquipoB)
+  AsignarArea(robot2EquipoB,areaEquipoB)
+  AsignarArea(robot1EquipoB,areaDeposito)
+  AsignarArea(robot2EquipoB,areaDeposito)
+  Iniciar(robot1EquipoA,1,1)
+  Iniciar(robot2EquipoA,11,10)
+  Iniciar(robot1EquipoB,13,1)
+  Iniciar(robot2EquipoB,23,10)
+  Iniciar(Fiscalizador,30,1)
+fin

@@ -1,0 +1,122 @@
+programa ejercicio1act3
+procesos
+  proceso indicarcalle (E calle: numero)
+  comenzar 
+    Pos(1,calle)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    contarpapel: numero
+    contarflor: numero
+    num_calle: numero
+  comenzar
+    num_calle:= 5
+    indicarcalle(num_calle)
+    contarpapel:= 0
+    contarflor:= 0
+    derecha
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      contarpapel:= contarpapel + 1
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      contarflor:= contarflor + 1
+    repetir 99
+      mover
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        contarpapel:= contarpapel + 1
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        contarflor:= contarflor + 1
+    Informar(contarflor, contarpapel)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea (R-info, ciudad)
+  Iniciar (R-info, 1, 1)
+fin
+
+
+programa ejercicio2act3
+procesos
+  proceso izquierda
+  comenzar
+    repetir 3
+      derecha
+  fin
+  proceso florespapel
+  variables
+    num_flores: numero
+    num_papeles: numero
+    num_papel: numero
+    esqui20: numero
+    papel60: numero
+  comenzar
+    esqui20:= 0
+    papel60:= 0
+    repetir 50
+      num_papeles:= 0
+      repetir 99
+        num_flores:= 0
+        num_papel:= 0
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          num_flores:= num_flores +1
+        si num_flores = 20
+          esqui20:= esqui20 +1
+        repetir num_flores
+          depositarFlor
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          num_papeles:= num_papeles +1
+          num_papel:= num_papel +1
+        repetir num_papel
+          depositarPapel   
+        mover
+      si num_papeles < 60
+        papel60:= papel60 +1
+      derecha
+      mover
+      derecha
+      repetir 99
+        num_flores:= 0
+        num_papel:= 0
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          num_flores:= num_flores +1
+        si num_flores = 20
+          esqui20:= esqui20 +1
+        repetir num_flores
+          depositarFlor
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          num_papeles:= num_papeles+1
+          num_papel:= num_papel+1
+        repetir num_papel
+          depositarPapel
+        mover
+      si num_papeles < 60
+        papel60:= papel60 +1
+      izquierda
+      mover
+      izquierda
+    Informar(esqui20, papel60)
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    florespapel
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

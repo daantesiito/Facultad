@@ -1,0 +1,35 @@
+2.
+
+A. Programa: es un conjunto de instrucciones escritas en un lenguaje que la computadora entiende (lenguaje de programacion) que estan diseñadas para realizar una serie de tareas o resolver problemas.
+	Es la representacion logica de un algoritmo, el cual es una secuencia de pasos definidos y ordenados para lograr un objetivo.
+
+B. Modulo: Un modulo es una unidad logica y funcional compuesta por funciones, procedimientos, variables y tipos de datos. Su objetivo es poder reutilizar partes de codigo y mejorar la organizacion, mantencion y funcionamiento.
+
+C. Variable: Es un pedazo de memoria el cual contiene un tipo de dato especifico que puede ser modificado a medida que se vaya ejecutando el programa. Cada variable tiene su nombre unico asi se pueden diferenciar y llamar en el programa a su contenido.
+
+D. Parametro: Un parametro es una variable que se utiliza para pasar datos a procedimientos y funciones. Estos funcionan pasando informacion externa para luego ser utilizada en el procedimiento.
+
+E. Alcance de una variable: El alcance de una variable se refiere hasta que parte del programa se puede usar un tipo de variable. Existen diferentes tipos, globales y locales. Las globales se declaran para que su alcance sea todo el programa, en cambio las locales solo se pueden utilizar en la funcion o procedimiento donde se declaren.
+
+F. Alcance de un parametro: Los parametros se llaman en las diferentes funciones y procedimientos que hayan, pero estos pueden estar pasados por referencia (se pasa la direccion del dato a utilizar, la cual se puede manipular el dato globalmente, y no local.) o por valor (se pasa una copia del dato para poder utilizarlo, pero no se modifica globalmente, solo local)
+
+3. Las estructuras de datos son formas organizadas de almacenar informacion y organizar datos en la memoria de una computadora. El proposito de estas es diseñar la solucion correcta para un determinado problema.
+Existen varios tipos:
+- Vector: Se definen como una coleccion finita, homogenea y ordenada de elementos.
+- Punteros
+
+Pueden ser homogeneas o heterogeneas, de acceso directo o secuencial, dinamicas o estaticas, lineales o no lineales.
+
+4.
+
+La correcion de un programa se utiliza para saber si el programa cumple con las condiciones solicitadas y corre perfectamente.
+Existen diferentes tipos de formas de correcion de programas:
+
+- Testing: Provee evidencias de que el programa cumple el trabajo esperado. Se analiza el programa y si se encuentra algun error se arregla, se repite hasta que no tenga mas errores.
+
+- Debugging: Es el proceso de descubrir y reparar la causa del error, generalmente se agregan lineas en diferentes partes del codigo para ir siguiendo la ejecucion del programa y encontrar el error.
+
+- Walkthroughs: Se corre y analiza el programa con terceros, por ejemplo compañeros de trabajo, amigos, etc.
+
+- Verificacion: Se trata de verificar que un programa cumpla con las pre y post condiciones.
+

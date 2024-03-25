@@ -1,0 +1,2 @@
+Num: 9999 Apellido: manzano Nombre: esteban Edad: 34 DNI: 0
+Num: 24950 Apellido: tucci Nombre: juan cruz Edad: 45 DNI: 0

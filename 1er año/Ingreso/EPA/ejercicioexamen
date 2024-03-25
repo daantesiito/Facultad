@@ -1,0 +1,123 @@
+programa a
+procesos
+  proceso TomarPapel
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    si HayPapelEnLaEsquina
+      tomarPapel
+      CantP := CantP + 1
+  fin
+  proceso TomarFlor
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP:= 0
+    CantF:= 0
+    si HayFlorEnLaEsquina
+      tomarFlor
+      CantF:= CantF + 1
+  fin
+  proceso HacerCuadrado1
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    repetir 4
+      mover
+      TomarPapel
+      TomarFlor
+      derecha
+    Informar (CantP,CantF)
+  fin
+  proceso HacerCuadrado2
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    repetir 4
+      repetir 2
+        mover
+        TomarPapel
+        TomarFlor
+      derecha
+    Informar (CantP,CantF)
+  fin
+  proceso HacerCuadrado3
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    repetir 4
+      repetir 3
+        mover
+        TomarPapel
+        TomarFlor
+      derecha
+    Informar (CantP,CantF)
+  fin
+  proceso HacerCuadrado4
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    repetir 4
+      repetir 4
+        mover
+        TomarPapel
+        TomarFlor
+      derecha
+    Informar (CantP,CantF)
+  fin
+  proceso HacerCuadrado5
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    CantP := 0
+    CantF := 0
+    repetir 4
+      repetir 5
+        mover
+        TomarPapel
+        TomarFlor
+      derecha
+    Informar (CantP,CantF)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    CantP: numero
+    CantF: numero
+  comenzar
+    HacerCuadrado1
+    Pos(PosAv,PosCa + 2)
+    HacerCuadrado2
+    Pos(PosAv,PosCa + 3)
+    HacerCuadrado3
+    Pos(PosAv,PosCa + 4)
+    HacerCuadrado4
+    Pos(PosAv,PosCa + 5)
+    HacerCuadrado5
+    Pos(PosAv,PosCa + 6)
+  fin
+variables
+  R-info : robot1
+comenzar
+  AsignarArea (R-info,ciudad)
+  Iniciar (R-info, 1, 1)
+fin

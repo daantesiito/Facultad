@@ -1,0 +1,177 @@
+programa ejercicio12PDF
+procesos
+  proceso base(ES flores: numero;ES papeles: numero)
+  comenzar
+    repetir 5
+      moverse(flores,papeles)
+    izquierda
+  fin
+  proceso izquierda
+  comenzar
+    derecha
+    derecha
+    derecha
+  fin
+  proceso moverse(ES flores: numero;ES papeles: numero)
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:= papeles + 1
+    mover
+  fin
+  proceso hacerRectangulo(E alto: numero;ES flores: numero;ES papeles: numero)
+  variables
+    calle: numero
+  comenzar
+    derecha
+    base(flores,papeles)
+    repetir 3
+      moverse(flores,papeles)
+    calle:= PosCa
+    BloquearEsquina(PosAv,calle+1)
+    moverse(flores,papeles)
+    moverse(flores,papeles)
+    LiberarEsquina(PosAv,calle-1)
+    repetir alto - 5
+      moverse(flores,papeles)
+    izquierda
+    base(flores,papeles)
+    repetir alto - 5
+      moverse(flores,papeles)  
+    calle:= PosCa
+    BloquearEsquina(PosAv,calle-1)
+    moverse(flores,papeles)
+    moverse(flores,papeles)
+    LiberarEsquina(PosAv,calle+1)
+    repetir 3
+      moverse(flores,papeles)
+  fin
+  proceso mayores(E ID: numero; E papeles: numero; ES max1: numero;ES max1ID: numero;ES max2: numero;ES max2ID: numero;)
+  comenzar
+    si (papeles > max1)
+      max2:= max1
+      max2ID:= max1ID
+      max1:= papeles
+      max1ID:= ID
+    sino
+      si (papeles > max2)
+        max2:= papeles
+        max2ID:= ID
+  fin
+  proceso depositarFlores(E AvIni: numero; E CaIni: numero)
+  comenzar
+    BloquearEsquina(61,61)
+    Pos(61,61)
+    mientras (HayFlorEnLaBolsa)
+      depositarFlor
+    Pos(AvIni,CaIni)
+    LiberarEsquina(61,61)
+  fin
+  proceso maxIDs(E ID: numero;E max1ID: numero; E max2ID: numero; ES go: numero)
+  comenzar
+    si (max1ID <> ID) & (max2ID <> ID)
+      go:= 0
+    sino 
+      go:= 1
+  fin
+areas
+  areaJefe: AreaP(1,1,1,1)
+  areaCallejero: AreaPC(1,5,100,5)
+  areaRectangulo1: AreaPC(5,1,10,55)
+  areaRectangulo2: AreaPC(15,1,20,55)
+  areaRectangulo3: AreaPC(25,1,30,55)
+  areaDeposito: AreaPC(61,61,61,61)
+robots
+  robot Rectangulo
+  variables
+    alto: numero
+    flores: numero
+    papeles: numero
+    go: numero
+    quien: numero
+    AvIni: numero
+    CaIni: numero
+    listo: numero
+  comenzar
+    RecibirMensaje(quien,Jefe)
+    Random(alto,10,11)
+    hacerRectangulo(alto,flores,papeles)
+    EnviarMensaje(quien,Jefe)
+    EnviarMensaje(papeles,Jefe)
+    EnviarMensaje(quien,Jefe)
+    RecibirMensaje(go,Jefe)
+    si (go = 1)
+      AvIni:= PosAv
+      CaIni:= PosCa
+      depositarFlores(AvIni,CaIni)
+    si (go = 0)
+      Informar(121223)
+  fin
+  robot Jefe
+  variables
+    quien: numero
+    max1: numero
+    max1ID: numero
+    max2: numero
+    max2ID: numero
+    go: numero
+    papeles1: numero
+    papeles2: numero
+    papeles3: numero
+    listo: numero
+  comenzar
+    EnviarMensaje(1,Rectangulo1)
+    EnviarMensaje(2,Rectangulo2)
+    EnviarMensaje(3,Rectangulo3)
+    go:= 0
+      max1:= 0
+      max1ID:= 0
+      max2:= 0
+      max2ID:= 0
+    repetir 3
+      RecibirMensaje(quien,*)
+      si (quien = 1)
+        RecibirMensaje(papeles1,Rectangulo1)
+      si (quien = 2)
+        RecibirMensaje(papeles2,Rectangulo2)
+      si (quien = 3)
+        RecibirMensaje(papeles3,Rectangulo3)
+      mayores(1,papeles1,max1,max1ID,max2,max2ID)
+      mayores(2,papeles2,max1,max1ID,max2,max2ID)
+      mayores(3,papeles3,max1,max1ID,max2,max2ID)
+      si (quien = 1)
+        maxIDs(1,max1ID,max2ID,go)
+        Informar(1,go)
+        EnviarMensaje(go,Rectangulo1)
+      si (quien = 2)
+        maxIDs(2,max1ID,max2ID,go)
+        Informar(2,go)
+        EnviarMensaje(go,Rectangulo2)
+      si (quien = 3)
+        maxIDs(3,max1ID,max2ID,go)
+        Informar(3,go)
+        EnviarMensaje(go,Rectangulo3)
+  fin
+variables
+  Rectangulo1: Rectangulo
+  Rectangulo2: Rectangulo
+  Rectangulo3: Rectangulo
+  Jefe: Jefe
+comenzar
+  AsignarArea(Rectangulo1,areaRectangulo1)
+  AsignarArea(Rectangulo1,areaDeposito)
+  AsignarArea(Rectangulo2,areaRectangulo2)
+  AsignarArea(Rectangulo2,areaDeposito)
+  AsignarArea(Rectangulo3,areaRectangulo3)
+  AsignarArea(Rectangulo3,areaDeposito)
+  AsignarArea(Jefe,areaJefe)
+  AsignarArea(Jefe,areaDeposito)
+  Iniciar(Rectangulo1,5,1)
+  Iniciar(Rectangulo2,15,1)
+  Iniciar(Rectangulo3,25,1)
+  Iniciar(Jefe,1,1)
+fin
+

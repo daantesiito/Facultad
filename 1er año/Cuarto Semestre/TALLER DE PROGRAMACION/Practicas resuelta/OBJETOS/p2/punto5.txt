@@ -1,0 +1,50 @@
+package tema2;
+
+
+import PaqueteLectura.Lector;
+
+public class Ej04 {
+    
+    public static void main(String[] args) {
+        Partido [] vectorpartidos = new Partido [20];
+        int i = 0;
+        Partido P;
+        String visitante;
+        
+        visitante = Lector.leerString();
+        
+        
+        while (i < 20 & !visitante.equals("ZZZ"))  {
+            P = new Partido(Lector.leerString(),visitante,Lector.leerInt(),Lector.leerInt());
+            
+            vectorpartidos[i] = P;
+           
+            visitante = Lector.leerString();
+            
+            i++;
+        }
+        
+        int j;
+        for (j=0; j<i; j++) {
+            System.out.println(vectorpartidos[j].getLocal() + vectorpartidos[j].getGolesLocal() + " VS " + vectorpartidos[j].getVisitante() + vectorpartidos[j].getGolesVisitante());
+            
+        }
+        
+        int ganadosriver = 0;
+        int totalgolesbocalocal = 0;
+        for (j=0; j<i; j++) {
+            if (vectorpartidos[j].getGanador().equals("River")) {
+                ganadosriver++;
+            }
+            if (vectorpartidos[j].getLocal().equals("Boca")) {
+                totalgolesbocalocal = totalgolesbocalocal + vectorpartidos[j].getGolesLocal();
+            }
+        }
+        System.out.println("River gano " + ganadosriver + " partidos");
+        
+        System.out.println("Boca anoto " + totalgolesbocalocal + " goles de local");
+        
+        
+    }
+    
+}

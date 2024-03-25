@@ -1,0 +1,98 @@
+programa parcialTurnoCTema2
+procesos
+  proceso moverse
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+    mover
+  fin
+  proceso izquierda
+  comenzar
+    derecha
+    derecha
+    derecha
+  fin
+  proceso hacerCuadrado(E longitud: numero)
+  comenzar
+    repetir 4
+      repetir longitud
+        moverse
+      izquierda
+  fin
+  proceso depositarFlores(E avenida: numero; E calle: numero)
+  comenzar
+    BloquearEsquina(50,50)
+    Pos(50,50)
+    mientras (HayFlorEnLaBolsa)
+      depositarFlor
+    Pos(avenida,calle)
+    LiberarEsquina(50,50)
+  fin
+areas
+  areaRobot1: AreaP(1,1,7,40)
+  areaRobot2: AreaP(8,1,14,40)
+  areaRobot3: AreaP(15,1,21,40)
+  areaDeposito: AreaC(50,50,50,50)
+  areaCoordinador: AreaP(51,1,51,1)
+robots
+  robot Cuadrado
+  variables
+    quien: numero
+    longitud: numero
+    calle: numero
+    avenida: numero
+    calleSig: numero
+    listo: numero
+  comenzar
+    RecibirMensaje(quien,Coordinador)
+    avenida:= PosAv
+    derecha
+    repetir 5
+      calle:= PosCa
+      Random(longitud,1,5)
+      hacerCuadrado(longitud)
+      calleSig:= ((calle + longitud) + 1)
+      Pos(avenida,calleSig)
+      si (quien = 1)
+        EnviarMensaje(listo,Cuadrado2)
+        EnviarMensaje(listo,Cuadrado3)
+        RecibirMensaje(listo,Cuadrado2)
+        RecibirMensaje(listo,Cuadrado3)
+      si (quien = 2)
+        EnviarMensaje(listo,Cuadrado1)
+        EnviarMensaje(listo,Cuadrado3)
+        RecibirMensaje(listo,Cuadrado1)
+        RecibirMensaje(listo,Cuadrado3)
+      si (quien = 3)
+        EnviarMensaje(listo,Cuadrado2)
+        EnviarMensaje(listo,Cuadrado1)
+        RecibirMensaje(listo,Cuadrado2)
+        RecibirMensaje(listo,Cuadrado1)
+    depositarFlores(avenida,calle)
+  fin
+  robot Coordinador
+  comenzar
+    EnviarMensaje(1,Cuadrado1)
+    EnviarMensaje(2,Cuadrado2)
+    EnviarMensaje(3,Cuadrado3)
+  fin
+variables
+  Cuadrado1: Cuadrado
+  Cuadrado2: Cuadrado
+  Cuadrado3: Cuadrado
+  Coordinador: Coordinador
+comenzar
+  AsignarArea(Cuadrado1,areaRobot1)
+  AsignarArea(Cuadrado1,areaDeposito)
+  AsignarArea(Cuadrado2,areaRobot2)
+  AsignarArea(Cuadrado2,areaDeposito)
+  AsignarArea(Cuadrado3,areaRobot3)
+  AsignarArea(Cuadrado3,areaDeposito)
+  AsignarArea(Coordinador,areaCoordinador)
+  AsignarArea(Coordinador,areaDeposito)
+  Iniciar(Cuadrado1,1,1)
+  Iniciar(Cuadrado2,8,1)
+  Iniciar(Cuadrado3,15,1)
+  Iniciar(Coordinador,51,1)
+fin
+

@@ -1,0 +1,36 @@
+2.
+
+A. F, 
+
+B. F, se utiliza teniendo en cuenta la dimension Fisica, ya que esta definida desde antes y no se puede modificar.
+
+C. F, Solo puede devolver datos de tipo simple tales como char, integer, real, etc., y registro es un dato tipo compuesto.
+
+D. F, ya que al no usar modularizacion y usando variables globales hay fallas en el funcionamiento del programa.
+
+3.
+
+A. se puede, es para llenar el registro.
+B. no se puede crear un espacio en memoria para el registro.
+C. no se puede hacer un read a una lista ya que esta compuesta por punteros.
+D. no se puede asignar nil a un registro de una.
+E. se puede asignar nil a una lista.
+F. es posible hacerse pero en este caso no hay memoria reservada para cli.
+G. no se puede, seria read(cli.datos.codigo)
+H. se puede mostrar en pantalla el dato codigo del registro c.
+
+4. 
+
+Las caracteristicas del vector son:
+Homogeneo: Sus datos son todos de un mismo tipo.
+Estatico: Tiene ya definida una dimension fisica que no se puede cambiar.
+No Lineal: Se puede agregar elementos adelante o atras, no importa el orden.
+Directo: Se puede acceder directamente a un dato.
+
+
+Para encontrar un dato en un vector de por ejemplo 10 numeros y se quiere encontrar el 6,
+primero se tiene que hacer un for de 1 a 10 que es la longitud del vector y despues poner
+que si el vector en la posicion 1 es igual a 6, es verdadero, si no lo es, que aumente en uno su posicion.
+Asi estaria hasta llegar al 6 y encontrar el dato.
+
+5. hecho en paint.

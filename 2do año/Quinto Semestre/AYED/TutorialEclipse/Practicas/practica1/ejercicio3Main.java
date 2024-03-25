@@ -1,0 +1,29 @@
+package practica1;
+
+public class ejercicio3Main {
+	public static void main(String[] args) {
+		ejercicio3Estudiante[] estudiantes = new ejercicio3Estudiante[2];
+		estudiantes[0] = new ejercicio3Estudiante("Juan", "Perez", "A", "juan@example.com", "Calle Principal 123");
+        estudiantes[1] = new ejercicio3Estudiante("María", "Gomez", "B", "maria@example.com", "Avenida Central 456");
+        
+        ejercicio3Profesor[] profesores = new ejercicio3Profesor[3];
+        profesores[0] = new ejercicio3Profesor("Carlos", "Lopez", "carlos@example.com", "Matemáticas", "Facultad de Ciencias");
+        profesores[1] = new ejercicio3Profesor("Ana", "Martinez", "ana@example.com", "Física", "Facultad de Ciencias");
+        profesores[2] = new ejercicio3Profesor("Pedro", "Rodriguez", "pedro@example.com", "Informática", "Facultad de Ingeniería");
+        
+        System.out.print("Datos de los Estudiantes: ");
+        
+        for (ejercicio3Estudiante estudiante : estudiantes) {
+        	estudiante.tusDatos();
+        	System.out.println();
+        }
+        
+        System.out.print("Datos de los Profesores: ");
+        
+        for (ejercicio3Profesor profesor : profesores) {
+        	profesor.tusDatos();
+        	System.out.println();
+        }
+        
+	}
+}

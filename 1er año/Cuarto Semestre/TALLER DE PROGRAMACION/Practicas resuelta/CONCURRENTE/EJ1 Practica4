@@ -1,0 +1,114 @@
+programa ej1prac4
+areas
+  area1: AreaPC(1,1,1,100)
+  area2: AreaPC(2,1,2,100)
+  area3: AreaPC(3,1,3,100)
+  area4: AreaP(100,100,100,100)
+robots
+  robot Cliente
+  variables
+    ID: numero
+    flores: numero
+    flor: numero
+    listo: boolean
+    avenida: numero
+    calle: numero
+    listoFinal: boolean
+  comenzar
+    listoFinal:= F
+    RecibirMensaje(ID,robot4)
+    mientras (listoFinal <> V)
+      EnviarMensaje(ID,robot4)
+      Random(flores,1,4)
+      EnviarMensaje(flores,robot4)
+      avenida:= PosAv
+      calle:= PosCa
+      EnviarMensaje(avenida,robot4)
+      EnviarMensaje(calle+1,robot4)
+      RecibirMensaje(listo,robot4)
+      Pos(avenida,calle+1)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+        flor:= flor + 1
+      Pos(PosAv,PosCa-1)
+      mientras (flor <> 0)
+        si (PosCa = 100)
+          listoFinal:= V
+          flor:= 0
+        sino 
+          mover
+          si (HayFlorEnLaBolsa)
+            depositarFlor
+          flor:= flor - 1
+        EnviarMensaje(listoFinal,robot4)
+  fin
+  robot servidor
+  variables
+    ID: numero
+    flores: numero
+    avenida: numero
+    calle: numero
+    listo: boolean
+    listoFinal: boolean
+  comenzar
+    EnviarMensaje(1,robot1)
+    EnviarMensaje(2,robot2)
+    EnviarMensaje(3,robot3)
+    mientras (listoFinal <> V)
+      repetir 3
+        RecibirMensaje(ID,*)
+        si (ID = 1)
+          listo:= F
+          RecibirMensaje(flores,robot1)
+          RecibirMensaje(avenida,robot1)
+          RecibirMensaje(calle,robot1)
+          Pos(avenida,calle)
+          repetir flores
+            depositarFlor
+          Pos(100,100)
+          listo:= V
+          EnviarMensaje(listo,robot1)
+          RecibirMensaje(listoFinal,robot1)
+        si (ID = 2)
+          listo:= F
+          RecibirMensaje(flores,robot2)
+          RecibirMensaje(avenida,robot2)
+          RecibirMensaje(calle,robot2)
+          Pos(avenida,calle)
+          repetir flores
+            depositarFlor
+          Pos(100,100)
+          listo:= V
+          EnviarMensaje(listo,robot2)
+          RecibirMensaje(listoFinal,robot2)
+        si (ID = 3)
+          listo:= F
+          RecibirMensaje(flores,robot3)
+          RecibirMensaje(avenida,robot3)
+          RecibirMensaje(calle,robot3)
+          Pos(avenida,calle)
+          repetir flores
+            depositarFlor
+          Pos(100,100)
+          listo:= V
+          EnviarMensaje(listo,robot3)
+          RecibirMensaje(listoFinal,robot3)
+  fin
+variables
+  robot1: Cliente
+  robot2: Cliente
+  robot3: Cliente
+  robot4: servidor
+comenzar
+  AsignarArea(robot1,area1)
+  AsignarArea(robot2,area2)
+  AsignarArea(robot3,area3)
+  AsignarArea(robot4,area4)
+  AsignarArea(robot4,area1)
+  AsignarArea(robot4,area2)
+  AsignarArea(robot4,area3)
+  Iniciar(robot1,1,1)
+  Iniciar(robot2,2,1)
+  Iniciar(robot3,3,1)
+  Iniciar(robot4,100,100)
+fin

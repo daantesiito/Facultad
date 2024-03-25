@@ -1,0 +1,93 @@
+programa ej5prac5
+procesos
+  proceso depositar(ES depositado: numero)
+  variables
+    depositado: numero
+  comenzar
+    Random(depositado,1,5)
+    BloquearEsquina(100,1)
+    Pos(100,1)
+    repetir depositado
+      si (HayPapelEnLaBolsa)
+        depositarPapel
+    Pos(13,1)
+    LiberarEsquina(100,1)
+  fin
+  proceso juntarDepositado(ES depositado: numero)
+  variables
+    depositado: numero
+    AvIni: numero
+  comenzar
+    AvIni:= PosAv
+    BloquearEsquina(100,1)
+    Pos(100,1)
+    mientras (depositado <> 0)
+      si (HayPapelEnLaEsquina)
+        tomarPapel
+      depositado:= depositado - 1
+    Pos(AvIni,1)
+    LiberarEsquina(100,1)
+  fin
+areas
+  AreaInicial: AreaC(10,1,13,1)
+  AreaDeposito: AreaC(100,1,100,1)
+robots
+  robot Cliente
+  variables
+    quien: numero
+    pedido: numero
+    depositado: numero
+  comenzar
+    RecibirMensaje(quien,Servidor)
+    repetir 4
+      EnviarMensaje(quien,Servidor)
+      EnviarMensaje(pedido,Servidor)
+      RecibirMensaje(depositado,Servidor)
+      juntarDepositado(depositado)
+      mientras (HayPapelEnLaBolsa)
+        depositarPapel
+  fin
+  robot Servidor
+  variables
+    quien: numero
+    pedido: numero
+    depositado: numero
+  comenzar
+    EnviarMensaje(1,Cliente1)
+    EnviarMensaje(2,Cliente2)
+    EnviarMensaje(3,Cliente3)
+    repetir 12
+      depositado:= 0
+      RecibirMensaje(quien,*)
+      si (quien = 1)
+        RecibirMensaje(pedido,Cliente1)
+        depositar(depositado)
+        EnviarMensaje(depositado,Cliente1)
+      si (quien = 2)
+        RecibirMensaje(pedido,Cliente2)
+        depositar(depositado)
+        EnviarMensaje(depositado,Cliente2)
+      si (quien = 3)
+        RecibirMensaje(pedido,Cliente3)
+        depositar(depositado)
+        EnviarMensaje(depositado,Cliente3)
+  fin
+variables
+  Cliente1: Cliente
+  Cliente2: Cliente
+  Cliente3: Cliente
+  Servidor: Servidor
+comenzar
+  AsignarArea(Cliente1,AreaInicial)
+  AsignarArea(Cliente1,AreaDeposito)
+  AsignarArea(Cliente2,AreaInicial)
+  AsignarArea(Cliente2,AreaDeposito)
+  AsignarArea(Cliente3,AreaInicial)
+  AsignarArea(Cliente3,AreaDeposito)
+  AsignarArea(Servidor,AreaInicial)
+  AsignarArea(Servidor,AreaDeposito)
+  Iniciar(Cliente1,10,1)
+  Iniciar(Cliente2,11,1)
+  Iniciar(Cliente3,12,1)
+  Iniciar(Servidor,13,1)
+fin

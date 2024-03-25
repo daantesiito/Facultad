@@ -1,0 +1,23 @@
+programa ejercicio1
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    repetir 83
+      mover
+    derecha
+    mover
+    si (HayFlorEnLaEsquina)
+      tomarFlor
+      Informar(HayFlorEnLaBolsa)
+    sino
+      Informar(HayFlorEnLaEsquina)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info, ciudad)
+  Iniciar(R-info,1,1)
+Fin
+  

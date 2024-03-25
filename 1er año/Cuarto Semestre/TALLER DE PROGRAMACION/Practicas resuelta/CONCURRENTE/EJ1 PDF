@@ -1,0 +1,65 @@
+programa ejercicio1pdf
+areas
+  areaInicio: AreaC(2,2,3,3)
+  areaJuntar: AreaC(50,50,50,50)
+  areaDejar: AreaPC(1,5,100,5)
+robots
+  robot JuntadorPapeles
+  variables
+    papeles: numero
+    flores: numero
+  comenzar
+    papeles:= 0
+    BloquearEsquina(50,50)
+    Pos(50,50)
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:= papeles + 1
+    Pos(2,2)
+    LiberarEsquina(50,50)
+    EnviarMensaje(papeles,robot2)
+    RecibirMensaje(flores,robot2)
+    si (papeles > flores)
+      Pos(1,5)
+      derecha
+      repetir papeles
+        si (HayPapelEnLaBolsa)
+          depositarPapel
+          mover
+  fin
+  robot JuntadorFlores
+  variables
+    papeles: numero
+    flores: numero
+  comenzar
+    flores:= 0
+    BloquearEsquina(50,50)
+    Pos(50,50)
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    Pos(3,3)
+    LiberarEsquina(50,50)
+    EnviarMensaje(flores,robot1)
+    RecibirMensaje(papeles,robot1)
+    si (flores > papeles)
+      Pos(1,5)
+      derecha
+      repetir flores
+        si (HayFlorEnLaBolsa)
+          depositarFlor
+          mover
+  fin
+variables
+  robot1: JuntadorPapeles
+  robot2: JuntadorFlores
+comenzar
+  AsignarArea(robot1,areaInicio)
+  AsignarArea(robot1,areaJuntar)
+  AsignarArea(robot1,areaDejar)
+  AsignarArea(robot2,areaInicio)
+  AsignarArea(robot2,areaJuntar)
+  AsignarArea(robot2,areaDejar)
+  Iniciar(robot1,2,2)
+  Iniciar(robot2,3,3)
+fin

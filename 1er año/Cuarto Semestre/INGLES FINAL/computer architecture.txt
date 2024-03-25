@@ -1,0 +1,47 @@
+COMPUTER ARCHITECTURE
+
+A.
+	1. Llamamos arquitectura de las computadoras a la teoria detras del diseño de las computadoras y constituye la base para construir una computadora.
+	Quien establece las especificaciones es el diseñador, del mismo modo que lo hace un arquitecto de edificios,
+	quien decide las bases y objetivos de un proyecto de construccion.
+
+	2. La arquitectura de computadoras puede hacer referencia al diseño de la arquitectura del cpu, set de instrucciones,
+	modos de direccionamientos, y a tecnicas como SIMD y MIMD paralelismo, etc.
+
+	3. El conjunto de atributos de la maquina que el programador debe conocer para programar exitosamente la computadora especifica.
+	es decir, para ser capaz de razonar lo que el programa va a hacer cuando sea ejecutado,
+	constituye una definicion de arquitectura.
+
+	4. No se considera parte de la arquitectura a la frecuencia en la que el sistema opera,
+	mientras que a las intrucciones y a la anchura de los operandos si.
+
+B.
+
+An instruction set architecture (ISA) describes the aspects of a computer architecture
+visible to a programmer, including the native datatypes, instructions, registers, addressing
+modes, memory architecture, etc.).
+An ISA includes a specification of the set of all binary codes that are the native form of
+commands implemented by a particular CPU design. The set of these codes for a
+particular ISA is also known as the machine language for the ISA.
+"Instruction set architecture" is sometimes used to distinguish this set of characteristics
+from the microarchitecture, which is the set of processor design techniques used to
+implement the instruction set. Computers with different microarchitectures can share a
+common instruction set.
+
+Una arquitectura de conjunto de instrucciones (ISA) describe el aspecto en que una arquitectura de computadoras es visible al programador,
+incluyendo los tipos de datos nativos, intrucciones, registros, modos de direccion, arquitectura de memoria, etc.
+Una ISA incluye unas especificaciones del conjunto de todos los codigos binarios que son la forma nativa de los comandos implementados por el diseño de CPU particular.
+El conjunto de estos codigos para una ISA en particular es tambien conocida como el lenguaje de maquina para esa ISA.
+"Arquitectura de conjunto de instrucciones" es a veces usado para distinguir el conjunto de caracteristicas de la micro arquitectura, que es el conjunto de tecnicas de diseño de procesador
+usado para implementar el conjunto de intrucciones.
+Las computadoras con diferentes micro arquitecturas pueden compartir un conjunto de instrucciones comun.
+
+
+CHATGPT:
+Una arquitectura de conjunto de instrucciones (ISA) describe los aspectos de una arquitectura de computadora que son visibles para un programador,
+incluyendo los tipos de datos nativos, las instrucciones, los registros, los modos de direccionamiento, la arquitectura de memoria, etc.
+Un ISA incluye una especificación del conjunto de todos los códigos binarios que son la forma nativa de los comandos implementados por un diseño de CPU particular.
+El conjunto de estos códigos para un ISA en particular también se conoce como el lenguaje de máquina para ese ISA.
+"Arquitectura de conjunto de instrucciones" se usa a veces para distinguir este conjunto de características de la microarquitectura,
+que es el conjunto de técnicas de diseño de procesadores utilizadas para implementar el conjunto de instrucciones.
+Las computadoras con diferentes microarquitecturas pueden compartir un conjunto de instrucciones común.

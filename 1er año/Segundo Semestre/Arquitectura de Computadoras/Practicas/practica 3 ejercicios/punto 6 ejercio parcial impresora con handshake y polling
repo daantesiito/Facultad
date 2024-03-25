@@ -1,0 +1,45 @@
+; punto 6 ejercio parcial impresora con handshake y polling
+
+HAND_DATO EQU 40h
+HAND_ESTADO EQU 41h
+
+ORG 1000h
+FRASE DB "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+FIN DB ?
+A DB "A"
+Z DB "Z"
+
+ORG 3000h
+SELECCIONADO: MOV AL, [BX]
+              CMP AL, 41H
+              JS MINUSCULA
+              CMP AL, 5AH
+              JNS MINUSCULA
+              MOV DL, 1
+              JMP FINSUB
+              
+MINUSCULA:    MOV DL, 0
+
+FINSUB:       RET
+
+ORG 2000h
+IN AL, HAND_ESTADO
+AND AL, 01111111b
+OUT HAND_ESTADO, AL
+
+MOV BX, OFFSET FRASE
+RECORRER: CALL SELECCIONADO
+          MOV CL, DL
+          CMP CL, 1
+          JNZ SIGUIENTE
+POLL:     IN AL, HAND_ESTADO
+          AND AL, 1
+          JNZ POLL
+          MOV AL, [BX]
+          OUT HAND_DATO, AL
+          
+SIGUIENTE:INC BX
+          CMP BX, OFFSET FIN
+          JNZ RECORRER
+HLT
+END

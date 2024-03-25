@@ -1,0 +1,75 @@
+; punto 6 ejercio parcial impresora con handshake e interrupciones
+
+HAND_DATO EQU 40h
+HAND_ESTADO EQU 41h
+EOI EQU 20h
+IMR EQU 21h
+INT2 EQU 24h
+
+ORG 1000h
+FRASE DB "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+FIN DB ?
+A DB "A"
+Z DB "Z"
+
+ORG 3000h
+SELECCIONADO: MOV AL, [BX]
+              CMP AL, A
+              JS MINUSCULA
+              CMP AL, Z
+              JNS MINUSCULA
+              MOV CL, 1
+              JMP FINSUB
+              
+MINUSCULA:    MOV CL, 0
+              
+FINSUB:       RET
+
+ORG 4000h
+IMPRIMIR: PUSH AX
+          MOV AL, [BX]
+          OUT HAND_DATO, AL
+          INC BX
+          
+          MOV AL, 20h
+          OUT EOI, AL
+          
+          POP AX
+          IRET
+
+ORG 2000h
+MOV BX, OFFSET FRASE
+CALL SELECCIONADO
+
+CMP CL, 1
+JZ IMPRIMIR
+
+IN AL, HAND_ESTADO
+OR AL, 80h
+OUT HAND_ESTADO, AL
+
+MOV AX, IMPRIMIR
+MOV BX, 40 ; 10*4
+MOV [BX], AX
+
+CLI
+
+MOV AL, 11111011b
+OUT IMR, AL
+
+MOV AL, 10
+OUT INT2, AL
+
+STI
+
+
+POLL: CMP BX, OFFSET FIN ; Chequeo si llegue al final
+      JNZ POLL
+
+
+MOV AL, HAND_ESTADO
+AND AL, 7Fh
+OUT HAND_ESTADO, AL
+
+HLT
+END

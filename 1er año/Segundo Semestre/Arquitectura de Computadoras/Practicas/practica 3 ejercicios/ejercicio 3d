@@ -1,0 +1,49 @@
+;Escribir un programa que solicite el ingreso de cinco caracteres por teclado y los almacene en memoria.
+;Una vez ingresados, que los envíe a la impresora a través del HAND-SHAKE, en primer lugar tal cual
+;fueron ingresados y a continuación en sentido inverso. Utilizar el HAND-SHAKE en modo consulta de
+;estado.
+
+HAND_DATO EQU 40h
+HAND_ESTADO EQU 41h
+
+ORG 1000h
+CARACTERES db ?, ?, ?, ?, ?
+FIN db ?
+
+ORG 2000h
+MOV BX, OFFSET CARACTERES
+MOV DL, 5
+LEER: INT 6
+      
+      IN AL, HAND_ESTADO
+      AND AL, 07Fh
+      OUT HAND_ESTADO, AL
+      
+POLL: IN AL, HAND_ESTADO
+      AND AL, 1
+      JNZ POLL
+      
+      MOV AL, [BX]
+      OUT HAND_DATO, AL
+      
+      INC BX
+      DEC DL
+      JNZ LEER
+      
+DL5: MOV DL, 5
+
+MOV BX, OFFSET FIN - 1
+
+POLL2: IN AL, HAND_ESTADO
+       AND AL, 1
+       JNZ POLL2
+       
+       MOV AL, [BX]
+       OUT HAND_DATO, AL
+       
+       DEC BX
+       DEC DL
+       JNZ POLL2
+       
+HLT
+END

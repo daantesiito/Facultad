@@ -1,0 +1,63 @@
+; punto 6 del parcial 1 de Arqui
+
+PA EQU 30H
+PB EQU 31H
+CA EQU 32H
+CB EQU 33H
+
+ORG 1000H
+CADENA db "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+FIN db ?
+A db "A"
+Z db "Z"
+
+ORG 3000H
+SELECCIONADO: MOV AL, [BX]
+              CMP AL, A
+              JS MINUSCULA
+              CMP AL, Z
+              JNS MINUSCULA
+              MOV CL, 1
+              JMP FINSUB
+MINUSCULA:    MOV CL, 0
+              
+FINSUB:       RET
+
+ORG 2000h
+MOV AL, 11111101b
+OUT CA, AL
+
+MOV AL, 0
+OUT CB, AL
+
+MOV BX, OFFSET CADENA
+
+IMPRIMIR: CALL SELECCIONADO
+          MOV DL, CL
+          
+      MOV AL, [BX]
+      CMP DL, 1
+      JNZ IMPRIMIR
+      OUT PB, AL
+          
+POLL: IN AL, PA
+      AND AL, 1
+      JNZ POLL
+
+; STROBE EN 1
+IN AL, PA
+OR AL, 2
+OUT PA, AL
+
+; STROBE EN 0
+IN AL, PA
+AND AL, 11111101b
+OUT PA, AL
+
+          INC BX
+          CMP BX, OFFSET FIN
+          JNZ IMPRIMIR
+          
+
+HLT
+END

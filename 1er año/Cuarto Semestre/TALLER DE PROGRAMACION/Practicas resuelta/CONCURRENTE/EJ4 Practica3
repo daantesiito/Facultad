@@ -1,0 +1,82 @@
+programa ej4Pract3
+areas
+  areac : AreaC(10,10,11,11)
+  area1 : AreaP(9, 9, 9, 9)
+  area2 : AreaP(9,10,9,10)
+  area3 : AreaP(9,11,9,11)
+  area4 : AreaP(9,12,9,12)
+  areaC : AreaP(1,1,1,1)
+robots
+  robot movedor
+  variables
+    flores: numero
+    quien: numero
+    listo: boolean
+    AI: numero
+    CI: numero
+  comenzar
+    AI := PosAv
+    CI := PosCa
+    flores := 0
+    RecibirMensaje(quien, robotC)
+    mientras (listo = F)
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      si (HayFlorEnLaEsquina)
+        tomarFlor
+        flores := flores + 1
+      si (~(HayFlorEnLaEsquina))
+        listo := V
+      si (flores = 1)
+        BloquearEsquina(11,11)
+        Pos(11,11)
+        LiberarEsquina(10,10)
+        depositarFlor
+        flores := flores - 1
+        Pos(AI, CI)
+        LiberarEsquina(11,11)
+      sino
+        Pos(AI, CI)
+        LiberarEsquina(10,10)
+    EnviarMensaje(quien, robotC)
+  fin
+  robot coordinador
+  variables
+    flores: numero
+    quien: numero
+  comenzar
+    EnviarMensaje(1, robot1)
+    EnviarMensaje(2, robot2)
+    EnviarMensaje(3, robot3)
+    EnviarMensaje(4, robot4)
+    repetir 4
+      RecibirMensaje(quien, *)
+    Informar(quien)
+    Pos(11,11)
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores := flores + 1
+  fin
+variables
+  robot1 : movedor
+  robot2 : movedor
+  robot3 : movedor
+  robot4 : movedor
+  robotC : coordinador
+comenzar
+  AsignarArea(robot1, area1)
+  AsignarArea(robot2, area2)
+  AsignarArea(robot3, area3)
+  AsignarArea(robot4, area4)
+  AsignarArea(robotC, areaC)
+  AsignarArea(robotC, areac)
+  AsignarArea(robot1, areac)
+  AsignarArea(robot2, areac)
+  AsignarArea(robot3, areac)
+  AsignarArea(robot4, areac)
+  Iniciar(robot1, 9, 9)
+  Iniciar(robot2, 9, 10)
+  Iniciar(robot3, 9, 11)
+  Iniciar(robot4, 9, 12)
+  Iniciar(robotC, 1, 1)
+fin

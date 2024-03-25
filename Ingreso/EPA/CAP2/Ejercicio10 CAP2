@@ -1,0 +1,64 @@
+programa ejercicio10
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    repetir 2
+      repetir 99
+        si (HayFlorEnLaEsquina)
+          mientras (HayFlorEnLaEsquina)
+            tomarFlor
+        si (HayPapelEnLaEsquina)
+          mientras (HayPapelEnLaEsquina)
+            tomarPapel
+        mover
+      si (HayFlorEnLaEsquina)
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+      si (HayPapelEnLaEsquina)
+        mientras (HayPapelEnLaEsquina)
+          tomarPapel
+      derecha
+      mover
+      derecha
+      repetir 99
+        si (HayFlorEnLaEsquina)
+          mientras (HayFlorEnLaEsquina)
+            tomarFlor
+        si (HayPapelEnLaEsquina)
+          mientras (HayPapelEnLaEsquina)
+            tomarPapel
+        mover
+      si (HayFlorEnLaEsquina)
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+      si (HayPapelEnLaEsquina)
+        mientras (HayPapelEnLaEsquina)
+          tomarPapel
+      repetir 3
+        derecha
+      mover
+      repetir 3
+        derecha
+    repetir 99
+      si (HayFlorEnLaEsquina)
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+      si (HayPapelEnLaEsquina)
+        mientras (HayPapelEnLaEsquina)
+          tomarPapel
+      mover
+    si (HayFlorEnLaEsquina)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+    si (HayPapelEnLaEsquina)
+      mientras (HayPapelEnLaEsquina)
+        tomarPapel
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

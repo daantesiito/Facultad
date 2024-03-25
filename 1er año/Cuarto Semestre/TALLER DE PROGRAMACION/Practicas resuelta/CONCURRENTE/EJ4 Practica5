@@ -1,0 +1,114 @@
+programa ej4prac5
+procesos
+  proceso juntarFlores(ES flores: numero)
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+  fin
+areas
+  areaCuadrante: AreaPC(40,40,60,60)
+  areaIniciar: AreaPC(1,1,4,1)
+  areaDeposito: AreaPC(10,10,10,10)
+robots
+  robot Florero
+  variables
+    quien: numero
+    calle: numero
+    avenida: numero
+    contadorIdas: numero
+    avIni: numero
+    depositado: boolean
+  comenzar
+    RecibirMensaje(quien,Fiscalizador)
+    contadorIdas:= 0
+    avIni:= PosAv
+    mientras (contadorIdas <> 8)
+      RecibirMensaje(calle,Fiscalizador)
+      RecibirMensaje(avenida,Fiscalizador)
+      BloquearEsquina(avenida,calle)
+      Pos(avenida,calle)
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+      Pos(avIni,1)
+      LiberarEsquina(avenida,calle)
+      contadorIdas:= contadorIdas + 1
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    mientras (HayFlorEnLaBolsa)
+      depositarFlor
+    Pos(avIni,1)
+    LiberarEsquina(10,10)
+    EnviarMensaje(depositado,Fiscalizador)
+  fin
+  robot Fiscalizador
+  variables
+    termine: numero
+    calle: numero
+    avenida: numero
+    enviar: numero
+    contadorIdas1: numero
+    contadorIdas2: numero
+    contadorIdas3: numero
+    depositado: boolean
+    flores: numero
+  comenzar
+    EnviarMensaje(1,Florero1)
+    EnviarMensaje(2,Florero2)
+    EnviarMensaje(3,Florero3)
+    contadorIdas1:= 0
+    contadorIdas2:= 0
+    contadorIdas3:= 0
+    mientras (termine <> 3)
+      Random(calle,40,60)
+      Random(avenida,40,60)
+      Random(enviar,1,3)
+      si (enviar = 1)
+        EnviarMensaje(calle,Florero1)
+        EnviarMensaje(avenida,Florero1)
+        contadorIdas1:= contadorIdas1 + 1
+        si (contadorIdas1 = 8)
+          termine:= termine + 1
+      si (enviar = 2)
+        EnviarMensaje(calle,Florero2)
+        EnviarMensaje(avenida,Florero2)
+        contadorIdas2:= contadorIdas2 + 1
+        si (contadorIdas2 = 8)
+          termine:= termine + 1
+      si (enviar = 3)
+        EnviarMensaje(calle,Florero3)
+        EnviarMensaje(avenida,Florero3)
+        contadorIdas3:= contadorIdas3 + 1
+        si (contadorIdas3 = 8)
+          termine:= termine + 1
+    repetir 3
+      RecibirMensaje(depositado,*)
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    juntarFlores(flores)
+    Pos(4,1)
+    LiberarEsquina(10,10)
+    Informar(flores)
+  fin
+variables
+  Florero1: Florero
+  Florero2: Florero
+  Florero3: Florero
+  Fiscalizador: Fiscalizador
+comenzar
+  AsignarArea(Florero1,areaCuadrante)
+  AsignarArea(Florero1,areaIniciar)
+  AsignarArea(Florero1,areaDeposito)
+  AsignarArea(Florero2,areaCuadrante)
+  AsignarArea(Florero2,areaIniciar)
+  AsignarArea(Florero2,areaDeposito)
+  AsignarArea(Florero3,areaCuadrante)
+  AsignarArea(Florero3,areaIniciar)
+  AsignarArea(Florero3,areaDeposito)
+  AsignarArea(Fiscalizador,areaIniciar)
+  AsignarArea(Fiscalizador,areaDeposito)
+  Iniciar(Florero1,1,1)
+  Iniciar(Florero2,2,1)
+  Iniciar(Florero3,3,1)
+  Iniciar(Fiscalizador,4,1)
+fin

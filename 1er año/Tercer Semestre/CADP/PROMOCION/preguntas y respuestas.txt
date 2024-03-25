@@ -1,0 +1,197 @@
+- Defina el concepto de modularización y explique las ventajas de tener una solución modularizada.
+La modularizacion permite dividir un sistema en partes mas pequeñas y autonomas, que da diferentes beneficios como la reutilizacion de codigo, facilidad de mantenimiento, mejor depuracion, organizacion, entre otras.
+ 
+
+ESTRUCTURAS DE CONTROL:
+- Explique y ejemplifique las estructuras de control de selección vistas en el curso.
+	- IF: evalua una condicion, en caso de ser cierta, se ejecuta el codigo, si no es cierta, sigue la ejecucion del programa.
+		if nota = 10 then
+		    writeln('Excelente!')
+
+	- WHILE: mientras que la condicion se cumpla, que se ejecute el codigo, cuando no se cumple, termina la ejecucion.
+		while numero < 10 do begin
+		    numero:= numero + 1;
+		end;
+
+	- REPEAT UNTIL: repite el codigo hasta que la condicion se cumpla.
+		repeat
+		    numero:= numero + 1;
+		until numero < 10
+	- FOR: desde un numero a otro numero de veces, que se repita el codigo.
+		for i:= 1 to 10 do begin
+		    suma:= suma + 1;
+		end;
+
+- ¿Cuáles son las principales diferencias entre las estructuras de control for, while () do y repeat ... until ()?
+En la estructura FOR se conoce exactamente cuantas veces que el codigo va a iterar.
+En la estructura WHILE no se conoce exactamente cuantas veces el codigo va a iterar el cual depende de una condicion que se evalua al principio, antes de iterar.
+En la estructura REPEAT UNTIL tampoco se conoce exactamente cuantas veces el codigo va a iterar el cual tambien depende de una condicion pero se evalua al final de la iteracion.
+
+VECTORES:
+- Describa las características de una estructura del tipo de dato vector y describa los pasos necesarios de la operación de búsqueda de un elemento en dicha estructura. 
+
+Las caracteristicas del vector son:
+
+Lineal: Siempre tiene un antecesor.
+Estatico: Se define una cantidad de elementos que no se puede modificar.
+Directo: Se puede buscar un elemento de forma directa.
+Homogeneo: Todos los datos del vector son del mismo tipo.
+
+Para buscar un elemento en un vector primero hay que hacer una nueva variable que ponga el elemento buscado, luego llenamos el vector y se usa un while para que recorra el vector mientras que el elemento no sea el buscado. Dentro de este while ponemos un contador que va subiendo a medida que se procesa
+
+PUNTEROS:
+- Explique que es un tipo de dato puntero y cuáles son las operaciones NO permitidas sobre dicho tipo de dato.
+Un tipo de dato puntero almacena en vez del propio dato, la direccion donde se encuentra almacenado el dato. Se utilizan para trabajar en estructuras de datos dinamicas como listas o vectores.
+
+ARREGLOS:
+- Defina el tipo de dato arreglo y describa los pasos necesarios (pseudocódigo) para realizar las operaciones de:
+a- Buscar un elemento en un arreglo ordenado.
+b- Insertar un elemento en una posición determinada del arreglo.
+
+Un arreglo, mas conocido como vector es una coleccion finita de elementos de un mismo tipo.
+
+a- program BusquedaElementoVector;
+const
+  MAX_ELEMENTOS = 10;
+var
+  vector: array[1..MAX_ELEMENTOS] of integer;
+  elementoBuscado: integer;
+  i: integer;
+begin
+  // Llenar el vector con algunos valores de ejemplo
+  vector[1] := 5;
+  vector[2] := 10;
+  vector[3] := 15;
+  vector[4] := 20;
+  vector[5] := 25;
+  vector[6] := 30;
+  vector[7] := 35;
+  vector[8] := 40;
+  vector[9] := 45;
+  vector[10] := 50;
+
+  elementoBuscado := 30;
+
+  i:= 1;
+
+  while vector[i] <> elementoBuscado do begin
+	i:= i + 1;
+  end;
+
+  writeln('El elemento buscado se encontro en la posicion: ', i);
+  
+end.
+
+El programa deberia devolver: 'El elemento buscado se encontro en la posicion: 6'
+
+b- program InsertarElementoVector;
+const
+  MAX_ELEMENTOS = 10;
+var
+  vector: array[1..MAX_ELEMENTOS] of integer;
+  elementoAInsertar: integer;
+  i: integer;
+begin
+  // Llenar el vector con algunos valores de ejemplo
+  vector[1] := 5;
+  vector[2] := 10;
+  vector[3] := 15;
+  vector[4] := 20;
+  vector[5] := 25;
+  vector[6] := 30;
+  vector[7] := 35;
+  vector[8] := 40;
+  vector[9] := 45;
+  vector[10] := 50;
+
+  elementoAInsertar := 100;
+
+  v[4]:= elementoAInsertar;
+
+  writeln('El elemento se inserto en la posicion 4, que es: ', v[4]);
+  
+end.
+
+El programa deberia devolver: 'El elemento se inserto en la posicion 4, que es: 100'
+
+ESTRUCTURA DE DATOS:
+- Defina el concepto.
+Las estructuras de datos son formas organizadas para almacenar y manejar datos de un programa o sistema.
+
+- Plantee y explique los distintas clasificaciones de las Estructura de Datos.
+Las estructuras de datos pueden ser homogeneas(todos los datos de un mismo tipo) o heterogeneas(los datos pueden ser de diferentes tipos).
+Las estructuras de datos pueden ser lineales(tiene siempre un sucesor y antecesor) o no lineales(puede o no tener un sucesor o antecesor).
+Las estructuras de datos pueden ser directas(se puede buscar un elemento de forma directa) o secuenciales(si queres buscar un elemento hay que hacerlo con diferentes pasos).
+Las estructuras de datos pueden ser dinamica(puede modificar la cantidad de elementos) o estatica(la cantidad de elementos no se puede modificar).
+
+PARAMETROS:
+- Defina el concepto de parametro en el contexto de la modurarización.
+En el contexto de la modularizacion un parametro es un valor o una variable que se pasa al modulo al momento de llamarlo. Los parametros permiten la comunicacion entre modulos del programa.
+
+- Que tipos de parametros conoce. Describa en que se clasifica cada tipo.
+Parametro por valor: Se pasa una copia del valor del elemento para poder ser empleado en el modulo. No afecta en el programa principal si el valor es modificado.
+Parametro por referencia: Se pasa la direccion de memoria del elemento para poder ser empleado en el modulo. Si se modifica el elemento, influye en el valor original fuera del modulo.
+
+- ¿Por qué cree que es util para el programador contar con los parametros para escribir soluciones modularizadas?. 
+Los parametros son utiles para el programador por ejemplo al momento de crear un modulo funcion, no tener que inicializar todo lo que voy a usar dentro de la funcion copiando los valores de fuera del modulo, y luego cambiarlo al terminar.
+
+EFICIENCIA:
+- Defenir concepto de eficiencia de un programa.
+La eficiencia de un programa se refiere a la medida en que un programa utiliza los recursos disponibles como el tiempo de ejecucion, la memoria y el procesamiento para ser mas eficaz a la hora de lograr su objetivo.
+
+- Explique como se procede si lo que se desea es calcular la memoria empleada en una solucion. ¿Y si se desea calcular el tiempo de ejecución?.
+para calcular la memoria utilizada se divide en dos:
+Memoria Estatica: hay que fijarse en las variables usadas en el programa principal y sumarlas.
+Memoria Dinamica: se tiene en cuenta solo los new(), que suman memoria, y dispose(), que la resta.
+
+Luego para sacar el tiempo de ejecucion se tienen en cuenta 3 formulas y una regla de que cada operacion logica suma 1 UT:
+-IF: Cada condicion suma 1 UT. El else o el then se toma en cuenta el que mas consuma.
+-WHILE: (N + 1) * (N + (tiempo del cuerpo))
+-FOR: (3*N+2) + (N * (tiempo del cuerpo))
+
+PARCIALES:
+
+
+- Explique brevemente cual es la importancia de que el lenguaje permita tipos de datos definidos por el usuario.
+La importancia de que el usuario defina tipos de datos es que al crearlas permite definir o crear situaciones que no estaban pensadas por el que creo el lenguaje. Al adquirir nuevos tipos podes manejarlos y adecuarte a estos.
+
+- ¿Qué diferencia existe entre un lenguaje "fuertemente" tipado con uno "dinámicamente" tipado?
+La diferencia principal es en la hora de la verificacion de tipos, en tiempo de compilacion para los lenguajes fuertemente tipados, y en tiempo de ejecucion para los lenguajes dinamicamente tipados.
+
+- Explique brevemente el riesgo de utilizar variables globales para la comunicación entre módulos.
+El riesgo que asume utilizar variables globales entre modulos es que todas las variables pueden ser modificadas y arrastrar errores que perjudiquen todo el programa ya que se usan en todos lados.
+
+- Dado dos variables A y B de tipo registro. Indique si las operaciones A:=B, A=B, READ(A), WRITE(B) son correctas. Justifique
+La primera operacion no es correcta, la unica forma de que sea correcta es que en los registros hayan los mismos tipos y cantidad de datos.
+La segunda operacion no es correcta ya que no existe.
+La tercera y cuarta operacion no son correctas ya que no se puede modificar o leer un registro entero, se modifica o se leen los campos especificos.
+
+- Indique las características de una estructura arreglo y la diferencia entre dimensión física y lógica.
+Una estructura arreglo o mas conocida como vector es una estructura que se define con una cantidad de elementos que no se puede modificar, es una estructura lineal que siempre tiene un antecesor, todos sus datos son del mismo tipo y se puede acceder a estos de forma directa sin tener que recorrer todo el vector.
+
+La diferencia entre memoria fisica y logica es que la memoria fisica se refiere a la cantidad maxima total de elementos que se pueden tener almacenados, en cambio la dimension logica son la cantidad de elementos reales almacenados.
+
+- ¿Cuál es el objetivo de aplicar la algoritmica de corte de control sobre una estructura datos?
+El corte de control se usa para saber la cantidad de elementos que hay de cada tipo y se utiliza cuando viene la lista ordenada.
+
+- ¿Toda solución correcta es eficiente? Justifique.
+No, una solucion correcta no necesariamente es eficiente, la solucion correcta es lo que resuelve lo pedido. Pueden haber muchas soluciones correctas y cada una puede ser mas o menos eficiente.
+
+- Explique las principales diferencias entre una estructura arreglo y una de tipo lista
+Las principales diferencias entre vector y lista son que el vector es una coleccion finita de elementos la cual se define, en cambio la lista es indefinida y se pueden ir agregando o eleminando elementos. Otra de sus diferencias es que al vector se puede acceder directamente a un dato sin recorrer el vector entero, en cambio si queres buscar un elemento en una lista tenes que recorrerla ya que no se puede acceder de forma directa al elemento.
+
+- Defina el concepto de eficiencia de un programa.
+La eficiencia de un programa es la que conlleva menos tiempo de ejecucion y consume menos memoria.
+
+- Justifique por qué es conveniente utilizar un parámetro por referencia en lugar de una variable global.
+Con las variables globales se pueden perder los datos facilmente.
+
+demaisado identificadores
+conflictos 
+psoibiladad de perder datos
+
+- Explique detalladamente las diferencias entre aplicar la operación DISPOSE a un puntero y asignarle valor NIL.
+La diferencia entre DISPOSE y asignar valor NIL es que al hacer un dispose se elimina el dato y se libera el espacio en la memoria, en cambio al asignar el valor NIL, el dato se borra y se pone NIL pero sigue ocupando espacio en la memoria.
+
+- Explique qué entiende por reusabilidad en el contexto de la modularización.
+La reusabilidad de un modulo es que al ser funcional independiente se puede usar en otras operaciones de una forma que funcione bien.

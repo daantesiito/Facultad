@@ -1,0 +1,32 @@
+ORG 1000H
+NUM DW 3
+TABLA DW 1000H
+
+ORG 2000H
+MOV AX, NUM
+MOV BX, TABLA
+MOV CL, 0
+
+CHEQUEAR: MOV DX, AX
+MOVER_TABLA: MOV WORD PTR [BX], AX
+ADD BX, 2
+AND DX, 1
+JZ PAR_RESTA
+JNZ IMPAR_SUMA
+
+IMPAR_SUMA: ADD AX, 5
+CMP AX, 0
+JNZ CHEQUEAR
+JZ FIN
+
+PAR_RESTA: SUB AX, 7
+CMP AX, 0
+JNZ CHEQUEAR
+JZ FIN
+
+FIN: HLT
+END
+
+;12) Escribir un programa que, dado un número X, genere un arreglo con todos los resultados que se obtienen hasta llegar
+;a 0, aplicando la siguiente fórmula: si X es par, se le resta 7; si es impar, se le suma 5, y al resultado se le aplica
+;nuevamente la misma fórmula. Ej: si X = 3 entonces el arreglo tendrá: 8, 1, 6, -1, 4, -3, 2, -5, 0. 

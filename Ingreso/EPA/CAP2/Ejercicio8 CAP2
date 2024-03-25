@@ -1,0 +1,25 @@
+programa ejercicio8
+areas
+  ciudad:AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    derecha
+    repetir 22
+      mover
+    repetir 3
+      derecha
+    repetir 99
+      si (HayPapelEnLaEsquina)
+        mover
+      sino 
+        mientras (HayPapelEnLaBolsa)
+          depositarPapel
+    Informar(PosCa)
+  fin
+variables
+  R-info:robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

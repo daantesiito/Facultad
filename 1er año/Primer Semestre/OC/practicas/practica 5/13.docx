@@ -1,0 +1,35 @@
+ORG 1000H
+FRASE DB "Organización y la Computación"
+FIN_FRASE DB ?
+B DW 1000H
+C DB 0
+
+ORG 2000H
+MOV AX, OFFSET FRASE
+MOV BX, B
+MOV CL, C
+MOV DX, OFFSET FIN_FRASE
+
+FASE1: CMP BYTE PTR [BX], 61H
+       JZ FASE2
+       JNZ MOVER
+
+FASE2: INC BX
+       CMP BYTE PTR [BX], 63H
+       JZ CONT
+       DEC BX
+       JNZ MOVER
+       CONT: INC CL
+       DEC BX
+
+MOVER: ADD BX, 1
+       CMP BX, DX
+       JNZ FASE1
+       JZ FIN
+
+FIN: HLT
+END
+
+
+;13) Dada la frase "Organización y la Computación", almacenada en la memoria, 
+;escriba un programa que determine cuantas letras ‘a’ seguidas de ‘c’ hay en ella

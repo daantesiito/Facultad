@@ -1,0 +1,126 @@
+programa ej3Pract3
+procesos
+  proceso maximo(E quien: numero; E flores: numero; ES maxflores: numero; ES maxid: numero)
+  comenzar
+    si (flores > maxflores)
+      maxflores := flores
+      maxid := quien
+  fin
+areas
+  cuadrante : AreaPC(2, 2, 10, 10)
+  area1 : AreaP(2, 1, 2, 1)
+  area2 : AreaP(3, 1, 3, 1)
+  area3 : AreaP(4, 1, 4, 1)
+  area4 : AreaP(5, 1, 5, 1)
+  areaJ : AreaP(1, 1, 1, 1)
+robots
+  robot recogedor
+  variables
+    flores: numero
+    quien: numero
+    n: numero
+    m: numero
+    listo: boolean
+    AI: numero
+    CI: numero
+  comenzar
+    AI := PosAv
+    CI := PosCa
+    listo := F
+    RecibirMensaje(quien, robotJ)
+    EnviarMensaje(quien, robotJ)
+    RecibirMensaje(n, robotJ)
+    RecibirMensaje(m, robotJ)
+    mientras (listo = F)
+      BloquearEsquina(n, m)
+      Pos(n, m)
+      si (HayFlorEnLaEsquina)
+        tomarFlor
+        flores := flores + 1
+      si (~(HayFlorEnLaEsquina))
+        listo := V
+      Pos(AI, CI)
+      LiberarEsquina(n, m)
+    EnviarMensaje(quien, robotJ)
+    EnviarMensaje(flores, robotJ)
+  fin
+  robot jefe
+  variables
+    n: numero
+    m: numero
+    flores: numero
+    quien: numero
+    listo: boolean
+    maxflores: numero
+    maxid: numero
+  comenzar
+    listo := F
+    maxflores := 0
+    EnviarMensaje(1, robot1)
+    EnviarMensaje(2, robot2)
+    EnviarMensaje(3, robot3)
+    EnviarMensaje(4, robot4)
+    Random(n, 2, 10)
+    Random(m, 2, 10)
+    repetir 4
+      RecibirMensaje(quien, *)
+      si (quien = 1)
+        EnviarMensaje(n, robot1)
+        EnviarMensaje(m, robot1)
+      sino
+        si (quien = 2)
+          EnviarMensaje(n, robot2)
+          EnviarMensaje(m, robot2)
+        sino
+          si (quien = 3)
+            EnviarMensaje(n, robot3)
+            EnviarMensaje(m, robot3)
+          sino
+            EnviarMensaje(n, robot4)
+            EnviarMensaje(m, robot4)
+    repetir 4
+      RecibirMensaje(quien, *)
+      si (quien = 1)
+        RecibirMensaje(flores, robot1)
+      sino
+        si (quien = 2)
+          RecibirMensaje(flores, robot2)
+        sino
+          si (quien = 3)
+            RecibirMensaje(flores, robot3)
+          sino
+            RecibirMensaje(flores, robot4)
+      maximo(quien, flores, maxflores, maxid)
+    si (maxid = 1)
+      Informar(1)
+    sino
+      si (maxid = 2)
+        Informar(2)
+      sino
+        si (maxid = 3)
+          Informar(3)
+        sino
+          Informar(4)
+  fin
+variables
+  robot1 : recogedor
+  robot2 : recogedor
+  robot3 : recogedor
+  robot4 : recogedor
+  robotJ : jefe
+comenzar
+  AsignarArea(robot1, cuadrante)
+  AsignarArea(robot2, cuadrante)
+  AsignarArea(robot3, cuadrante)
+  AsignarArea(robot4, cuadrante)
+  AsignarArea(robot1, area1)
+  AsignarArea(robot2, area2)
+  AsignarArea(robot3, area3)
+  AsignarArea(robot4, area4)
+  AsignarArea(robotJ, areaJ)
+  Iniciar(robot1, 2, 1)
+  Iniciar(robot2, 3, 1)
+  Iniciar(robot3, 4, 1)
+  Iniciar(robot4, 5, 1)
+  Iniciar(robotJ, 1, 1)
+fin

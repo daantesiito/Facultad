@@ -1,0 +1,84 @@
+;Escribir un programa que solicite ingresar caracteres por teclado y que recién al presionar la tecla F10
+;los envíe a la impresora a través de la PIO. No es necesario mostrar los caracteres en la pantalla.
+
+IMR EQU 21h
+EOI EQU 20h
+INT0 EQU 24h
+PA EQU 30h
+PB EQU 31h
+CA EQU 32h
+CB EQU 33h
+
+ORG 1000h
+FLAG DB 0
+LONGITUD DB 0
+CARACTERES DB ?
+
+ORG 3000h
+ENVIAR: MOV AL, 11111111b
+        OUT IMR, AL
+        
+        MOV FLAG, 1
+        
+        MOV AL, 20H
+        OUT EOI, AL
+        
+        IRET
+
+ORG 2000h
+
+CLI
+
+MOV AL, 11111110b
+OUT CA, AL
+
+MOV AL, 0
+OUT CB, AL
+
+IN AL, PA
+AND AL, 11111101b
+OUT PA, AL
+
+MOV AX, ENVIAR
+MOV BX, 40
+MOV [BX], AX
+
+
+MOV AL, 11111110b
+OUT IMR, AL
+
+MOV AL, 10
+OUT INT0, AL
+
+STI
+
+MOV BX, OFFSET CARACTERES
+SOLICITA: INT 6
+          INC BX
+          INC LONGITUD
+          CMP FLAG, 0
+          JZ SOLICITA
+
+MOV BX, OFFSET CARACTERES
+ESCRIBIR: NOP
+          IN AL, PA
+          AND AL, 1
+          JNZ ESCRIBIR
+          
+          MOV AL, [BX]
+          OUT PB, AL
+          
+          IN AL, PA
+          OR AL, 2
+          OUT PA, AL
+          
+          IN AL, PA
+          AND AL, 11111101b
+          OUT PA, AL
+          
+          INC BX
+          DEC LONGITUD
+          JNZ ESCRIBIR
+
+INT 0
+END

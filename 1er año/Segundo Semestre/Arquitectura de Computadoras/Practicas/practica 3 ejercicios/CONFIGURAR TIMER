@@ -1,0 +1,50 @@
+;CONFIGURAR TIMER
+
+IMR EQU 21h
+EOI EQU 20h
+INT1 EQU 25h
+CONT EQU 10h
+COMP EQU 11h
+
+
+ORG 3000h
+SUBRUT: INC CL
+        
+        MOV AL, 0
+        OUT CONT, AL
+
+        MOV AL, 20h
+        OUT EOI, AL
+        
+        IRET
+
+ORG 2000h
+
+MOV AX, SUBRUT
+MOV BX, 40
+MOV [BX], AX
+
+CLI
+
+MOV AL, 11111101b
+OUT IMR, AL
+
+MOV AL, 10
+OUT INT1, AL
+
+STI
+
+MOV AL, 1
+OUT COMP, AL
+
+MOV AL, 0
+OUT CONT, AL
+
+
+
+LOP: NOP
+     
+     JMP LOP
+
+INT 0
+END

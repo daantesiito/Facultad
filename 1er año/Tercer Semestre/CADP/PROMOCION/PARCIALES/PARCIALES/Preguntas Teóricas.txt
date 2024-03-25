@@ -1,0 +1,37 @@
+- Defina el concepto de modularización y explique las ventajas de tener una solución modularizada.
+
+
+ESTRUCTURAS DE CONTROL:
+- Explique y ejemplifique las estructuras de control de selección vistas en el curso.
+- ¿Cuáles son las principales diferencias entre las estructuras de control for, while () do y repeat ... until ()? Enuncie un problema sencillo para cada estructura de control que justifique su uso e implemente su solución.
+
+
+VECTORES:
+- Describa las características de una estructura del tipo de dato vector y describa los pasos necesarios de la operación de búsqueda de un elemento en dicha estructura. 
+
+
+PUNTEROS:
+- Explique que es un tipo de dato puntero y cuáles son las operaciones NO permitidas sobre dicho tipo de dato.
+
+
+ARREGLOS:
+- Defina el tipo de dato arreglo y describa los pasos necesarios (pseudocódigo) para realizar las operaciones de:
+a- Buscar un elemento en un arreglo ordenado.
+b- Insertar un elemento en una posición determinada del arreglo.
+
+
+ESTRUCTURA DE DATOS:
+- Defina el concepto.
+- Plantee y explique los distintas clasificaciones de las Estructura de Datos.
+- Plantee detalladamente la operacion de Insersion de un elemento en la estructura de datos lista enlazada y vector. Analice distintas propuestas.
+
+
+PARAMETROS:
+- Defina el concepto de parametro en el contexto de la modurarización.
+- Que tipos de parametros conoce. Describa en que se clasifica cada tipo.
+- ¿Por qué cree que es util para el programador contar con los parametros para escribir soluciones modularizadas?. 
+
+
+EFICIENCIA:
+- Defenir concepto de eficiencia de un programa.
+- Explique como se procede si lo que se desea es calcular la memoria empleada en una solucion. ¿Y si se desea calcular el tiempo de ejecución?.

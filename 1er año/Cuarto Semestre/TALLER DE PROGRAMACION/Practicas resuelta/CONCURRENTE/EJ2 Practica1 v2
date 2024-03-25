@@ -1,0 +1,52 @@
+programa punto2practica1
+procesos
+  proceso juntarPapeles(ES papeles: numero)
+  comenzar
+    mientras (HayPapelEnLaBolsa)
+      tomarPapel
+      papeles:= papeles + 1
+  fin
+  proceso IrAdelante(ES papeles: numero)
+  comenzar
+    repetir 20
+      juntarPapeles(papeles)
+      mover
+  fin
+areas
+  ciudad : AreaP(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    papeles: numero
+  comenzar
+    si(PosAv = 10) & (PosCa = 10)
+      IrAdelante(papeles)
+    si(PosAv = 10) & (PosCa = 30)
+      derecha
+      IrAdelante(papeles)
+    si(PosAv = 30) & (PosCa = 30)
+      derecha
+      derecha
+      IrAdelante(papeles)
+    si(PosAv = 30) & (PosCa = 10)
+      derecha
+      derecha
+      derecha
+      IrAdelante(papeles)
+    Informar(papeles)
+  fin
+variables
+  robot1: tipo1
+  robot2: tipo1
+  robot3: tipo1
+  robot4: tipo1
+comenzar
+  AsignarArea(robot1,ciudad)
+  AsignarArea(robot2,ciudad)
+  AsignarArea(robot3,ciudad)
+  AsignarArea(robot4,ciudad)
+  Iniciar(robot1,10,10)
+  Iniciar(robot2,10,30)
+  Iniciar(robot3,30,30)
+  Iniciar(robot4,30,10)
+fin

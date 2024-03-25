@@ -1,0 +1,22 @@
+; Memoria de Datos
+ORG 1000H
+NUM1 DB 5H ; 8 bits
+NUM2 DB 3H ; 8 bits
+; Memoria de Instrucciones
+ORG 3000H ; Subrutina SUB1
+SUB1: CMP AL, 0 ; compara a AL con 0
+ JZ FIN ; si la resta es 0 va al retorno
+CMP CL, 0 ; compara a CL con 0
+ JZ FIN ; si la resta es 0 va al retorno
+MOV AH, 0 ;  asigna a AH 0
+ MOV DX, 0 ; Asigna a DX 0
+LAZO: ADD DX, AX ; suma DX con AX
+DEC CX ; decrementa CX que es 03H
+JNZ LAZO ; si el flag es 1 salta a lazo devuelta
+FIN: RET ; termina
+ORG 2000H ; Programa principal
+MOV AL, NUM1 ; se le asigna a AL (parte baja que aparece arriba), NUM1 que es 05H
+MOV CL, NUM2 ; se le asigna a CL (parte baja que aparece arriba), NUM2 que es 03H
+CALL SUB1 ;  llama al subproceso, y hace un push internamente
+HLT
+END

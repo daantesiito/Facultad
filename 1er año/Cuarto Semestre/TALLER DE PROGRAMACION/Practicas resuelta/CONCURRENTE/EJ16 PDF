@@ -1,0 +1,88 @@
+programa ejercicio16PDF
+procesos
+  proceso moverseP(ES papeles: numero)
+  comenzar
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+      papeles:= papeles + 1
+    mover
+  fin
+  proceso moverseF(ES flores: numero)
+  comenzar
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    mover
+  fin
+areas
+  areaEquipoAzul: AreaPC(2,4,12,24)
+  areaEquipoVerde: AreaPC(16,4,26,24)
+  areaFiscalizador: AreaP(50,50,50,50)
+robots
+  robot florero
+  variables
+    flores: numero
+    quien: numero
+    calle: numero
+    avenida: numero
+  comenzar
+    RecibirMensaje(quien,fiscalizador)
+    derecha
+    repetir 4
+      moverseF(flores)
+    calle:= PosCa
+    avenida:= PosAv
+    BloquearEsquina(avenida+1,calle)
+    moverseF(flores)
+    moverseF(flores)
+    LiberarEsquina(avenida-1,calle)
+    repetir 4
+      moverseF(flores)
+  fin
+  robot papelero
+  variables
+    papeles: numero
+    quien: numero
+    calle: numero
+    avenida: numero
+  comenzar
+    RecibirMensaje(quien,fiscalizador)
+    repetir 7
+      moverseP(papeles)
+    calle:= PosCa
+    avenida:= PosAv
+    BloquearEsquina(avenida,calle+1)
+    moverseP(papeles)
+    moverseP(papeles)
+    LiberarEsquina(avenida,calle-1)
+    Infomar(123123123)
+    repetir 9
+      Informar(123)
+      moverseP(papeles)
+  fin
+  robot fiscalizador
+  comenzar
+    EnviarMensaje(1,floreroAzul)
+    EnviarMensaje(2,papeleroAzul)
+    EnviarMensaje(3,floreroVerde)
+    EnviarMensaje(4,papeleroVerde)
+  fin
+variables
+  floreroAzul: florero
+  floreroVerde: florero
+  papeleroAzul: papelero
+  papeleroVerde: papelero
+  fiscalizador: fiscalizador
+comenzar
+  AsignarArea(floreroAzul,areaEquipoAzul)
+  AsignarArea(papeleroAzul,areaEquipoAzul)
+  AsignarArea(floreroVerde,areaEquipoVerde)
+  AsignarArea(papeleroVerde,areaEquipoVerde)
+  AsignarArea(fiscalizador,areaFiscalizador)
+  Iniciar(floreroAzul,2,12)
+  Iniciar(papeleroAzul,7,4)
+  Iniciar(floreroVerde,16,12)
+  Iniciar(papeleroVerde,21,4)
+  Iniciar(fiscalizador,50,50)
+fin
+

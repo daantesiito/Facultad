@@ -1,0 +1,21 @@
+1- V, F, F, F, V
+2- V, V, F, F, F
+3- V, V, F, F, F
+
+El d es F porque hay infinitas. (Esta mal expresado)
+El e requiere 5 flip flops
+
+4- V, F, V, V, F
+
+Capacidad total memoria = tamaño de celdad (2 bytes) x n°celdas (2^22) = 2^23 bytes = 2^3 x 2^20 bytes = 8 MB
+
+El d es V porque puede tener más bytes de las que necesita (ancho mínimo de 2 bytes)
+
+5- V?, F, F, V, V
+
+Res en ext inf pos es el bit menos significativo
+
+6- F, F, F, V, V
+7- V, F, V, F, V
+8- F, V, V, V, F
+9- F, V, F, V, F

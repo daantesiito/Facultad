@@ -1,0 +1,73 @@
+2. La diferencia que tiene for es que es una estructura usada para repeticion, osea, repite un cierto codigo x cantidad de veces.
+En cambio el while y repeat until, son estructuras de iteracion, usadas con una condicion que hace que se repita hasta cumplirse.
+
+For: Recorrer un vector de 10 personas el cual tiene el año en el que se recibieron, informar el año que hay en cada posicion.
+
+	for i:= 1 to 10 do begin
+	   writeln(v[i]);
+	end;
+
+While: Al recorrer una lista con edades informar la edad mientras sea menor que 60. El ultimo se procesa.
+
+	while edad > 60 do begin
+	   writeln(edad)
+	   l:= l^.sig;
+	end;
+
+Repeat Until: Al recorrer una lista con edades informar la edad mientras sea menor que 60. El ultimo NO se procesa.
+
+	repeat
+	   writeln(edad)
+	   l:= l^.sig;
+	until edad > 60
+
+3. Es el grado en el que el software emplea la tarea con los recursos del sistema, dependiendo el tiempo y memoria utilizada. A mejor optimizacion del codigo, mejor va a funcionar con los recursos dados, que es lo que se busca, una ejecucion rapida y economica.
+
+La memoria estatica se calcula con las variables globales y locales del programa, dependiendo si son datos simples o compuestos, por ejemplo un integer ocupa 4 bytes, un real ocupa 8 bytes.
+La memoria dinamica se calcula solo cuando en la ejecucion del programa se ocupa memoria o se libera. Se calcula con el new que ocupa memoria o con el dispose que la libera.
+
+El tiempo de ejecucion se mide en unidades de tiempo y se calcula con diferentes formulas depende las estructuras de control utilizadas.
+Para sacar las unidades de tiempo se usan estas formulas o condiciones:
+
+	For: (3 * N + 2) + N * (Cuerpo)
+	While: (N + 1) * cada condicion + N * (Cuerpo)
+	If: 1UT * cada condicion + MAX cuerpo then/else
+	Operaciones logicas: 1UT cada una.
+
+
+4.
+
+5. El vector es una estructura de control la cual al definirla se le asigna una determina memoria fisica que es estatica, osea que no se puede modificar en el programa.
+Tambien le asignas un determinado tipo de dato, asi que es homogenea.
+Luego al usar el vector, podes modificar su informacion agregandola en cualquier posicion, no necesariamente tiene que ser lineal. Esto tambien hace posible al buscar cualquier dato que este dentro de la memoria fisica del vector puedas hacerlo directamente accediendo a el.
+
+6. Un puntero es un tipo de variable usada para almacenar una direccion en memoria. En esa direccion se encuentra el valor que puede ser de cualquier tipo, simple o compuesto.
+Una variable de tipo puntero ocupa una cantidad fija de memoria, que son 4 bytes, independientemente al tipo de dato que apunte.
+Se puede reservar y liberar memoria durante la ejecucion del programa.
+
+- Cada variable puede apuntar a un unico tipo de dato.
+- Pueden apuntar unicamente a direcciones almacenadas en memoria dinamica.
+- Tipo de dato simple que contiene la direccion en la cual se encuentra el dato.
+
+7.La modularizacion es la division del codigo en partes funcionales individualmente, que encapsulan datos y operaciones.
+
+Sus ventajas son infinitas, ya que facilita todo. Pero sus principales ventajas serian:
+- Reutilizacion del codigo.
+- Mejor depuracion del codigo ya que esta mas organizado.
+- Legibilidad y mantenibilidad.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

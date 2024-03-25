@@ -1,0 +1,39 @@
+MAGNETIC DISKS
+
+A.
+	1. El tamaño de los platillos actuales es de 3 a 12 centimetros,
+	algunos incluso logran estar debajo de los 3 centimetros,
+	a diferencia de los primeros platillos que llegaban a tener 50 centimetros de diametro.
+
+	2. La superficie del disco se magnetiza cuando una corriente positiva o negativa pasa por la cabeza del disco.
+	Simultaneamente, las particulas magneticas se alinean para la izquierda o la derecha segun la polaridad de la corriente.
+
+	3. Llamamos pista a la secuencia circular de bits escrita cuando el disco realiza una rotacion completa.
+	Sectores de longitud fija, tipicamente de 512 bytes de datos componen cada pista.
+
+	4. Existen distintos tipos de codigos para correjir errores.
+	El mas comun es el Reed Solomon Code que sirve para corregir multiples errores.
+
+B.
+All disks have movable arms that are capable of moving in and out different radial
+distances from the spindle about which the platter rotates. At each radial distance, a
+different track can be written. The tracks are thus a series of concentric circles about the
+spindle. The width of a track depends on how large the head is and how accurately the
+head can be positioned radially. With current technology, disks have between 800 and
+20000 tracks per centimeter, giving track widths in the 5-to-10-micron range (1 micron
+= 1/1000 mm). It should be noted that a track is not a physical groove in the surface,
+but simply an annulus (ring) of magnetized material, with small guard areas separating it
+from the tracks inside and outside it.
+The linear bit density around the circumference of the track is different from the radial
+one. It is determined largely by the purity of the surface and air quality.
+
+Todos los discos tienen brazos movibles capaces de moverse para adentro o afuera diferentes distancias radiales
+desde el eje en el que los platos rotan.
+En cada distancia radial, una pista diferente puede ser escrita.
+Las pistas por lo tanto son una serie de circulos concentricos al rededor del eje.
+El ancho de la pista depende en que tan largo sea la cabeza y cuan preciso se puede posicionar radialmente la cabeza.
+Con las tecnologias actuales, los discos tienen entre 800 y 20000 pistas por centimetro, siendo estas de ancho entre
+5 a 10 micrones (1 micron = 1/1000 mm). Se deberia notar que una pista no es un canal fisico,
+es simplemente un anillo de material magnetico, con pequeñas partes de proteccion que las separa de las pistas por afuera y adentro.
+La densidad linear de bits al rededor de la circunferencia de la pista es diferente a la radial.
+Se determina en gran parte por la calidad del aire y la pureza de la superficie.

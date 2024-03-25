@@ -1,0 +1,34 @@
+LISTA:
+
+Es una coleccion de nodos, las cuales contienen un elemento y una direccion de memoria donde se encuentra el siguiente nodo.
+
+Cada nodo se representa con un puntero, que apunta a un dato y una direccion.
+
+Todas las listas tienen un nodo inicial.
+
+Sus caracteristicas son:
+
+- Lineal: Tiene un nodo antecesor y uno sucesor.
+
+- Secuencial: Para acceder a un elemento especifico hay que ir pasando por cada uno.
+
+- Homogeneo: Los datos son todos del mismo tipo.
+
+- Dinamico: La cantidad de nodos puede variar en la ejecucion del programa.
+
+
+VECTOR:
+
+Un vector es una coleccion finita, homogenea y ordenada de elementos.
+
+Todo vector tiene un limite, que lo define al empezar.
+
+Sus caracteristicas son:
+
+- No lineal: Cada elemento puede tener 0, 1 o mas elementos adelante o atras.
+
+- Homogenea: Los elementos son del mismo tipo.
+
+- Directo: Para acceder a elementos se puede acceder de manera directa poniendo el nombre del vector y el numero de posicion del dato entre corchetes.
+
+- Estatico: Se define una cantidad de elementos que no se puede modificar.

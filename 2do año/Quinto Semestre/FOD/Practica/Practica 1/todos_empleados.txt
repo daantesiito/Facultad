@@ -1,0 +1,4 @@
+ 21 puddu dante 20 45
+ 22 zorzoli tomas 50 44
+ 23 salmeron emanuel 1000 43
+ 24 segobia juan 99 95
