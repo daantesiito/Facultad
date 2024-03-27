@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+E:\importante\facu\1er año\Quinto Semestre\AYED\practicasEclipse\.metadata\.plugins\org.eclipse.jdt.core
-1168017448.index
-1865797976.index
-3134189354.index
-1067094681.index
