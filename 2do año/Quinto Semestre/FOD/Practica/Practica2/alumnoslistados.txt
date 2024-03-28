@@ -1,0 +1,2 @@
+ codigo: 1 apellido: puddu nombre: dante cursadas: 1 finales: 8
+ codigo: 3 apellido: salmeron nombre: emanuel cursadas: 2 finales: 3

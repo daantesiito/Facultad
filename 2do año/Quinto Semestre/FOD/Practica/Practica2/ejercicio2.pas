@@ -36,10 +36,10 @@ var
 	nombre_fisico: string;
 	codActual: integer;
 begin
-	writeln('Ingrese el nombre del archivo de alumnos: ');
+	writeln('Ingrese el nombre del archivo de alumnos (maestro): ');
 	readln(nombre_fisico);
 	assign(alumnos,nombre_fisico);
-	writeln('Ingrese el nombre del archivo de materias: ');
+	writeln('Ingrese el nombre del archivo de materias (detalle): ');
 	readln(nombre_fisico);
 	assign(materias,nombre_fisico);
 	reset(alumnos);
@@ -59,6 +59,43 @@ begin
 			leer(materias,mat);
 		end;
 		while (alum.codigo <> codActual) do
-			read(alumnos, alum)
+			read(alumnos, alum);
+		seek(alumnos,filepos(alumnos)-1);
+		write(alumnos,alum);
+		if (not (EOF(alumnos))) then
+			read(alumnos,alum);
 	end;
+	close(alumnos);
+	close(materias);
 end;
+
+procedure listarAlumnos(var alumnos: archivo_alumnos);
+var
+	alum: alumno;
+	alumnosListadostxt: Text;
+	nombre_fisico: string;
+begin
+	writeln('Ingrese el nombre del nuevo archivo txt de alumnos listados: ');
+	readln(nombre_fisico);
+	assign(alumnosListadostxt,nombre_fisico);
+	assign(alumnos,'alumnos');
+	reset(alumnos);
+	rewrite(alumnosListadostxt);
+	while not EOF(alumnos) do begin
+		read(alumnos,alum);
+		if (alum.finales > alum.cursadas) then begin
+			writeln(alumnosListadostxt,' codigo: ', alum.codigo,' apellido: ',alum.apellido,' nombre: ',alum.nombre,' cursadas: ',alum.cursadas,' finales: ',alum.finales);
+		end;
+	end;
+	writeln('Archivo txt con alumnos con mayor cantidad de finales que cursadas creado!');
+	close(alumnos);
+	close(alumnosListadostxt);
+end;
+
+var
+	alumnos: archivo_alumnos;
+	materias: archivo_materias;
+begin
+	modificarAlumnos(alumnos,materias);
+	listarAlumnos(alumnos);
+end.
