@@ -1,0 +1,9 @@
+2. Las dos declaraciones estan bien, en el program uno es mas agil ya que tiene menos lineas de codigo, en cambio el programa dos es bastante mas legible y entendible.
+
+3 y 4. paint ejercicio3final06-02-2024
+
+5. a. Verdadero, ya que se puede declarar por ejemplo un subrango de edades entre 1..100 de integers, osea edades = 1..100;
+b. Falso, la utilizacion de modulos no garantiza que mejore la eficiencia, puede mejorar en otros aspectos como reutilizacion de codigo, pero no garantiza eficiencia.
+c. Falso, en la funcion auxiliar el parametro no se pasa por valor, se pasa por referencia y no logra modificarse la variable val.
+d. Verdadero, mientras la dimension logica sea menor a la dimension fisica del arreglo se puede recorrer.
+e. Falso, estan las variables globales, constantes, procedimientos y funciones.
