@@ -8,7 +8,7 @@ public class ejercicio7h {
 		generarRecursividad(lista, lista.size()-1, 0);
 	}
 	
-	public static void generarRecursividad(ArrayList<Integer> lista, int fin, int i) {
+	private static void generarRecursividad(ArrayList<Integer> lista, int fin, int i) {
 		
 		if (i < fin) {
 			
@@ -17,7 +17,7 @@ public class ejercicio7h {
 			
 			lista.set(numFin, num);
 			lista.set(num, numFin);
-				
+						
 			i++;
 			fin--;
 			
@@ -39,6 +39,5 @@ public class ejercicio7h {
 		invertirArrayList(lista);
 		System.out.println(lista);
 	}
-	
 	
 }

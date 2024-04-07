@@ -1,0 +1,2 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+"2do año/Quinto Semestre/PYTHON/Practica/Practica 2/ejercicio10 explicacion.mp4" filter=lfs diff=lfs merge=lfs -text
