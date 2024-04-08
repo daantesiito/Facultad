@@ -1,0 +1,11 @@
+2. Los dos programas funcionan de la misma manera, en el caso del program uno, declarar el array en un type tiene ventaja ya que lo podes usar en todo el programa, ya sea en modulos o programa principal. En el caso de la declaracion del array en el program dos, solo se podria usar en el modulo de que se haya declarado.
+
+5. A: FALSO, Los modulos dentro de un programa pueden ayudar a la eficiencia y legibilidad, pero no te aseguran que sea mas eficiente al momento de ejecutar.
+
+B: VERDADERO, Es valido ya que se puede llamar a una funcion como parametro mientras retorne el mismo tipo.
+
+C: VERDADERO, Ya que no se puede declarar un subrango de tipo boolean, que es un de los tipos simples junto a integer, string, real.
+
+D: FALSO, ya que en el repeat until el codigo se ejecuta y luego se analiza la condicion, y en el while, se analiza la condicion y luego se ejecuta el codigo. Por lo tanto, el repeat until ejecuta al menos una vez el bucle.
+
+E: VERDADERO, Ya que se la comunicacion entre el programa y los modulos se puede hacer con variables globales.

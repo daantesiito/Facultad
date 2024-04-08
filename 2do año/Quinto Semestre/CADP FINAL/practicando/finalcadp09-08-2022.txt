@@ -1,0 +1,7 @@
+2. A: Falso, ya que las variables globales es una de las formas para comunicarse entre los modulos y el programa.
+
+B: Falso, ya que los vectores son fijos, lo que se puede hacer es borrar el contenido, el cual queda nulo, pero borrar un elemento no se puede.
+
+C: Verdadero, ya que la modularizacion no garantiza su funcionamiento ni tampoco eficacia.
+
+D: Falso, ya que en una estructura de datos lineal se puede acceder al elemento con su indice en el caso de los arreglos y con referencias en el caso de las listas.
