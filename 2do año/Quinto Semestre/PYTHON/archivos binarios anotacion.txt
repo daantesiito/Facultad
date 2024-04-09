@@ -1,0 +1,13 @@
+los archivos en binario se guardan en bytes.
+
+ejemplo:
+
+the_best_song_file = open(file_muchachos,"rb")
+lyrics = the_best_song_file.read()
+the_best_song_file.close()
+
+al leer en rb se lee en binario y se guarda en la variable, cuando se imprime se muestra en binario, se puede hacer un type para saberlo.
+
+print(lyrics.decode('UTF-8')[:228])
+
+para leerlo bien se ejecuta esta linea.
