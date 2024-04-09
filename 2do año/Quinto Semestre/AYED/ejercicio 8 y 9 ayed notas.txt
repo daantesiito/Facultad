@@ -1,0 +1,8 @@
+ejercicio 8 ayed
+- primero ver si la estructura coincide para ser prefijo, y despues ver los contenidos de estos.
+- si alguno finaliza termina la ejecucion
+- si el arbol 1 tiene hijo izquierdo y el arbol 2 no, se termina.
+ejercicio 9 ayed
+- sumar camino seria recursivo.
+- clase dosdatos con los dos valores, suma: int, dife: int
+public BT<dosdatos> sumAndDif(BT<integer> arbol) {
