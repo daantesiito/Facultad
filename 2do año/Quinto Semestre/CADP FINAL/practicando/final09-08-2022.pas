@@ -1,29 +1,36 @@
+{
+Se dispone de la informacion de los participantes inscriptos a una carrera (a lo sumo 5000).
+De cada participante se lee DNI, nombre y apellido, categoria (1..5) y fecha de inscripcion.
+Se pide implementar un programa que guarde en una estructura de datos adecuada los participantes de aquellas categorias que posean a lo sumo 50 inscriptos.
+Se sabe que cada participante se puede anotar en una sola categoria.   
+}
+
 program final;
 type
 	categorias = 1..5;
 	
 	participante = record
 		DNI: integer;
-		nomyApe: string;
-		categoria: categorias;
-		fecha: string;
+		nya: string;
+		cat: categorias;
+		inscripcion: string;
 	end;
+
+	vectorInscriptos = array [1..5000] of participante;
 	
-	listaParticipantes = ^nodo;
+	lista = ^nodo;
 	nodo = record
 		dato: participante;
-		sig: listaParticipantes;
+		sig: lista;
 	end;
 	
-	lista2 = ^nodo2;
-	nodo2 = record
-		dato: participante;
-		sig: lista2;
-	end;
+	vectorCategorias = array [categorias] of integer;
 	
-	vectorContador = array [categorias] of integer;
+// se dispone: procedure leerParticipante(var p: participante);
 
-procedure inicializarVector(var v: vectorContador);
+// se dispone: procedure cargarVector(var v: vectorInscriptos; var dimL: integer)
+
+procedure inicializarVector(var v: vectorCategorias);
 var
 	i: integer;
 begin
@@ -32,40 +39,68 @@ begin
 	end;
 end;
 
-procedure agregarAdelante(var l: lista2; p: participante);
+procedure llenarVectorCategorias(var v: vectorCategorias; vi: vectorInscriptos; dimL: integer);
 var
-	aux: lista2;
+	i: integer;
 begin
-	new(aux);
-	aux^.dato:= p;
-	aux^.sig:= l;
-	l:= l^.sig;
-end;
-
-procedure llenarLista2(l: listaParticipantes; var l2: lista2; v: vectorContador; var p: participante);
-begin
-	while (l <> nil) do begin
-		if (v[l^.dato.categoria] < 50) then begin
-			p.DNI:= l^.dato.DNI;
-			p.nomyApe:= l^.dato.nomyApe;
-			p.categoria:= l^.dato.categoria;
-			p.fecha:= l^.dato.fecha;
-			agregarAdelante(l2,p);
-			v[l^.dato.categoria]:= v[l^.dato.categoria] + 1;
-		end;
-		l:= l^.sig;
+	for i:= 1 to dimL do begin
+		v[vi[i].cat]:= v[vi[i].cat] + 1;
 	end;
 end;
 
-VAR
-	l2: lista2;
-	l: listaParticipantes;
-	v: vectorContador;
-	p: participante;
+procedure agregarOrdenado(var l: lista; p: participante);
+var
+	aux,act,ant: lista;
+begin
+	new(aux);
+	aux^.dato:= p;
+	act:= l;
+	ant:= l;
+	while (act <> nil) and (p.DNI > act^.dato.DNI) do begin
+		ant:= act;
+		act:= act^.sig;
+	end;
+	if (act = ant) then
+		l:= aux
+	else
+		ant^.sig:= aux;
+	aux^.sig:= act;
+end;
 
-BEGIN
-	l:= nil;
-	l2:= nil;
-	inicializarVector(v);
-	llenarLista2(l,l2,v,p);
-END.
+procedure llenarLista(var l: lista; vi: vectorInscriptos; v: vectorCategorias; dimL: integer);
+var
+	i: integer;
+begin
+	for i:= 1 to dimL do begin
+		if (v[vi[i].cat] >= 50) then begin
+			agregarOrdenado(l,vi[i]);
+		end;
+	end;
+end;
+
+var
+	v: vectorCategorias;
+	vi: vectorInscriptos;
+	dimL: integer;
+	l: lista;
+begin
+	dimL:= 300;
+	// se dispone: cargarVector(v,dimL);
+	llenarVectorCategorias(v,vi,dimL);
+	llenarLista(l,vi,v,dimL);
+end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -64,15 +64,7 @@ begin
 	end;
 end;
 
-procedure IncisoA(var v: vectorContador; l: listaPublicaciones);
-begin
-	while (l <> nil) do begin
-		v[l^.dato.tipo]:= v[l^.dato.tipo] + 1;
-		l:= l^.sig;
-	end;
-end;
-
-procedure IncisoB(l: listaPublicaciones);
+procedure IncisoB(var v: vectorContador; l: listaPublicaciones);
 var
 	cantPublicaciones: integer;
 	DNIActual: integer;
@@ -82,6 +74,7 @@ begin
 		DNIActual:= l^.dato.DNIAutor;
 		while (l^.dato.DNIAutor = DNIActual) do begin
 			cantPublicaciones:= cantPublicaciones + 1;
+			v[l^.dato.tipo]:= v[l^.dato.tipo] + 1;
 			l:= l^.sig;
 		end;
 		writeln('La cantidad de publicaciones que hizo: ', DNIActual, ' es de: ', cantPublicaciones);
@@ -97,11 +90,10 @@ var
 begin
 	llenarLista(l,p);
 	inicializarVector(v);
-	IncisoA(v,l);
+	IncisoB(v,l);
 	for i:= 1 to 12 do begin
 		writeln('El tipo: ', i, ' tiene: ', v[i], ' publicaciones.');
 	end;
-	IncisoB(l);
 end.
 
 

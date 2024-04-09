@@ -66,10 +66,10 @@ var
 begin
 	while (l <> nil) do begin
 		if (EsPar(l^.dato.cantProd) = True) then begin
-			l2^.dato.numVenta:= l^.dato.numVenta;
-			l2^.dato.cantProd:= l^.dato.cantProd;
-			l2^.dato.tipoPago:= l^.dato.tipoPago;
-			if (l2^.dato.tipoPago = 'tarjeta') then 
+			v.numVenta:= l^.dato.numVenta;
+			v.cantProd:= l^.dato.cantProd;
+			v.tipoPago:= l^.dato.tipoPago;
+			if (v.tipoPago = 'tarjeta') then 
 				AgregarAdelante(l2,v)
 			else // si es efectivo se agrega atras
 				AgregarAtras(l2,ult,v);
@@ -85,7 +85,6 @@ VAR
 BEGIN
 	l:= nil;
 	l2:= nil;
-	// LeerVentas(v); // Se dispone
 	// CargarLista(l,v); // Se dispone
 	HacerListaNueva(l,l2,v);
 END.

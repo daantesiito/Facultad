@@ -44,7 +44,7 @@ begin
     aux^.dato:= c;
     ant:= l;
     act:= l;
-    while (act <> nil) and (c.nombre > l^.dato.nombre) do begin
+    while (act <> nil) and (c.nombre > act^.dato.nombre) do begin
         ant:= act;
         act:= act^.sig;;
     end;
