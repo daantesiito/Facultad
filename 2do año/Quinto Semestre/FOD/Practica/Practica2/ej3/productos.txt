@@ -1,0 +1,3 @@
+Codigo: 1 Nombre: a Precio: 100 Stock Actual: 177 Stock Minimo: 200
+Codigo: 2 Nombre: b Precio: 999 Stock Actual: 15 Stock Minimo: 5
+Codigo: 3 Nombre: c Precio: 400 Stock Actual: 377 Stock Minimo: 700
