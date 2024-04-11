@@ -33,10 +33,12 @@ begin
     if ac1.nombre < ac2.nombre then begin
         min:= ac1;
         leer(agenciaCenso1,ac1);
+        writeln('a');
     end
     else begin
         min:= ac2;
         leer(agenciaCenso2,ac2);
+        writeln('b');
     end;
 end;
 
@@ -48,8 +50,8 @@ var
     cantidadAlfa,cantidadEncu: integer;
 begin
     assign(provincias,'provincias');
-    assign(agenciaCenso1,'agencia1');
-    assign(agenciaCenso2,'agencia2');
+    assign(agenciaCenso1,'agenciaCenso1');
+    assign(agenciaCenso2,'agenciaCenso2');
     reset(provincias);
     reset(agenciaCenso1);
     reset(agenciaCenso2);
@@ -59,9 +61,10 @@ begin
         provActual:= min.nombre;
         cantidadAlfa:= 0;
         cantidadEncu:= 0;
-        while (min.nombre = provActual) do begin
+        while (provActual = min.nombre) do begin
             cantidadAlfa:= cantidadAlfa + min.cantAlfa;
             cantidadEncu:= cantidadEncu + min.cantEncu;
+            writeln(cantidadAlfa);
             minimo(ac1,ac2,min,agenciaCenso1,agenciaCenso2);
         end;
         while (p.nombre <> provActual) do 
