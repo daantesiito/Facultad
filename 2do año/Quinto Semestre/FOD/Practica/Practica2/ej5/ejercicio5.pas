@@ -53,12 +53,11 @@ end;
 procedure actualizarMaestro(var maestro: archivoMaestro; var vDetalle: vectorDetalle; var vRegDetalle: vectorRegDetalle);
 var
     p: producto;
-    i,prodActual,vendido,h: integer;
+    i,prodActual,vendido: integer;
     min: venta;
 begin
     assign(maestro,'maestro');
     reset(maestro);
-    h:= 1;
     for i:= 1 to dimF do begin
         assign(vDetalle[i],'detalle'+ IntToStr(i));
         reset(vDetalle[i]);
@@ -73,20 +72,13 @@ begin
         end;
         if (not EOF(maestro)) then
 			read(maestro,p);
-        writeln('asdas', h);
-        h:= h+1;
         while (p.codigo <> prodActual) and (not EOF(maestro)) do
             read(maestro,p);
         p.stockDisp:= p.stockDisp - vendido;
-        writeln('jajajajsjd');
         seek(maestro, filePos(maestro)-1);
-        writeln('oooooooooooo');
         write(maestro,p);
-        writeln('aaaaaaaaaaaaa');
     end;
-    writeln('123456');
     close(maestro);
-    writeln('hoola');
     for i:= 1 to 30 do 
         close(vDetalle[i]);
 end;
