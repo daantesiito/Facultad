@@ -1,4 +1,4 @@
-package tp1.ejercicio7;
+package practica1.tp1.ejercicio7;
 
 public class Estudiante {
 	private String nombre;

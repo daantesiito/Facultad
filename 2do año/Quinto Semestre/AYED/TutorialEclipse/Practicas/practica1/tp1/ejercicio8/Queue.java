@@ -1,4 +1,4 @@
-package tp1.ejercicio8;
+package practica1.tp1.ejercicio8;
 
 import java.util.LinkedList;
 

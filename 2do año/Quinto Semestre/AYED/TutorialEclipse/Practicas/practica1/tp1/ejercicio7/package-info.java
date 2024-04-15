@@ -1,1 +1,1 @@
-package tp1.ejercicio7;
+package practica1.tp1.ejercicio7;

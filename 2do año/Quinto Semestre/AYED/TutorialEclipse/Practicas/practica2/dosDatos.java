@@ -1,3 +1,4 @@
+package practica2;
 import practica2.tp2.ejercicio1.BinaryTree;
 
 public class dosDatos(int suma, int resta) {

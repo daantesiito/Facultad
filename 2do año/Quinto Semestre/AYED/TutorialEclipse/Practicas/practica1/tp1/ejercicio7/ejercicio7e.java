@@ -1,4 +1,4 @@
-package tp1.ejercicio7;
+package practica1.tp1.ejercicio7;
 
 import java.util.ArrayList;
 import java.util.List;
