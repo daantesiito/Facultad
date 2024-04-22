@@ -1,0 +1,5 @@
+Codigo: 0 Genero: x Nombre: x Duracion: 0 Director: x Precio: 0
+Codigo: 1 Genero: a Nombre: a Duracion: 1 Director: a Precio: 1
+Codigo: 2 Genero: b Nombre: b Duracion: 2 Director: b Precio: 2
+Codigo: 3 Genero: c Nombre: c Duracion: 3 Director: c Precio: 3
+Codigo: 4 Genero: d Nombre: d Duracion: 4 Director: d Precio: 4
