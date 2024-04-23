@@ -1,0 +1,42 @@
+package ZParcial2;
+
+import PackElementos.*;
+
+public class Prp1Class {
+	
+	public ListaGenerica<Integer> resolver(ArbolGeneral<Integer> ab){
+		ListaGenerica<Integer> l = new ListaEnlazadaGenerica<Integer>();
+		
+		if (!ab.esVacio()) {
+			resolver2(ab, l);
+		}
+		return l;
+	}
+    
+	private boolean resolver2 (ArbolGeneral<Integer> ab, ListaGenerica<Integer> l){
+		boolean encontre = false;
+		int dato = ab.getDato();
+		//System.out.println(dato);
+		l.agregarFinal(dato);
+		
+		if (ab.esHoja()) {
+			encontre = true;
+			return encontre;
+		}
+		
+		if ((ab.tieneHijos()) && (!encontre)) {
+			ListaGenerica<ArbolGeneral<Integer>> lHijos = ab.getHijos();
+			
+			encontre = resolver2(lHijos.elemento(dato), l);
+		}
+		return encontre;
+	}
+	
+}
+
+
+
+
+
+
+

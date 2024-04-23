@@ -1,0 +1,42 @@
+package ZParcial4;
+import PackElementos.*;
+
+public class ParcialClass13{
+	private ArbolGeneral<Integer> arbol;
+	
+	public ParcialClass13(ArbolGeneral<Integer> arbol) {
+		this.arbol = arbol;
+	}
+	
+	public int buscarMayorEnPostOrden() {
+		int n = Integer.MIN_VALUE;
+		
+		if (!arbol.esVacio()) {
+			n = postOrden(arbol);
+		}
+		return n;
+	}
+	
+	
+	private int postOrden(ArbolGeneral<Integer> ab) {
+		int n = Integer.MIN_VALUE;
+		
+		if (ab.tieneHijos()) {
+			ListaGenerica<ArbolGeneral<Integer>> lHijos = ab.getHijos();
+			lHijos.comenzar();
+			while (!lHijos.fin()) {
+				n = Math.max(n, postOrden(lHijos.proximo()));
+			}
+		}
+		return Math.max(n, ab.getDato());
+	}
+	
+	
+}
+
+
+
+
+
+
+

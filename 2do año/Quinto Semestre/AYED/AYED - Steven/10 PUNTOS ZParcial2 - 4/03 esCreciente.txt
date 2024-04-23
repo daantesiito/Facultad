@@ -1,0 +1,78 @@
+package ZParcial4;
+import PackElementos.*;
+
+public class ParcialClass03{
+	
+	
+	public ArbolGeneral<Integer> resolver(ArbolGeneral<Integer> arbol){
+		ArbolGeneral<Integer> ab = new ArbolGeneral<Integer>(null);
+		
+		if (!arbol.esVacio()) {
+			ab = resolverPrivate(arbol);
+		}
+		
+		return ab;
+	}
+	
+	
+	private ArbolGeneral<Integer> resolverPrivate (ArbolGeneral<Integer> ab) {
+		
+		ArbolGeneral<Integer> retornar = null;
+		
+		ArbolGeneral<Integer> aux;
+		ColaGenerica<ArbolGeneral<Integer>> cola = new ColaGenerica<ArbolGeneral<Integer>>();
+		
+		int nivel = 0;
+		int cantNivel = 0;
+		int max = Integer.MIN_VALUE;
+		
+		cola.encolar(ab);
+		cola.encolar(null);
+		
+		while (!cola.esVacia()) {
+			aux = cola.desencolar();
+			if (aux != null) {
+				cantNivel++;
+				if (aux.tieneHijos()) {
+					ListaGenerica<ArbolGeneral<Integer>> lHijos = aux.getHijos();
+					
+					if (lHijos.tamanio() > max) {
+						max = lHijos.tamanio();
+						retornar = aux;
+					}
+					
+					lHijos.comenzar();
+					while (!lHijos.fin()) {
+						cola.encolar(lHijos.proximo());
+					}
+				}
+				
+			}else {
+				//System.out.println(cantNivel);
+				//System.out.println(nivel);
+				if (!cola.esVacia()) {
+					cola.encolar(null); //separador de niveles
+				}
+				if (cantNivel != nivel+1) {
+					return null;
+				}
+				cantNivel = 0;
+				nivel++;
+			}
+			
+		}
+		
+		return retornar;
+	}
+	
+	
+	
+	
+}
+
+
+
+
+
+
+

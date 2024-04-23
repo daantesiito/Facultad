@@ -1,0 +1,49 @@
+package ZParcial4;
+import PackElementos.*;
+
+public class ParcialClass05{
+	
+	
+	public ListaGenerica<ListaGenerica<Character>> caminosPares(ArbolGeneral<Character> arbol) {
+		ListaGenerica<ListaGenerica<Character>> caminos = new ListaEnlazadaGenerica<ListaGenerica<Character>>();
+		ListaGenerica<Character> caminoActual = new ListaEnlazadaGenerica<Character>();
+		
+		if (!arbol.esVacio()) {
+			caminoActual.agregarFinal(arbol.getDato());
+			resolver(arbol, caminos, caminoActual);
+		}
+		
+		return caminos;
+	}
+	
+	
+	private void resolver(ArbolGeneral<Character> ab, 
+			ListaGenerica<ListaGenerica<Character>> caminos, ListaGenerica<Character> caminoActual) {
+		
+		
+		if (ab.esHoja()) {
+			if (caminoActual.tamanio() % 2 == 0) {
+				caminos.agregarFinal(caminoActual.clonar()); ////IMPORTANTISIMO CLONAR
+			}
+		}
+		if (ab.tieneHijos()) {
+			ListaGenerica<ArbolGeneral<Character>> hijos = ab.getHijos(); 
+			hijos.comenzar();
+			while (!hijos.fin()) {
+				ArbolGeneral<Character> aux = hijos.proximo();
+				caminoActual.agregarFinal(aux.getDato());
+				resolver(aux, caminos, caminoActual);
+				caminoActual.eliminarEn(caminoActual.tamanio());
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+

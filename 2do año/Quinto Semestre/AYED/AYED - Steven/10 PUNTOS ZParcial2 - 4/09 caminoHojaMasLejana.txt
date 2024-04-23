@@ -1,0 +1,53 @@
+package ZParcial5;
+import PackElementos.*;
+
+
+public class ParcialHojaMasLejana{
+	
+	public ListaGenerica<Integer> devolverCamino(ArbolGeneral<Integer> arbol){
+		ListaGenerica<Integer> l = new ListaEnlazadaGenerica<Integer>();
+		ListaGenerica<Integer> camino = new ListaEnlazadaGenerica<Integer>();
+		
+		if (!arbol.esVacio()) {
+			resolver(arbol, l, camino);
+		}
+		
+		return camino;
+	}
+	
+	
+	private void resolver(ArbolGeneral<Integer> ab, ListaGenerica<Integer> l, ListaGenerica<Integer> camino) {
+		l.agregarFinal(ab.getDato());
+		
+		if (ab.esHoja()) {
+			if (l.tamanio() > camino.tamanio()) {
+				camino.comenzar();
+				while (!camino.fin()) {
+					camino.eliminar(camino.proximo());
+				}
+				l.comenzar();
+				while (!l.fin()) {
+					camino.agregarFinal(l.proximo());
+				}
+			}
+		}else {
+			ListaGenerica<ArbolGeneral<Integer>> hijos = ab.getHijos();
+			hijos.comenzar();
+			while(!hijos.fin()) {
+				resolver(hijos.proximo(), l, camino);
+				l.eliminarEn(l.tamanio());
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

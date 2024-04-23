@@ -1,0 +1,51 @@
+package Parcial;
+import PackElementos.*;
+
+public class ParcialArbolesRecu{
+	
+	private ArbolGeneral<Integer> arbol;
+	
+	public ParcialArbolesRecu(ArbolGeneral<Integer> arbol) {
+		this.arbol = arbol;
+	}
+	
+	public ListaGenerica<Integer> camino(int num){
+		ListaGenerica<Integer> l = new ListaEnlazadaGenerica<Integer>();
+		int suma = 0;
+		
+		if (!arbol.esVacio()) {
+			resolver(arbol, l, suma, num);
+		}
+		
+		return l;
+	}
+	
+	private boolean resolver(ArbolGeneral<Integer> ab, ListaGenerica<Integer> l, int suma, int num) {
+		boolean ok = false;
+		
+		l.agregarFinal(ab.getDato());
+		suma += ab.getDato();
+		
+		System.out.println(ab.getDato() + " SUMA = " + suma);
+		
+		if (ab.esHoja()) {
+			if (suma % num == 0) {
+				ok = true;
+			}else {
+				l.eliminarEn(l.tamanio());
+			}
+		}else {
+			ListaGenerica<ArbolGeneral<Integer>> hijos = ab.getHijos();
+			hijos.comenzar();
+			while (!hijos.fin() & (!ok)) {
+				ok = resolver(hijos.proximo(), l, suma, num);
+			}
+			if (!ok) {
+				l.eliminarEn(l.tamanio());
+			}
+		}
+		
+		return ok;
+	}
+	
+}

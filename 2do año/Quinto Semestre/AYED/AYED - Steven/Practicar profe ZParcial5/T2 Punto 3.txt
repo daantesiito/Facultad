@@ -1,0 +1,17 @@
+a- arbol general completo:
+min: ((k^h) + k - 2) / (k-1))
+max: ((k^(h+1)) - 1) / (k-1))
+hojas = k^h
+
+6^0 = 1
+6^1 = 6
+6^2 = 36
+43 nodos con 6 hijos -> entonces es altura 3
+6^3 = 216
+
+
+b- (d)
+
+c- (b)
+
+d- 

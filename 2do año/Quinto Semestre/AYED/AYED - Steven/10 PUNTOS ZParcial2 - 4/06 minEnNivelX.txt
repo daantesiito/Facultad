@@ -1,0 +1,62 @@
+package ZParcial2;
+
+import PackElementos.*;
+
+public class Prp6Class {
+	
+	private ArbolBinario<Integer> arbol;
+	
+	public Prp6Class(ArbolBinario<Integer> arbol) {
+		this.arbol= arbol;
+	}
+	
+	public ArbolBinario<Integer> minEnNivelAB (int nivel){
+		
+		ArbolBinario<Integer> a = new ArbolBinario<Integer>();
+		ColaGenerica<ArbolBinario<Integer>> cola = new ColaGenerica<ArbolBinario<Integer>>();
+		
+		int nivelActual = 0;
+		int minNivel = Integer.MAX_VALUE;
+		ArbolBinario<Integer> aMin = null;
+		
+		cola.encolar(arbol);
+		cola.encolar(null);
+		while (!cola.esVacia() & nivelActual <= nivel) {
+			a = cola.desencolar();
+			if (a != null) {
+				//System.out.println(a.getDato());
+				if (a.esHoja() && nivelActual == nivel) {
+					if (a.getDato() < minNivel) {
+						minNivel = a.getDato();
+						aMin = a;
+					}
+				}else {
+					if (a.tieneHijoIzquierdo()) 
+						cola.encolar(a.getHijoIzquierdo());
+					
+					if (a.tieneHijoDerecho()) 
+						cola.encolar(a.getHijoDerecho());
+				}
+			}
+			else { // cambio de nivel
+				if (!cola.esVacia()) {
+					cola.encolar(null);
+				}
+				nivelActual++;
+			}
+		}
+		return aMin;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

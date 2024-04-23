@@ -1,0 +1,66 @@
+package Parcial;
+import PackElementos.*;
+import ZParcial5.ParcialHojaMasLejana;
+
+public class parcialrecu{
+		//  			  10
+		//         /      |       \
+		//        8       42       -5
+		//       /  \             /  \
+		//      5    22          19   -9
+		//     /    / | \         \
+		//    -6   28 55 18        4 
+	public static void main(String[] args) {
+		ArbolGeneral<Integer> padre = new ArbolGeneral<Integer>(10);
+		
+		ArbolGeneral<Integer> hijo1 = new ArbolGeneral<Integer>(8);
+		ArbolGeneral<Integer> hijo2 = new ArbolGeneral<Integer>(42);
+		ArbolGeneral<Integer> hijo3 = new ArbolGeneral<Integer>(-5);
+		
+		ArbolGeneral<Integer> subhijo1 = new ArbolGeneral<Integer>(5);
+		ArbolGeneral<Integer> subhijo2 = new ArbolGeneral<Integer>(22);
+		ArbolGeneral<Integer> subhijo3 = new ArbolGeneral<Integer>(19);
+		ArbolGeneral<Integer> subhijo4 = new ArbolGeneral<Integer>(-9);
+		
+		ArbolGeneral<Integer> a6 = new ArbolGeneral<Integer>(-6);
+		ArbolGeneral<Integer> a28 = new ArbolGeneral<Integer>(28);
+		ArbolGeneral<Integer> a55 = new ArbolGeneral<Integer>(55);
+		ArbolGeneral<Integer> a18 = new ArbolGeneral<Integer>(18);
+		
+		ArbolGeneral<Integer> a4 = new ArbolGeneral<Integer>(4);
+		
+		padre.agregarHijo(hijo1);
+		padre.agregarHijo(hijo2);
+		padre.agregarHijo(hijo3);
+		
+		hijo1.agregarHijo(subhijo1);
+		hijo1.agregarHijo(subhijo2);
+		
+		hijo3.agregarHijo(subhijo3);
+		hijo3.agregarHijo(subhijo4);
+		
+		subhijo1.agregarHijo(a6);
+		
+		subhijo2.agregarHijo(a28);
+		subhijo2.agregarHijo(a55);
+		subhijo2.agregarHijo(a18);
+		
+		subhijo3.agregarHijo(a4);
+		
+		ParcialArbolesRecu parcial = new ParcialArbolesRecu(padre);
+	    
+		int num = 2;
+	    ListaGenerica<Integer> lista = parcial.camino(num);
+	    
+	    System.out.println("--------LISTA--------");
+	    lista.comenzar();
+	    while (!lista.fin()) {
+	    	System.out.println(lista.proximo());
+	    }
+	    
+	    System.out.println();
+		
+	}
+}
+
+
