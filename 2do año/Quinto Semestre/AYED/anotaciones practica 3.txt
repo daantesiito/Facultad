@@ -1,0 +1,59 @@
+4.nodo tiene 2 datos
+
+recorrido por niveles
+
+una variable que sume los niveles y lo divida al final del nivel
+
+cada vez que desencolas un null es el pase a un nuevo nivel.
+
+hacer una lista con los null en el medio asi se sabe que es un nuevo nivel
+
+la cola cuando desencola, encola los hijos
+
+5. a es ancestro de b, si en el arbol existe un camino de a hasta b
+
+por niveles buscando por los dos valores, si encuentra el b primero ya retorna false
+
+encontras a, y recorres los hijos de este, si esta b, devuelve true
+
+6. recorrido en profundidad
+
+int min = 9999
+
+pongo un minimo como parametro en la llamada recursiva que se modifique si es menor el caudal al min
+
+lo mejor seria retornar el min
+
+hasta que no sea una hoja que baje y en la hoja se actualizaria el min, retornando el valor "avisando" al anterior que te llamo para que lo actualice tambien
+
+7. recorrido en profundidad ya que necesitamos saber quien es el padre
+
+necestiamos 2 listas, una para ir manejando y otra para guardar el maximo camino
+
+listaActual y listaMax
+
+mientras no es una hoja que llame a la recursion y que el elemento actual se agregue a la lista Actual
+
+si es hoja, primero se agrega prque si no se pierde. ahora tenes que comparar las longitudes entre las dos listas size()
+
+hay que sacar la hoja que acabamos de procesar ya que si tiene un hermano, se agregaria a la lista y quedarian las dos hojas
+
+elimino todos los elementos de listaMax si es que listaActual es mayor, y copio listaActual en listaMax
+
+cuando vuelve de la recursion siempre tiene que eliminarse, no se elimina arriba de todo
+
+exite addAll y removeAll para hacer el cambio de elementos de las listas, para no quedar con referencias
+
+8. todo nodo que no sea hoja, tiene que tener si o si al menos 3 hojas
+
+recorrido en profundidad
+
+variable cantHojas
+
+si es hoja sumo, si no lo es, llamo a la recursion
+
+si llamo a recursion tiene que tener otra variable de canthijos para contar los suyos sin que se sobreescriba con el anterior canthojas
+
+la recursion tiene que devolver si cumple o no (si tiene o no 3 hojas)
+
+la recursion tiene que devolver tambien si alguno de sus hijos no cumple, si alguno le devuelve false, el padre tiene que devolver false ya que tiene que ser todo true
