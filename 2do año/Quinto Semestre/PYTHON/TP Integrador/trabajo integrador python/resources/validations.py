@@ -5,8 +5,7 @@ def check_elevation_str(elevation):
     while elevation != 'bajo' and elevation != 'medio' and elevation != 'alto':
         print('❌ La elevacion ingresada no es valida, por favor ingrese "bajo", "medio" o "alto"')
         elevation = input('Ingrese la elevacion que desea: ')
-        elevation_int = int (elevation)
-    return elevation_int
+    return elevation
 
 #------------------------------------------- INCISO 3 -------------------------------------------
 def check_elevation_int(elevation):
