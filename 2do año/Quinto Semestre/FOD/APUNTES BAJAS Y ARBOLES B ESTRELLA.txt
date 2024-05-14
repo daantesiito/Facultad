@@ -1,0 +1,77 @@
+OVERFLOW ES CUANDO SE PARTEN LOS NODOS
+
+EN BAJA: 
+
+un nodo de 7 elementos (8 punteros) tiene que tener si o si la mitad -1 elementos si no se genera UNDERFLOW
+
+tengo 3 nodos: 10 50 x x x x x, PADRE (ARRIBA) 340,  70 90 110 200 230 400 500
+
+para acomodar hay que distribuir: 10 50 70 90 110 200 230 340 400 500
+				  ---------------     ---------------
+partimos a la mitad:     			 PADRE
+
+Hay muy poca probabilidad de UNDERFLOW, si existe una posibilidad seguro se pueda redistribuir.
+
+En el peor de los casos juntamos
+
+si un nodo entra en underflow, se lee el adyacente hermano
+
+redistribucion no cambia la estructura del arbol
+
+-----------------
+B elevado a la h.
+
+B estrella (B*): arbol balanceado donde la redistribucion podria posponer las nuevas paginas
+
+	- cada nodo esta lleno por lo menos en 2/3 partes
+
+	- Ecuacion: ((2M -1) / 3)
+
+la unica diferencia con b h es en la cantidad de elementos de cada nodo
+
+si los nodos se crean mas lentos, h incrementa mas lento
+
+ARMADA DE ARBOL B ESTRELLA EJEMPLO HAY VIDEOS.
+
+El arbol b estrella intenta redistribuir si hay overflow con el hermano adyacente
+
+cuando agrega y hay overflow, se agarran TODOS y lo redistribuye. ejemplo dado 3 1 3. sigue con la misma cantidad de nodos.
+
+el otro tipo de arbol (bh) divide y parte todo, haciendo nuevos nodos.
+
+el proceso de alta se incrmento en uno, una lectura mas, pero en busqueda quedo igual.
+
+cuando salgo a buscar el adyacente hermano tengo 3 opciones:
+
+(siempre tengo que tener un elemento vacio en el nodo que vaya a redistribuir adyacente)
+
+- derecha: caso extremo, que no haya uno a la derecha, va a la izquierda.
+
+- izquierda: mismo que arriba.
+
+- izq o der: si el que intentas primero esta lleno, proba con el otro lado. Es mas costoso en lecturas.
+
+en el caso de que esten todos los nodos hermanos adyacentes llenos, no se puede redistribuir asi que hay que dividir depende la politica que elijas (der, izq, izq o der).
+
+se agarran todos los elementos de los nodos incluido el que vamos a agregar misma forma que la redistribucion (solo nodo que explota y el agarrado + dato a ingresar)
+
+dividimos en partes iguales y tiramos para arriba los del medio
+
+"X" SON ELEMENTOS
+"---" NODOS EN LOS QUE SE DIVIDE
+"|" PADRES QUE VAN PARA ARRIBA
+
+    |     |     |
+x x x x x x x x x x x
+---   ---   ---   ---
+
+    |
+x x x x x
+---   ---
+
+    |     |
+x x x x x x x x
+---   ---   ---
+
+
+
