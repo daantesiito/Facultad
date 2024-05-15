@@ -1,0 +1,91 @@
+1hora
+
+n= 100
+
+cantOperaciones = raiz100 = 10
+
+------------
+
+2 horas
+
+n = ? 
+
+cantOperaciones = raizn = 20
+
+n = 20 al cuadrado = 400
+
+-------
+
+Basicamente intentar con el n dado, en T(n):
+
+raiz n
+log(n)
+n
+nlog(n)
+n2 (elevado)
+n3 (elevado)
+2n (elevado)
+
+-----------------------------
+
+OTRO EJERCICIO:
+
+for (int i=0; i*i < n; i++)
+
+vemos la condicion:
+
+0 * 0 < n
+1 * 1 < n
+2 * 2 < n
+3 * 3 < n
+k * k < n
+
+cuando salgo del for?:
+
+k * k >= n
+k^2 = n      | K * K ES IGUAL A K AL CUADRADO
+k = raiz n             | PASAR LA POTENCIA SE CONVIERTE EN RAIZ
+
+
+------------------------------
+
+OTRO EJERCICIO:
+
+for (int i = 1; i < n; i = i * x)
+
+i: 1
+i = 1 * x = x^1
+i = x^1 * x = x^2
+i = x^2 * x = x^3
+i = x^k (elevado)
+
+cuando corta?
+
+x^k >= n
+
+logx x^k = logx n
+
+k = logx n
+
+
+-----------------------------------
+
+OTRO EJERCICIO:
+
+for (int i = 0; i < n/2; i++)
+    for (int j = 1; j + n/2 <= n; j++)
+        for (int k = 1; k <= n; k = k * 2)
+
+i = n/2
+
+j = n/2
+
+{ explicacion
+	j + n/2 = n
+
+	j = n - n/2
+}
+
+k = log2 n
+
+
