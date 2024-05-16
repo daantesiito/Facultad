@@ -11,6 +11,7 @@ public class Banco {
 	 *   Recorro cuentas[] entre el "desde" y el "hasta" de la consulta sumando el valor
 	 * 
 	 */
+	
 	public static void procesarMovimientos(Integer[] cuentas, Consulta[] consultas) {
 		Consulta c;
 		long tiempoInicio = System.currentTimeMillis();
@@ -53,6 +54,7 @@ public class Banco {
 	 * 3º
 	 *  aux = [0, 3, 3, 5, 5, 2, 0, 0] --> Luego de procesar aux, estos son los valores que tengo que sumar a las cuentas
 	 */
+	
 	public static void procesarMovimientosOptimizado(Integer[] cuentas, Consulta[] consultas) {
 		Consulta c;
 		long tiempoInicio = System.currentTimeMillis();
