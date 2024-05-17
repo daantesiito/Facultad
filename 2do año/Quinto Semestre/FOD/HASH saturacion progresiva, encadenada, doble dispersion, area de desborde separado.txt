@@ -1,0 +1,174 @@
+SATURACION PROGRESIVA:
+
+a 50 b 51 c 50 d 50 e 52
+
+nodo capacidad 2:
+nodo 50: A C
+
+nodo 51: b d --> la saturacion progresiva dice que hay que agregar el elemento al nodo inmediato siguiente. La D, iba en el 50 pero se agrego al 51.
+
+nodo 52: e
+
+---------------------------------------------
+
+a 50 b 51 c 50 d 50 e 52 f 51
+
+nodo capacidad 2:
+nodo 50: A C
+
+nodo 51: b f --> saco la D ya que es "basura" y agrego la f en donde tendria que ir.
+
+nodo 52: e d
+
+----------------------------------------------
+
+a 50 b 51 c 50 d 50 e 52 f 51 g 50 h 51 i 53
+
+nodo capacidad 2:
+nodo 50: A C
+
+nodo 51: b d
+
+nodo 52: e f
+
+nodo 53: g h
+
+nodo 54: i
+
+-----------------------------------------------
+
+para buscar hay que ver si el elemento que busco esta en la posicion, si no esta miro si tiene la flag de overflow, si es asi, sigo.
+
+-----------------------------------------------
+SATURACION PROGRESIVA ENCADENADA
+
+a 50 b 51 c 50 d 50 e 52 f 51 g 50 h 51 i 53 j 53 s 52
+
+nodo capacidad 2:
+nodo 50: A C
+
+nodo 51: b d
+
+nodo 52: e f --> saturacion progresiva encadenada alliga un nodo con su nodo de overflow, asi evita recorrer la cadena de nodos. basicamente la S que iria en este nodo, le hace una flecha al nodo 55. como si fuera un padre y apunta al hijo. es una direccion de sector.
+
+nodo 53: g h
+
+nodo 54: i j
+
+nodo 55: s
+
+------------------------------------------------
+DOBLE DISPERSION:
+
+tiene 2 funciones distintas Fh1 y Fh2
+
+la segunda function de hash se calcula solo si hubo overflow
+
+todo el exceso de overflow se reparte en nodos
+
+a 50 b 51 c 50 d 51 e 50 f 51 g 50 h 51 i 53
+
+(numeros random) e hace overflow asi que lo mando mas lejos (15) --> 50 + 15: 65
+
+nodo capacidad 2:
+nodo 50: A C
+
+nodo 51: b d
+
+nodo 52: 
+
+nodo 53: 
+
+nodo 65: e
+
+si yo mando F a 51, esta lleno, le sumo 10, el nodo 61 suponete que esta lleno Tambien asi que no podemos generar overflow, se suma devuelta y vas a 71, lo pones ahi en el nodo 71.
+
+--------------------------------------------------
+
+AREA DE DESBORDE POR SEPARADO
+
+(num de ejemplo)
+tengo 10000 direcciones, 9500 las reservo y la funcion de hash no las va a ver.
+las otras 500 si.
+
+busco numero primo mas cercano al numero que yo tengo.
+
+5000 tiene un primo cercano
+
+tomo ese numero primo como espacio direccionable
+
+4700 es mi primo y me quedan 300, 5000-4700: 300   (4700 es un ejemplo, no es el primo)
+
+me quedarian 300 nodos para ejecutar el overflow.
+
+----------------------------------------------------
+
+5000 numero
+
+4937 primo mas cercano de 5000
+
+a 50 b 51 c 50 d 51 e 50 f 52 g 51 h 53 i 51 j 51 s 55
+
+nodo capacidad 2:
+nodo 50: A C --> overflow mando el E al nodo 4937
+
+nodo 51: b d
+
+nodo 52: 
+
+nodo 53: h
+
+nodo 54:
+
+nodo 55: s
+
+nodo 4937: e
+
+nodo 4938: g i --> la i al ya tener un nodo de overflow designado, se agrega al que existe
+
+nodo 4939: j --> la j iria en el nodo de arriba pero hace overflow y lo manda al siguiente.
+
+-------------------------------------------------------
+
+la cantidad de nodos afecta la function de hash y la densidad de empaquetamiento.
+
+para aumentar la cantidad de nodos hay que actualizar la function de hash, lo que no se busca ya que para modificar tenes que poner en mantenimiento el servidor y agregarlos para luego subirlos.
+
+El archivo no tiene que parar nunca.
+
+Hay varios hash:
+
+hash virtual, dinamico y extensible.
+
+--------------------------------------------------------
+
+HASH EXTENSIBLE:
+
+hashing con espacio de almacenamiento dinamico.
+
+es imposible hacer todo lo que hacemos si no sacrifico algo.
+
+diapo 32 ejemplo de espacio dinamico
+
+la tabla es un elemento auxiliar
+
+tabla primero con un 0 de numero bit (no elemento) tiene las direcciones de los nodos
+
+alpha beta en nodo 1, overflow por gamma, se hace otro nodo y por regla la tabla se multiplica x2 su almacenamiento, apuntando a nodo 0 y nodo 1.
+
+se la hace hashing al numero final de la clave y se agrega en la posicion de esta misma.
+
+alfa: termina en 1 se agrega en nodo 1
+
+beta termina en 0 se agrega en nodo 0
+
+asi sucesivamente, cuando explota el nodo, se genera otro mas y si el numero asignado al nodo es mas grande que la tabla, la tabla se duplica x2 de tamaño.
+
+en este ejemplo que hay 3 nodos y 4 direcciones en la tabla, las dos que terminan con 1 apuntan a la misma ya que el que habia reventado antes era el nodo direccion 0.
+
+2 accesos a discos con alta en overflow y todos los elementos se siguen encontrando en 1 solo acceso
+
+las direcciones las asignas vos.
+
+
+
