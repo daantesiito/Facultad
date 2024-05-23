@@ -1,0 +1,10 @@
+hashing practica 21/5/2024
+
+Direccionamiento estatico: el espacio disponible para dispersar los registros del archivo esta fijado previamente
+
+Insertar la clave en el nodo se inserta el registro completo
+
+Teoria solo de hashing estatico, no hay practica
+
+HASHING EXTENSIBLE:
+

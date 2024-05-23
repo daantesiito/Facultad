@@ -1,0 +1,23 @@
+para llegar al orden de n O(n) primero hay que hacer T(n)
+
+ejercicio parcial
+
+
+      cte si n <= 1
+
+T(n): 2 T(n/2) + cte1 --> Si n >= 2
+
+
+
+
+T(n) = 2 T(n/2) + cte 1
+
+--- # Reemplazo
+
+2 (2T(n/2 / 2) + cte 1 )+ cte 1 --> Donde va la n de T(n), se reemplaza por la N.
+
+2^2 T (n/2^2) + 3 cte 1 --> se multiplica ese 2 por todo lo de adentro del parentesis.
+
+---- # Uso el de arriba y reemplazo
+
+SIGUE EN FOTO 21/5/2024 
