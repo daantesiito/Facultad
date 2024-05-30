@@ -1,0 +1,2 @@
+en la function recursiva vamos a tener t de n de los dos lados del igual ya que se llama internamente a si mismo
+
