@@ -1,0 +1,15 @@
+Alta:
+Si el valor es menor a 0 significa que hay lugar, entonces vas con un seek
+a la posicion con abs para sacar el valor positivo, lees el registro y lo guardas
+en una variable indice, volves una posicion atras y escribis el nuevo registro.
+Luego volves para la posicion 0 y escribis el indice que tiene el registro
+de la posicion que di de alta.
+
+Baja:
+Se lee el indice y el primer registro.
+Mientars que el nombre no sea valoralto y no se encuentre el elemento, 
+que pregunte si el nombre a buscar es el procesado.
+Si se encuentra ok:= true, guardo en el registro procesado, el indice.
+Vuelvo 1 para atras y paso al indice, la posicion en negativo del valor a dar baja
+Escribis el registro procesado con el valor del indice en el lugar.
+Volves al inicio y escribis el indice con el valor del espacio libre en negativo
