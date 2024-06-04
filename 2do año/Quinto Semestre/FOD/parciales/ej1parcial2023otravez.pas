@@ -241,6 +241,7 @@ var
     i,posMin: integer;
 begin
     posMin:= 0;
+    min.cod:= valoralto;
     for i:= 1 to 30 do begin
         if (VecRegProductos[i].cod <> valoralto) then begin
             if (VecRegProductos[i].cod < min.cod) then begin
@@ -304,5 +305,49 @@ begin
                 leer(archP,p);
         end;
         close(archP);
+    end;
+end;
+
+procedure bajaFisica(var archP: archProducto);
+begin
+    readln(codEliminar);
+    if existeProducto(codEliminar,archP) then begin
+        reset(archP);
+        rewrite(archP2);
+        leer(archP,indice);
+        leer(archP,p);
+        while (filepos(archP) <> filesize(archP)-1) do begin
+            if (codEliminar = p.cod) then begin
+                pos:= filepos(archP);
+                seek(archP,filesize(archP));
+                read(archP,ultimo);
+                seek(archP,filepos(archP)-1);
+                seek(archP,pos);
+                write(archP,ultimo);
+            end;
+            else
+                write(archP2,p);
+                leer(archP,p);
+        end;
+    end;
+end;
+
+procedure bajaFisica(var archP: archProducto);
+begin
+    readln(codEliminar);
+    if existeProducto(codEliminar,archP) then begin
+        reset(archP);
+        rewrite(archP2);
+        leer(archP,indice);
+        leer(archP,p);
+        while (p.cod <> codEliminar) do begin
+            write(archP2,p);
+            leer(archP,p)
+        end;
+        leer(archP,p);
+        while (p.cod <> valoralto) do begin
+            write(archP2,p);
+            leer(archP,p);
+        end;
     end;
 end;

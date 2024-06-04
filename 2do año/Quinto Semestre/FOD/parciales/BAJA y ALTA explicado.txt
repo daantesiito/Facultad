@@ -5,6 +5,30 @@ en una variable indice, volves una posicion atras y escribis el nuevo registro.
 Luego volves para la posicion 0 y escribis el indice que tiene el registro
 de la posicion que di de alta.
 
+procedure altaLogica(var archP: archProductos);
+var
+    p,newProduct,indice: producto;
+begin
+    crearProducto(newProduct);
+    if not existeProducto(newProduct.cod, archP) then begin
+        reset(archP);
+        leer(archP,p);
+        if (p.cod < 0) then begin
+            seek(archP,abs(archP));
+            read(archP,indice);
+            seek(archP,filepos(archP)-1);
+            write(archP,newProduct);
+            seek(archP,0);
+            write(archP,indice);
+        end;
+        else
+            writeln('No hay espacio.');
+        close(archP);
+    end;
+    else
+        writeln('Producto existente.');
+end;
+
 Baja:
 Se lee el indice y el primer registro.
 Mientars que el nombre no sea valoralto y no se encuentre el elemento, 
@@ -13,3 +37,28 @@ Si se encuentra ok:= true, guardo en el registro procesado, el indice.
 Vuelvo 1 para atras y paso al indice, la posicion en negativo del valor a dar baja
 Escribis el registro procesado con el valor del indice en el lugar.
 Volves al inicio y escribis el indice con el valor del espacio libre en negativo
+
+procedure bajaLogica(var archP: archProducto);
+var
+
+begin
+    readln(codEliminar);
+    if existeProducto(codEliminar,archP) then begin
+        reset(archP);
+        leer(archP,indice);
+        leer(archP,p);
+        while (p.cod <> valoralto) and not (ok) do begin
+            if (codEliminar = p.cod) then begin
+                ok:= true;
+                p.cod:= indice.cod;
+                seek(archP,filepos(archP)-1);
+                indice.cod:= filepos(archP) * (-1);
+                write(archP,p);
+                seek(archP,0);
+                write(archP,indice);
+            end;
+            else
+                leer(archP,p);
+        end;
+    end;
+end;
