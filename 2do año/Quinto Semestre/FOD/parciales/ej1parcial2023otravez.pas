@@ -206,7 +206,8 @@ begin
             write(archP,indice);
         end;
         else
-            writeln('No hay espacio disponible.');
+            seek(archP,filesize(archP));
+            write(archp,np);
         close(archP);
     end;
     else
