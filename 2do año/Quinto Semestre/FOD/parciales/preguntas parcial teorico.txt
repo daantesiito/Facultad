@@ -1,0 +1,72 @@
+1- Un archivo con registro de longitud variable
+Puede estar ordenado por algun criterio.
+Puede tener un caracter delimitador.
+
+2- Cuando se utiliza un algoritmo de merge
+No es necesario tener mas de 1 archivo para hacerlo, puede ser un archivo con registros repetidos y crear uno solo fusionado.
+No necesariamente el archivo maestro quedara ordenado.
+
+3- El proceso de baja logica
+Esta diseñado para borrar un registro de un archivo
+No necesariamente tiene que estar ordenado
+No necesariamente tiene ue estar desordenado
+
+4- El algoritmo de actualizacion maestro detalle
+todas falsas
+
+5- Un arbol B*
+no ocupa el mismo espacio que un arbol b
+los elementos en un arbol b* estan en un archivo
+no permite busqueda secuencial, solo hay un caso horriblemente ineficiente.
+
+6- En un indice secundario
+Un indice secundario contiene la clave primaria
+Esta organizado como un arbol donde tengo las claves secundarias sin repetir y la repeticion de claves primarias respecto de estas secundarias 
+El indice secundario tiene 2 archivos.
+Los indices con 2 archivos son mas lentos que los que tienen uno.
+
+7- Un arbol que se encuentra balanceado
+Puede ser un arbol binario
+Puede ser un arbol b+
+puede ser un arbol b*
+puede ser un arbol multicamino
+
+8- Un overflow
+Siempre se produce luego de una collision
+Esta presente en hashing estatico y dinamico
+
+9- Si la densidad del empaquetamiento tienda a 1 (o el 100%)
+Hay que cambiar la funcion de dispersion y aumentar el tamaño del archivo
+Debe aumentar la cantidad de nodos
+
+10- La dispersion dinamica
+Requiere el uso de una estructura auxiliar
+
+11- La eficiencia de busqueda de un arbol b
+Es de orden logaritmico
+no es de orden lineal ni constante
+
+12- Suponga que el nodo terminal de un arbol b+ de prefijos simples de orden 6 tiene las claves Gonzales, goñez, goodman, goplani, gorba y en dicho nodo se inserta una clave nueva Gutierrez, entonces:
+Se tomaria GOP, la menor clave posible.
+
+13- Una clave
+Si es secundaria, puede repetirse
+Si es primaria, no puede se secundaria
+Si es univoca, puede ser primaria.
+la clave primaria es unica
+puede ser primaria, secundaria
+
+14- Cuando una clave x y otra clave y generan, por function de dispersion, una misma direccion, entonces:
+
+15- Los archivos con registros con longitud variable
+Puede ocupar mayor, menor o igual espacio que registros con longitud fija
+
+16- Cuando la densidad de empaquetamiento tiende a 1:
+El tamaño del nodo es fijo
+
+17- Suponga que sobre un nodo de un arbol+ se produce overflow. En dicho caso se puede:
+todas respuestas de hashing, ninguna verdadera
+
+18- Un arbol B
+Nunca es de prefijos simples
+a 2/3 de su espacio es el minimo de los b*
