@@ -1,0 +1,62 @@
+package ZParcial1;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class ejer01Class {
+	
+	public ListaGenerica<Ciudad> resolver(Grafo<Ciudad> grafo, String ciudad1, String ciudad2){
+		ListaGenerica<Ciudad> l = new ListaEnlazadaGenerica<Ciudad>();
+		boolean[] marca = new boolean[grafo.listaDeVertices().tamanio() + 1];
+		ListaGenerica<Vertice<Ciudad>> lis = grafo.listaDeVertices();
+		boolean ok = false;
+		
+		if (!grafo.esVacio()) {
+			Vertice<Ciudad> v = null;
+			lis.comenzar();
+			while (!lis.fin() && !ok) {
+				v = lis.proximo();
+				if (v.dato().getNombre().equals(ciudad1)) {
+					ok = true;
+				}
+			}
+			if (ok) {
+				devolver1(v.posicion(), grafo, l, marca, ciudad2);
+			}
+		}
+		return l;
+	}
+	
+	private boolean devolver1(int i, Grafo<Ciudad> grafo, ListaGenerica<Ciudad> l, boolean[] marca, String ciudad2) {
+		boolean ok = false;
+		marca[i] = true;
+		
+		Vertice<Ciudad> v = grafo.vertice(i);
+		l.agregarFinal(v.dato());
+		//System.out.println(v.dato().getNombre());
+		if (v.dato().getNombre().equals(ciudad2)) {
+			ok =  true;
+		}
+		else {
+			ListaGenerica<Arista<Ciudad>> ady = grafo.listaDeAdyacentes(v);
+			ady.comenzar();
+			while (!ady.fin() && !ok) {
+				Arista<Ciudad> arista = ady.proximo();
+				int j = arista.verticeDestino().posicion();
+				if (!marca[j] & grafo.vertice(j).dato().getFase() != 1)
+					ok = devolver1(j,grafo,l,marca, ciudad2);
+			}
+			if (!ok) {
+				l.eliminarEn(l.tamanio());
+				marca[i] = false; // desmarco porque puedo llegar a formar un camino desde otro vértice
+			}
+		}
+		return ok;
+	}
+	
+	
+}
+
+
+
+

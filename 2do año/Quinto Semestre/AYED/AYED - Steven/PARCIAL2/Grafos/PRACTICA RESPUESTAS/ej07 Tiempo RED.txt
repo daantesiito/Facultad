@@ -1,0 +1,69 @@
+package ZParcial1;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class ejer07Class {
+	
+	public int resolver (Grafo<String> grafo, Vertice<String> pc) {
+		int max = -1;
+		boolean[]marca = new boolean[grafo.listaDeVertices().tamanio() + 1];
+		
+		boolean ok = false;
+		ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+		if (!grafo.esVacio()) {
+			Vertice<String> v = null;
+			lis.comenzar();
+			while (!lis.fin() && !ok) {
+				v = lis.proximo();
+				if (v.dato().equals(pc.dato())) {
+					ok = true;
+				}
+			}
+			if (ok) {
+				max = bfs(v.posicion(), grafo, marca);
+			}
+		}
+		return max;
+	}
+	
+	private int bfs (int i,Grafo<String> grafo, boolean[] marca) {
+		ColaGenerica<Vertice<String>> cola = new ColaGenerica<Vertice<String>>();
+		cola.encolar(grafo.vertice(i));
+		cola.encolar(null);
+		marca[i]= true;
+		int nivel = 0;
+		while(!cola.esVacia()) {
+			Vertice <String> v = cola.desencolar();
+			if (v != null) {
+				//lis.agregarFinal(v.dato());
+				//System.out.println(v.dato());
+				ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(v);
+				ady.comenzar();
+				while(!ady.fin()) {
+					Arista<String> arista = ady.proximo();
+					int j = arista.verticeDestino().posicion();
+					if (!marca[j]) {
+						cola.encolar(arista.verticeDestino());
+						marca[j] = true;
+					}
+				}
+			}else {
+				if (!cola.esVacia()) {
+					cola.encolar(null);
+					nivel++;
+				}
+			}
+		}
+		return nivel;
+	}
+	
+	
+	
+}
+
+
+
+
+
+

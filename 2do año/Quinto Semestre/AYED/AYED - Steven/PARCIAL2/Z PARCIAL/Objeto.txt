@@ -1,0 +1,24 @@
+package ParcialGrafo;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class Objeto{
+	
+	private ListaGenerica<String> l;
+	private int cuadras;
+	
+	public Objeto(ListaGenerica<String> l, int c) {
+		this.l = l;
+		this.cuadras = c;
+	}
+	
+	public String toString() {
+		return "OBJETO : " + l.toString() + " - cuadras: " + cuadras;
+	}
+	
+}
+
+
+
+

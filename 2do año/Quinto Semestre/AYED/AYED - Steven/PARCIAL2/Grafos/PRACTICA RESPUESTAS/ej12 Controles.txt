@@ -1,0 +1,77 @@
+package ZParcial1;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class ejer12Class {
+	
+	public int resolver(Grafo<Ciudad2> grafo, String ciudad1, String ciudad2, int maxTiempo){
+		ListaGenerica<String> l = new ListaEnlazadaGenerica<String>();
+		boolean[] marca = new boolean[grafo.listaDeVertices().tamanio() + 1];
+		ListaGenerica<Vertice<Ciudad2>> lis = grafo.listaDeVertices();
+		boolean ok = false;
+		boolean ok2 = false;
+		Maximo max = new Maximo(-1);
+		int cant = 0;
+		
+		if (!grafo.esVacio()) {
+			Vertice<Ciudad2> v = null;
+			int pos = 0;
+			lis.comenzar();
+			while (!lis.fin() && !ok || !ok2) {
+				v = lis.proximo();
+				if (v.dato().getNombre().equals(ciudad1)) {
+					ok = true;
+					pos = v.posicion();
+				}else if (v.dato().getNombre().equals(ciudad2)) {
+					ok2 = true;
+				}
+			}
+			if (ok && ok2) {
+				//cant = grafo.vertice(pos).dato().getTransito();
+				devolver1(pos, grafo, l, marca, ciudad2, maxTiempo, max, cant);
+			}
+		}
+		return max.getMax();
+	}
+	
+	private void devolver1(int i, Grafo<Ciudad2> grafo, ListaGenerica<String> l, 
+			boolean[] marca, String ciudad2, int maxTiempo, Maximo max, int cant) {
+		marca[i] = true;
+		
+		Vertice<Ciudad2> v = grafo.vertice(i);
+		l.agregarFinal(v.dato().getNombre());
+		
+		int tiempo = v.dato().getTransito();
+		cant += tiempo;
+		
+		if ((v.dato().getNombre().equals(ciudad2)) && (cant > max.getMax())) {
+			max.setMax(cant);
+			System.out.println(l);
+		}
+		else {
+			ListaGenerica<Arista<Ciudad2>> ady = grafo.listaDeAdyacentes(v);
+			ady.comenzar();
+			while (!ady.fin()) {
+				Arista<Ciudad2> arista = ady.proximo();
+				int j = arista.verticeDestino().posicion();
+				int peso = arista.peso();
+				//int tiempo = arista.verticeDestino().dato().getTransito(); // cant+tiempo al llamar a devolver1
+				if (!marca[j] & peso <= maxTiempo) {
+					devolver1(j,grafo,l,marca, ciudad2, maxTiempo, max, (cant));
+					//System.out.println(arista.verticeDestino().dato().getNombre());
+					l.eliminarEn(l.tamanio());
+					marca[j] = false; // desmarco porque puedo llegar a formar un camino desde otro vértice
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+

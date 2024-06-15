@@ -1,0 +1,96 @@
+package ZParcial2;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class ejer02Class {
+	
+	private Vertice<String> buscarVertice(Grafo<String> grafo, String buscar){
+		Vertice<String> devolver = null;
+		ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+		boolean ok = false;
+		lis.comenzar();
+		while (!lis.fin() && !ok) {
+			Vertice<String> act = lis.proximo();
+			if (act.dato().equals(buscar)) {
+				ok = true;
+				devolver = act;
+			}
+		}
+		return devolver;
+	}
+	
+	
+	public ListaGenerica<String> resolver(Grafo<String> grafo, String origen, 
+			String destino, ListaGenerica<String> pasandoPor){
+		
+		ListaGenerica<String> camino = new ListaEnlazadaGenerica<String>();
+		
+		if (!grafo.esVacio()) {
+			ListaGenerica<String> l = new ListaEnlazadaGenerica<String>();
+			boolean []marca = new boolean[(grafo.listaDeVertices().tamanio() + 1)];
+			Vertice<String> ori = buscarVertice(grafo, origen);
+			Vertice<String> dest = buscarVertice(grafo, destino);
+			// suponiendo que quiero buscar el camino minimo
+			Min minimo = new Min(9999);
+			if (ori != null && dest != null) {
+				dfs(ori.posicion(), grafo, l, camino, marca, destino, pasandoPor, minimo);
+			}
+		}
+		
+		return camino;
+	}
+	
+	// suponiendo que quiero devolver el camino mas corto
+	private void dfs(int i, Grafo<String> grafo, ListaGenerica<String> l, ListaGenerica<String> camino, 
+			boolean []marca, String destino, ListaGenerica<String> pasandoPor, Min minimo) {
+		
+		marca[i] = true;
+		
+		Vertice<String> v = grafo.vertice(i);
+		l.agregarFinal(v.dato());
+		
+		if (v.dato().equals(destino) && l.tamanio() < minimo.getMinimo()) {
+			boolean ok = true;
+			pasandoPor.comenzar();
+			while (!pasandoPor.fin() && ok) {
+				ok = l.incluye(pasandoPor.proximo());
+			}
+			if (ok) {
+				minimo.setMinimo(l.tamanio());
+				reemplazar(l, camino);
+			}
+		}else {
+			ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(v);
+			ady.comenzar();
+			while (!ady.fin()) {
+				Arista<String> arista = ady.proximo();
+				int j = arista.verticeDestino().posicion();
+				if (!marca[j]) {
+					dfs(j, grafo, l, camino, marca, destino, pasandoPor, minimo);
+					l.eliminarEn(l.tamanio());
+					marca[j] = false;
+				}
+			}
+		}
+	}
+	
+	
+	private void reemplazar(ListaGenerica<String> l, ListaGenerica<String> camino) {
+		camino.comenzar();
+		while (!camino.fin()) {
+			camino.eliminar(camino.proximo());
+		}
+		l.comenzar();
+		while (!l.fin()) {
+			camino.agregarFinal(l.proximo());
+		}
+	}
+}
+
+
+
+
+
+
+

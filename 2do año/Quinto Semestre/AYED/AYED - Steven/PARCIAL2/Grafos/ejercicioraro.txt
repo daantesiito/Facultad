@@ -1,0 +1,83 @@
+	//----------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------
+		// SI TENGO QUE DEVOLVER EN UN OBJETO LA LISTA Y LA CARGA:
+	
+		public Minimo caminoConMenorCargaDeCombustible2(String ciudad1, String ciudad2, int tanqueAuto){
+			
+			ListaGenerica<String> actual = new ListaEnlazadaGenerica<String>();
+			ListaGenerica<String> l = new ListaEnlazadaGenerica<String>();
+			boolean[] marca = new boolean[grafo.listaDeVertices().tamanio() + 1];
+			ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+			boolean ok = false;
+			boolean ok2 = false;
+			int pos = 0;
+			int cargaMin = Integer.MAX_VALUE;
+			Minimo min = new Minimo(l, cargaMin);
+			
+			if (!grafo.esVacio() && tanqueAuto > 0) {
+				Vertice<String> v = null;
+				lis.comenzar();
+				while (!lis.fin() && !ok || !ok2) {
+					v = lis.proximo();
+					if (v.dato().equals(ciudad1)) {
+						ok = true;
+						pos = v.posicion();
+					}else if (v.dato().equals(ciudad2)) {
+						ok2 = true;
+					}
+				}
+
+				// SI NECESITO COMPROBAR QUE LA CIUDAD2 EXISTE -> lo puedo hacer llamando a Vertice vert = buscarVertices(ciudad1, ciudad2) y preguntar despues si vert.getOri() != null y vert.getDest() != null
+
+				if (ok && ok2) {
+					//Min minimo = new Min(9999);
+
+					int carga = tanqueAuto;
+					int cantCargas = 0;
+					cargaMin = devolver6(pos, grafo, actual, l, marca, ciudad2, tanqueAuto, carga, cantCargas, cargaMin, min)
+				}
+			}
+			min.setCarga(cargaMin);
+			min.setLista(l);
+			return min;
+		}
+		
+		private int devolver6(int i, Grafo<String> grafo, ListaGenerica<String> actual, ListaGenerica<String> l,
+				boolean[] marca, String ciudad2, int tanque, int carga, int cant, int cargaMin) {
+			marca[i] = true;	
+			
+			Vertice<String> v = grafo.vertice(i);
+			actual.agregarFinal(v.dato());
+			//System.out.println("ACTUAL: "+v.dato());
+			
+			
+			if (v.dato().equals(ciudad2)} // && (cant < minimo.getMinimo())) { -> NO PREGUNTO PORQUE SI LLEGO ES OBVIO QUE ES MENOR
+				reemplazar(actual, l);
+				cant:= carga;
+				//minimo.setMinimo(cant);
+				//System.out.println(cant);
+			}
+			else {
+				ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(v);
+				ady.comenzar();
+				while ((!ady.fin() && (cargaMin != 0)) { //cuando encuentre un camino con 0 cargas, corto
+					Arista<String> arista = ady.proximo();
+					int j = arista.verticeDestino().posicion();
+					
+					int peso = arista.peso();
+
+					
+					if (!marca[j]) {
+						if (peso <= tanque){
+							cargaMin = devolver6(j,grafo,actual,l,marca, ciudad2, (tanque-peso), carga, cant, cargaMin);
+						}
+						else if ((peso <= carga) && ((cant+1) < cargaMin)){ //no puedo ir a una ciudad si no me alcanza el tanque aunque este lleno
+							cargaMin = devolver6(j,grafo,actual,l,marca, ciudad2, (carga-peso), carga, cant++, cargaMin);
+						}
+						actual.eliminarEn(actual.tamanio());
+						marca[j] = false; // desmarco porque puedo llegar a formar un camino desde otro vértice
+					}
+				}
+			}
+			return cargaMin;
+		}

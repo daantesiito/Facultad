@@ -1,0 +1,63 @@
+public class Parcial{
+	
+	public ListaGenerica<ListaGenerica<String>> resolver(Grafo<String> grafo, String origen, String destino, int max){
+		ListaGenerica<ListaGenerica<String>> caminos = new ListaEnlazadaGenerica<ListaGenerica<String>>();
+
+		if (!grafo.esVacio()){
+			boolean[] marca = new boolean[(grafo.listaDeVertices().tamanio() + 1)];
+			ListaGenerica<String> l = new ListaEnlazadaGenerica<String>();
+			Vertice<String> ori = buscarVertice(grafo, origen);
+			if (ori != null){
+				dfs(ori.posicion(), grafo, l, caminos, marca, destino, max);
+			}
+		}
+		return caminos;
+	}
+
+	private void dfs(int i, Grafo<String> grafo, ListaGenerica<String> l, 
+		ListaGenerica<ListaGenerica<String>> caminos, boolean[] marca, String destino, int max){
+
+		marca[i]= true;
+		Vertice<String> v = grafo.vertice(i);
+		l.agregarFinal(v.dato());
+
+		if (v.dato().equals(destino)){
+			caminos.agregarFinal(l.clonar());
+		}else{
+			ListaGenerica<Aristas<String>> ady = grafo.listaDeAdyacencias(v);
+			ady.comenzar;
+			while (!ady.fin()){
+				Arista<String> arista = ady.proximo();
+				int j = arista.verticeDestino().posicion();
+				if (!marca[j] && (max-arista.peso()) >= 0){
+					dfs(j, grafo, l, caminos, marca, destino, (max-arista.peso()));
+					l.eliminarEn(l.tamanio());
+					marca[j] = false;
+				}
+			}
+		}
+	}
+
+
+	private Vertice<String> buscarVertice(Grafo<String> grafo, String buscar){
+		Vertice<String> devolver = null;
+		ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+		boolean ok = false;
+		lis.comenzar();
+		while (!lis.fin() && !ok){
+			Vertice<String> v = lis.proximo();
+			if (v.dato().equals(buscar)){
+				ok = true;
+				devolver = v;
+			}
+		}
+		return devolver;
+	}
+
+}
+
+
+
+
+
+

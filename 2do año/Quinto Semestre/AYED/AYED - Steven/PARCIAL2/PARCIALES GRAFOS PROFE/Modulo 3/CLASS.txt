@@ -1,0 +1,103 @@
+package ZParcialProfe;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class modulo3Class {
+	
+	private boolean[] marcarExceptuando(Grafo<String> grafo, ListaGenerica<String> exceptuando) {
+		boolean[] devolver = new boolean[grafo.listaDeVertices().tamanio() + 1];
+			
+		if (!grafo.esVacio()) {
+			Vertice<String> v = null;
+			exceptuando.comenzar();
+			while (!exceptuando.fin()) {
+				boolean ok = false;
+				String act = exceptuando.proximo();
+				//System.out.println("EXCP:" + act);
+				ListaGenerica<Vertice<String>> lis = grafo.listaDeVertices();
+				lis.comenzar();
+				while (!lis.fin() && !ok) {
+					v = lis.proximo();
+					if (v.dato().equals(act)) {
+						//System.out.println("encontre:" + v.dato());
+						ok = true;
+						devolver[v.posicion()] = true; //LO MARCO COMO VISITADO ASI NO ENTRO EN ESE VERTICE
+					}
+				}
+			}
+		}
+		return devolver;
+	}
+	
+	public ListaGenerica<String> resolver(Grafo<String> lugares, 
+			int metrosMax, ListaGenerica<String> lugaresRestringidos){
+		
+		ListaGenerica<String> l = new ListaEnlazadaGenerica<String>();
+		ListaGenerica<String> camino = new ListaEnlazadaGenerica<String>();
+		boolean[] marca = marcarExceptuando(lugares, lugaresRestringidos); //RECORRIDO MARCANDO LOS QUE NO TENGO QUE ENTRAR EN VERDADERO
+		ListaGenerica<Vertice<String>> lis = lugares.listaDeVertices();
+		boolean ok = false;
+		
+		if (!lugares.esVacio()) {
+			Vertice<String> v = null;
+			lis.comenzar();
+			while (!lis.fin() && !ok) {
+				v = lis.proximo();
+				if (v.dato().equals("Municipalidad") && !marca[v.posicion()]) {
+					ok = true;
+				}
+			}
+			if (ok) {
+				devolver(v.posicion(), lugares, l, camino, marca, metrosMax);
+			}
+		}
+		
+		return camino;
+	}
+
+	private void devolver(int i, Grafo<String> grafo, ListaGenerica<String> l, ListaGenerica<String> camino,
+			boolean[] marca, int metrosMax) {
+		boolean ok = false;
+		marca[i] = true;
+		
+		Vertice<String> v = grafo.vertice(i);
+		l.agregarFinal(v.dato());
+
+		if (l.tamanio() > camino.tamanio()) {
+			reemplazar(l, camino);
+			System.out.println("EL RECORRIDO SE HIZO EN "+(420-metrosMax)+" MT");
+		}
+		ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(v);
+		ady.comenzar();
+		while (!ady.fin()) {
+			Arista<String> arista = ady.proximo();
+			int j = arista.verticeDestino().posicion();
+			if (!marca[j] && ((metrosMax-arista.peso())>=0)) {
+				devolver(j,grafo,l, camino, marca, (metrosMax-arista.peso()));
+				l.eliminarEn(l.tamanio());
+				marca[j] = false; // desmarco porque puedo llegar a formar un camino desde otro vértice
+			}
+		}
+	}
+	
+	
+	private void reemplazar(ListaGenerica<String> l, ListaGenerica<String> camino) {
+		camino.comenzar();
+		while (!camino.fin()) {
+			camino.eliminar(camino.proximo());
+		}
+		l.comenzar();
+		while (!l.fin()) {
+			camino.agregarFinal(l.proximo());
+		}
+	}
+	
+}
+
+
+
+
+
+
+

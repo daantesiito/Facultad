@@ -1,0 +1,75 @@
+package ParcialGrafo;
+
+import PackElementos.*;
+import PackGrafos.*;
+
+public class ParcialGrafo {
+
+	public static void main(String[] args) {
+	/*1*/	Vertice<String> est = new VerticeImplListAdy<String>("Estadio Diego Armando Maradona");
+	/*2*/	Vertice<String> leg = new VerticeImplListAdy<String>("Legislatura");
+	/*3*/	Vertice<String> col = new VerticeImplListAdy<String>("Coliseo Podesta");
+	/*4*/	Vertice<String> mac = new VerticeImplListAdy<String>("MACLA");
+	/*5*/	Vertice<String> cat = new VerticeImplListAdy<String>("Catedral La Plata");
+	/*6*/	Vertice<String> rec = new VerticeImplListAdy<String>("Rectorado UNLP");
+	/*7*/	Vertice<String> mus = new VerticeImplListAdy<String>("Museo UNLP");
+	/*8*/	Vertice<String> pal = new VerticeImplListAdy<String>("Palacio Campodonico");
+		
+		Grafo<String> ciudad = new GrafoImplListAdy<String>();
+		
+		ciudad.agregarVertice(est);
+		ciudad.agregarVertice(leg);
+		ciudad.agregarVertice(col);
+		ciudad.agregarVertice(mac);
+		ciudad.agregarVertice(cat);
+		ciudad.agregarVertice(rec);
+		ciudad.agregarVertice(mus);
+		ciudad.agregarVertice(pal);
+		
+		ciudad.conectar(est, leg, 25);
+		ciudad.conectar(leg,est, 25);
+		ciudad.conectar(est,mac, 35);
+		ciudad.conectar(mac,est, 35);
+		ciudad.conectar(est,cat, 40);
+		ciudad.conectar(cat,est, 40);
+		ciudad.conectar(est,col, 20);
+		ciudad.conectar(col,est, 20);
+		
+		ciudad.conectar(leg,col, 25);
+		ciudad.conectar(col,leg, 25);
+		
+		ciudad.conectar(mac,cat, 8);
+		ciudad.conectar(cat,mac, 8);
+		
+		ciudad.conectar(col,pal, 10);
+		ciudad.conectar(pal,col, 10);
+		
+		ciudad.conectar(cat,rec, 5);
+		ciudad.conectar(rec,cat, 5);
+		
+		ciudad.conectar(rec,pal, 30);
+		ciudad.conectar(pal,rec, 30);
+		ciudad.conectar(rec,mus, 15);
+		ciudad.conectar(mus,rec, 15);
+		
+		
+		
+		ParcialClass parcial = new ParcialClass();
+		
+		ListaGenerica<String> lugaresRestringidos = new ListaEnlazadaGenerica<String>();
+		lugaresRestringidos.agregarFinal("Legislatura");
+		lugaresRestringidos.agregarFinal("MACLA");
+		
+		ListaGenerica<Objeto> lis = parcial.resolver(ciudad,"Estadio Diego Armando Maradona",
+				"Palacio Campodonico", lugaresRestringidos);
+		lis.comenzar();
+		while(!lis.fin()) {
+			System.out.println(lis.proximo());
+		}
+		
+	}
+
+}
+
+
+

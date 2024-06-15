@@ -1,0 +1,51 @@
+public ListaGenerica<String> bfs (Grafo<String> grafo){
+		boolean[]marca = new boolean[grafo.listaDeVertices().tamanio() + 1];
+		ListaGenerica<String> lis = new ListaEnlazadaGenerica<String>();
+		for (int i=1; i<=grafo.listaDeVertices().tamanio(); i++) {
+			if (!marca[i])
+				bfsPrivado(i,grafo,lis,marca);
+		}
+		return lis;
+	}
+	
+	private void bfsPrivado (int i,Grafo<String> grafo,ListaGenerica<String> lis, boolean[] marca) {
+		ColaGenerica<Vertice<String>> cola = new ColaGenerica<Vertice<String>>();
+		cola.encolar(grafo.vertice(i));
+		cola.encolar(null);
+		marca[i]= true;
+		int nivel = 0;
+		
+		while(!cola.esVacia()) {
+			Vertice <String> v = cola.desencolar();
+			if (v != null) {
+				//lis.agregarFinal(v.dato());
+				ListaGenerica<Arista<String>> ady = grafo.listaDeAdyacentes(v);
+				ady.comenzar();
+				while(!ady.fin()) {
+					Arista<String> arista = ady.proximo();
+					int j = arista.verticeDestino().posicion();
+					if (!marca[j]) {
+						cola.encolar(arista.verticeDestino());
+						marca[j] = true;
+					}
+				}
+			}else {
+				if (!cola.esVacia()) {
+					cola.encolar(null);
+					nivel++;
+				}
+			}
+		}
+		
+	}
+
+
+
+
+
+
+
+
+
+
+

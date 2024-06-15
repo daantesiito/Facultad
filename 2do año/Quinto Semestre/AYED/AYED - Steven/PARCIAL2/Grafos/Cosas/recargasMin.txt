@@ -1,0 +1,47 @@
+Hola Franco, gracias por responder.
+Ahi realice los cambios y me quedo asi el codigo:
+public ListaGenerica caminoConMenorCargaDeCombustible (String c1, String c2, int tanqueAuto){
+ListaGenerica camino = new ListaEnlazadaGenerica();
+ListaGenerica caminoNuevo = new ListaEnlazadaGenerica();
+Vertice v = buscar(c1);
+if(v != null) {
+boolean [] marca = new boolean [this.grafo.listaDeVertices().tamanio()+1];
+dfs5(v,c2,marca,camino,caminoNuevo,tanqueAuto,tanqueAuto,Integer.MAX_VALUE,0);
+}
+return caminoNuevo;
+}
+
+public int dfs5 (Vertice v, String dest, boolean [] marca, ListaGenerica camino,
+ListaGenerica caminoNuevo, int tanque, int tanqueAct, int recargaMin, int recargas) {
+
+marca[v.getPosicion()] = true;
+camino.agregarFinal(v.dato());
+
+if (v.dato().equals(dest) && recargas < recargaMin) {
+recargaMin = recargas;
+copiar(camino, caminoNuevo);
+}
+else {
+ListaGenerica> ady = this.grafo.listaDeAdyacentes(v);
+ady.comenzar();
+while(!ady.fin()) {
+Arista arista = ady.proximo();
+Vertice j = arista.verticeDestino();
+if (!marca[j.getPosicion()] && recargas < recargaMin) {
+int peso = arista.peso();
+if (peso <= tanque) {
+if (tanqueAct - peso >= 0) {
+recargaMin = dfs5(j,dest,marca,camino,caminoNuevo,tanque,tanqueAct-peso,recargaMin,recargas);
+}
+else {
+recargaMin = dfs5(j,dest,marca,camino,caminoNuevo,tanque,tanque-peso,recargaMin,recargas+1);
+}
+}
+}
+}
+}
+marca[v.getPosicion()] = false;
+camino.eliminarEn(camino.tamanio());
+
+return recargaMin;
+}
