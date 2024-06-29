@@ -5,34 +5,28 @@ public class parcial15junioTema1 {
     public List<Integer> camino (int num) {
         List<Integer> lista = new LinkedList<Integer>();
         if (!arbol.isEmpty()) {
-            if (camino(arbol,lista,num)) 
-                return lista;
-            else 
-                return null;
-        } else {
-            return lista;
+            recursion(arbol,lista,num);
         }
-        
-        
+        return lista;
     }
 
-    private boolean camino(GeneralTree<Integer> arbol, List<Integer> lista, int num) {
+    private boolean recursion(GeneralTree<Integer> arbol, List<Integer> lista, int num) {
+        boolean encontro = false;
         lista.add(arbol.getData());
         if (!arbol.isLeaf()) {
-            if (arbol.hasChildren()) {
-                List<GeneralTree<Integer>> children = arbol.getChildren();
-                if (children.size() >= num) {
-                    for (GeneralTree<Integer> child: children) {
-                        if (camino(child,lista,num)) {
-                            return true;
-                        }
-                    }
+            List<GeneralTree<Integer>> children = arbol.getChildren();
+            if (children.size() >= num) {
+                Iterator<GeneralTree<Integer>> it = children.iterator();
+                while (it.hasNext() && !encontro) {
+                    encontro = recursion(it.next(), lista, num);
                 }
             }
-            else {
-                lista.remove(lista.size()-1);
-                return false;
-            }
+        } else {
+            return true;
         }
+        if (!encontro) {
+            lista.remove(lista.size()-1);
+        }
+        return encontro;
     }
 }
