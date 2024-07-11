@@ -1,0 +1,21 @@
+ARCHIVOS SERIE CON ACCESO:
+Secuencial -> N/2 accesos promedio
+Ordenado -> log2N
+
+
+ARCHIVOS SECUENCIALES CON ACCESO SECUENCIAL INDIZADO:
+Árboles -> 3 o 4 accesos
+
+Información dividida en 3 estadios:
+- Archivo de datos
+- Archivo con índice 
+- Tantos archivos como índices unívocos o secundarios tuviera el archivo de datos.
+
+
+ARCHIVOS DIRECTOS:
+- 1 acceso
+- No puede haber estructuras adicionales
+- Se organiza el archivo de datos
+- Solo puede organizarse por 1 UNICO criterio -> clave primaria.
+
+

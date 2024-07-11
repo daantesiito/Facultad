@@ -1,0 +1,10 @@
+1- e (a y d)
+2- g (a, d, e)
+3- f
+4- f
+5- d (NO SE)
+6- a o e
+7- f
+8- a
+9- e (se debe cambiar la funcion de dispersion y aumentar el tamaño del archivo)
+10- a

@@ -1,0 +1,49 @@
+UN INDICE SECUNDARIO SE PUEDE IMPLEMENTAR CON:
+a- Técnicas de hashing
+b- Técnicas de árbol (binario, avl, b)
+c- un vector en memoria ram
+d- todas
+e- algunas
+f- ningun
+
+
+
+
+V -> b, c -> e
+F -> a (el hashing no admite claves repetidas)
+
+
+
+CUANDO LA DENSIDAD DE EMPAQUETAMIENTO TIENDE A 1:
+a- Se debe pasar de Hash estático a dinámico
+b- Se debe reformular el tamaño del nodo
+c- Se debe aumentar la cantidad de registros por nodo
+d- algunas
+e- ninguna
+
+
+
+
+V -> e
+F -> a (no es obligatorio), b (no debería ser posible, la máxima cantidad de registros que caben en el nodo ya está dada), c (lo mismo)
+
+Otra verdadera sería:
+Se debe reformular el tamaño del archivo
+
+
+
+SUPONGA QUE SOBRE UN NODO DE UN ARBOL B SE PRODUCE UN OVERFLOW (alta), EN DICHO CASO SE PUEDE:
+a- aplicar saturacion progresiva encadenada
+b- aplicar doble dispersión
+c- aplicar un área de desborde separado para el nodo
+d- todas
+e- ninguna
+
+
+
+
+
+V -> e (estamos hablando de tecnicas de tratamiento de hashing)
+
+
+

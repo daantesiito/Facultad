@@ -1,0 +1,69 @@
+1- Alta de registros
+V -> a, c -> e (algunas)
+F -> b
+
+
+2- Indice secundario
+V -> c
+El índice secundario accede al archivo de datos a partir del índice primario -> hay 1 indireccion más
+El índice secundario además tiene 2 archivos -> datos sin repetir, y datos repetidos
+
+
+3- Desborde de doble PAGINACION
+V -> f -> doble paginacion no existe
+
+
+4- Arbol B asterisco
+V -> a, b, c -> d
+El algoritmo no es el mismo porque 1 llena a la mitad y el otro a 2/3
+
+
+5- Archivo serie
+V -> a, b (sí pero que sea el registro sea el que quiero es otra cosa) -> e
+F -> c (no se puede porque no dice archivo serie ordenado)
+
+
+6- Tecnica de prefijos simples
+Técnica de prefijos simples (usa primeros caracteres como separadores)
+V -> f (ninguna)
+F -> a (no se aplica siempre y con binarios no se puede aplicar), b, c
+
+PUEDO organizar la parte de arriba de un árbol b+ como b*
+
+
+7- Densidad de empaquetamiento
+V -> a
+F -> b (no es la definición de densidad de emp) , c (en caso de búsqueda no se modifica)
+
+
+8- Arbol binario paginado
+Se construyeron para en vez de meter un árbol de altura 3 o 4 ponerlo todo como multicamino -> no significa que esté balanceado
+Garantiza una organización más eficiente para cada vez que accedo al disco traer un bloque
+V -> c
+F -> a, b
+
+
+9- Corte de control
+V -> b
+F -> a, c (puede estar ordenado lógicamente o puede NO estar ordenado, de ahi que sea eficiente es otra cosa)
+
+Puede realizarse sobre un archivo NO ordenado
+
+
+10- Primer ajuste
+V -> f
+F -> a, b (no borra nada), c (longitud variable)
+
+Permite recuperar espacio con u proceso de alta
+
+
+11- Indice
+V -> f
+F -> a, b, c (se aplica en long fija)
+
+Archivos SECUENCIALES
+
+
+
+
+
