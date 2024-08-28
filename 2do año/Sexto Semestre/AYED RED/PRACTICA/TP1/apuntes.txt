@@ -1,0 +1,26 @@
+
+recursion para pasar parametros se usa el return o un objeto
+
+for each
+
+for
+while con iterator
+
+
+
+List<Estudiante> list = new LinkedList<Estudiante>();
+Estudiante e1 = new Estudiante(datos);
+list.add(e1);
+
+
+para la lista usar new de la lista o addall 
+
+List<Estudiante> list2 = new LinkedList<Estudiante>(list);
+
+
+usar el equals.
+
+lista.size()
+lista.contains()
+
+
