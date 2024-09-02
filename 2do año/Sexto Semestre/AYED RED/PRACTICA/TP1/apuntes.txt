@@ -23,4 +23,71 @@ usar el equals.
 lista.size()
 lista.contains()
 
+ALGO ASI ES TENGO QUE CONSULTAR
+cola.enqueue(raiz)
+cola.enqueue(null)
+while !cola.isEmpty()
+    num = cola.dequeue()
+    if !num.hasleftchild && !num.hasrightchild 
+        sumahojas += num.getData()
+    else
+        if num.hasleftchild()
+            cola.enqueue(num.getleftchild)
+        if num.hasrightchild()
+            cola.enqueue(num.getrightchild)
+    if num == null
+        if !cola.isEmpty
+            cola.enqueue(null)
+            sumaNivel += 1
 
+
+
+
+cualquier numero que este en un vector tiene a su hijo izquierdo a la distancia 2 * i y el hijo derecho a la distancia 2 * i + 1
+por ejemplo:
+
+4 3 2 6 0 3
+
+4 --> 2*1: 2 = numero 3 del vector
+4 --> 2*1 + 1: 2 = numero 2 del vector
+
+3 --> 2*2: 4 = numero 6 del vector
+3 --> 2*2 + 1: 5 = numero 0 del vector
+
+2 --> 2*3: 6 = numero 3 del vector
+
+                4
+        3               2
+    6       0       3
+
+
+PARA CONTRUIR UN ARBOL CON VECTORES POSTORDEN E INORDEN
+
+EL VALOR DE MAS A LA DERECHA DEL POSTORDEN ME DA LA RAIZ
+
+VOY CON ESA RAIZ AL VECTOR INORDEN Y DIVIDO A LA MITAD Y SABES CUALES SON LOS HIJOS IZQUIERDOS Y DERECHOS, ASI SUCESIVAMENTE
+
+
+inorden :  C  B  F  E  G  A  D  I  H   y   postorden :  C  F  G  E  B  I  H  D  A
+
+A es raiz, se divide a la mitad en el inorden y tenes C B F E G del lado derecho y del lado izquierdo tenes D I H 
+
+Al tener los lados, dividimos en los dos lados del postorden y agarramos el que este mas a la derecha.
+
+En este caso, en el post orden dividido, del lado izquierdo tenes la B y del lado derecho tenes la D.
+
+En la B sabes gracias al inorden que del lado izquierdo tenes la C y del lado derecho tener F E G 
+
+En la D tenes del lado izquierdo nada, y del lado derecho tenes I H 
+
+Asi sucesivamente.
+
+a b d * c + * e f g * + +
+
+((a * ((b*d) + c)) + (e + (f * g)))
+
+                                    (+)
+                        (*)                             (+)
+                (A)               (+)           (E)               (*)
+                            (*)         (C)                   (F)     (G)
+                        (B)     (D)       
