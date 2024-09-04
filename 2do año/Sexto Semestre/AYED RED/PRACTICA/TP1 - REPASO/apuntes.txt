@@ -41,8 +41,6 @@ while !cola.isEmpty()
             sumaNivel += 1
 
 
-
-
 cualquier numero que este en un vector tiene a su hijo izquierdo a la distancia 2 * i y el hijo derecho a la distancia 2 * i + 1
 por ejemplo:
 
