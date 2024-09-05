@@ -1,0 +1,23 @@
+Binary Tree tiene jerarquia
+
+se elije por sobre otras estructuras ya que es jerarquico
+
+un ejemplo es el directorio de carpetas, este equipo raiz, disco c y disco d son hijos y asi sucesivamente.
+
+Un arbol binario es vacio cuando el arbol no apunta a nada, todavia no hice el null.
+
+para crear el arbol hay que hacer un new, IMPORTANTE
+
+Para la catedra un arbol vacio es cuando es raiz NULL e hijos NULL.
+
+Siempre se recorre 1 sola vez.
+
+hay dos formas de hacerlo el ejercicio 9:
+
+si no habla de niveles, generalmente recursiva.
+
+en null y arbol vacio se devuelve un arbol vacio.
+
+Para el ejercicio 9, para armar un arbol a traves de otro arbol, se baja a la par, hijo izq desp hijo der en los dos  a la par
+en el caso por ejemplo del 4, cuando se llega, tendria el dato de la suma y el dato del padre
+
