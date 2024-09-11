@@ -11,6 +11,60 @@ public class WallPostImpl implements WallPost {
 	/**
 	 * Complete con su implementación
 	 */
+	private String text;
+    private int likes;
+    private boolean featured;
+    
+    public WallPostImpl () {
+        this.text = "Undefined post";
+        this.likes = 0;
+        this.featured = false;
+    }
+    
+    public String getText() {
+        
+        return this.text;
+    }
+
+    @Override
+    public void setText(String text) {
+
+        this.text = text;
+    }
+
+    @Override
+    public int getLikes() {
+
+        return this.likes;
+    }
+
+    @Override
+    public void like() {
+
+        this.likes++;
+        
+    }
+
+    @Override
+    public void dislike() {
+        if (this.likes > 0)
+            this.likes--;
+    }
+
+    @Override
+    public boolean isFeatured() {
+
+        return this.featured;
+    }
+
+    @Override
+    public void toggleFeatured() {
+
+        if (!this.featured)
+            this.featured  = true;
+            else
+                this.featured = false;
+    }
 
 	/*
 	 * Este mensaje se utiliza para que una instancia de Wallpost se muestre de forma adecuada
@@ -23,5 +77,4 @@ public class WallPostImpl implements WallPost {
             ", featured: '" + isFeatured() + "'" +
             "}";
     }
-
 }
