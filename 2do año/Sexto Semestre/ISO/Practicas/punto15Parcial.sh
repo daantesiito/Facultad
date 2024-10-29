@@ -9,17 +9,18 @@ not_file_system=0
 parametros="$@"
 
 for p in $parametros; do
-    if [ -f "$p" ]; then
-        gzip "$p"
-    elif [ -d "$p" ]; then
-        if [ -r "$p" ]; then
-            tar -cf archivo_empaquetado.tar "$p"
-            gzip archivo_empaquetado.tar
-        fi
-        if [ -w "$p" ]; then
-            rm -rf "$p"
-        fi
-    else
+    if [ -e "$p" ]; then
+        if [ -f "$p" ]; then
+            gzip "$p"
+        elif [ -d "$p" ]; then
+            if [ -r "$p" ]; then
+                tar -cf archivo_empaquetado.tar "$p"
+                gzip archivo_empaquetado.tar
+            fi
+            if [ -w "$p" ]; then
+                rm -rf "$p"
+            fi
+    else 
         not_file_system=$((not_file_system + 1))
     fi
 done

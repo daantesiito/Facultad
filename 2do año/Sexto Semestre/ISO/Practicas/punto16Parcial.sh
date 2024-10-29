@@ -4,9 +4,12 @@ if [ $# -ne 0 ]; then
     exit 0
 fi
 
-users=$(cut -d : -f1 /etc/passwd)
+users=($(cut -d : -f1 /etc/passwd))
 
 existe() {
+    if [ $# -ne 1 ]; then
+        exit 0
+    fi
     for u in $users; do
         if [ $u = "$1" ]; then
             return 0
@@ -16,10 +19,14 @@ existe() {
 }
 
 eliminar_usuario() {
+    if [ $# -ne 1 ]; then
+        exit 0
+    fi
+    users_new=()
     if existe "$1"; then
         for u in $users; do
             if [ $u != "$1" ]; then
-							users_new+=($u)
+				users_new+=($u)
             fi
         done
     fi
@@ -31,7 +38,7 @@ eliminar_usuario() {
 usuarios_con_patron() {
     users_con_patron=0
     for u in $users; do 
-        if echo "$u" | grep -q "$1"; then
+        if echo "$u" | grep -q "*$1*"; then
             echo "$u"
             users_con_patron= $((users_con_patron + 1))
         fi
