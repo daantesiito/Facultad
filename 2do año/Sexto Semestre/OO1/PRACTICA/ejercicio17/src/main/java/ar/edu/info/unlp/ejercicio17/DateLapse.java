@@ -9,7 +9,6 @@ private LocalDate from;
 private LocalDate to;
 
 public DateLapse(LocalDate from, LocalDate to) {
-	super();
 	this.from = from;
 	this.to = to;
 }
