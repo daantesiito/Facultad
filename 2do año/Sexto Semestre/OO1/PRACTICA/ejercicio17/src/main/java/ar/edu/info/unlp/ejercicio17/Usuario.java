@@ -16,8 +16,9 @@ public class Usuario {
 		this.propiedades = new ArrayList<Propiedad>();
 	}
 	
-	public void agregarPropiedad(Propiedad propiedad) {
+	public Propiedad agregarPropiedad(Propiedad propiedad) {
 		this.propiedades.add(propiedad);
+		return propiedad;
 	}
 	
 	public double calcularIngresos() {

@@ -21,23 +21,31 @@ public class Propiedad {
 		return this.reservas.stream().noneMatch(reserva->reserva.getPeriodo().overlaps(new DateLapse(inicio,fin)));
 	}
 	
-	public void crearReserva(LocalDate fechaInicio, LocalDate fechaFin) {
+	public Reserva crearReserva(LocalDate fechaInicio, LocalDate fechaFin) {
 		if (this.consultarDisponibilidad(fechaInicio, fechaFin)) {
 			Reserva reserva = new Reserva(fechaInicio, fechaFin);
 			this.reservas.add(reserva);
+			return reserva;
 		}
+		else
+			return null;
 	}
 	
 	public double calcularPrecio(Reserva reserva) {
 		return this.precioPorNoche * reserva.getPeriodoDias();
 	}
 	
-	public void cancelarReserva(Reserva unaReserva) {
+	public Reserva cancelarReserva(Reserva unaReserva) {
 		if (this.reservas.contains(unaReserva)) {
 			if (!unaReserva.esCancelable(LocalDate.now())) {
 				this.reservas.remove(unaReserva);
+				return unaReserva;
 			}
+			else
+				return null;
 		}
+		else
+			return null;
 	}
 	
 	public ArrayList<Reserva> getReservas() {
