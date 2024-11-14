@@ -19,16 +19,34 @@ public class Viaje {
 		this.vehiculo = vehiculo;
 		this.fechaViaje = fechaViaje;
 		this.pasajeros = new ArrayList<Persona>();
-		this.pasajeros.add(this.vehiculo.getConductor());
+		Persona conductor1 = this.vehiculo.getConductor();
+		this.pasajeros.add(conductor1);
 	}
 	
-	public void registrarPasajero(Pasajero pasajero) {
-	    if (this.vehiculo.getCapacidad() > this.getCantPasajerosActual() 
-	    		&& (LocalDate.now().isBefore(this.fechaViaje.minusDays(2)) || LocalDate.now().isEqual(this.fechaViaje.minusDays(2)))
-	            && pasajero.getSaldo() > 0) {
+	public Pasajero registrarPasajero(Pasajero pasajero) {
+	    boolean hayEspacio = this.vehiculo.getCapacidad() > this.getCantPasajerosActual();
+	    boolean enFecha = LocalDate.now().isBefore(this.fechaViaje.minusDays(2));
+	    boolean tieneSaldo = pasajero.getSaldo() >= 0;
+
+	    System.out.println("Hay espacio: " + hayEspacio);
+	    System.out.println("En fecha: " + enFecha);
+	    System.out.println("Tiene saldo: " + tieneSaldo);
+
+	    if (hayEspacio && enFecha && tieneSaldo) {
 	        this.pasajeros.add(pasajero);
 	        pasajero.agregarViaje(this);
+	        return pasajero;
 	    }
+	    return null;
+	}
+
+	public boolean procesarUnViaje() {
+		double montoPorCabeza = this.getCostoTotal() / this.getCantPasajerosActual();
+		boolean ok = false;
+		for (Persona persona: this.pasajeros)
+			persona.descontarSaldo(montoPorCabeza - persona.calcularBonificacion());
+			ok = true;
+		return ok;
 	}
 	
 	public int getCantPasajerosActual() {
@@ -36,11 +54,9 @@ public class Viaje {
 	}
 	
 	public boolean hace30Dias() {
-		if (this.fechaViaje.isAfter(LocalDate.now().minusMonths(1)))
-			return true;
-		else
-			return false;
+	    return this.fechaViaje.isAfter(LocalDate.now().minusMonths(1));
 	}
+
 
 	public String getOrigen() {
 		return origen;

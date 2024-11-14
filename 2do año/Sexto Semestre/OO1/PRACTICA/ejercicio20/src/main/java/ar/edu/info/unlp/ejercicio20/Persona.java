@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class Persona {
 	
-	private String nombre;
+	protected String nombre;
 	protected double saldo;
 	
 	public Persona(String nombre) {
@@ -16,16 +16,11 @@ public abstract class Persona {
 		return this.saldo;
 	}
 	
-	public abstract void cargarSaldo(double montoCargar);
+	public abstract double cargarSaldo(double montoCargar);
 	
 	public Viaje altaDeViaje(String origen, String destino,  double costoTotal, Vehiculo vehiculo,  LocalDate fechaViaje) {
 		Viaje viaje =  new Viaje(origen,destino,costoTotal,vehiculo,fechaViaje);
 		return viaje;
-	}
-
-	public void procesarUnViaje(Viaje viaje) {
-		double montoPorCabeza = viaje.getCostoTotal() / viaje.getCantPasajerosActual();
-		this.descontarSaldo(montoPorCabeza - this.calcularBonificacion());
 	}
 
 	public abstract double calcularBonificacion();

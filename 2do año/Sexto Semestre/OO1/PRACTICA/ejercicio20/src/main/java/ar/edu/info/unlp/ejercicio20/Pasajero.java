@@ -8,13 +8,15 @@ public class Pasajero extends Persona {
 	
 	public Pasajero(String nombre) {
 		super(nombre);
+		this.viajes = new ArrayList<Viaje>();
 	}
 	
-	public void cargarSaldo(double montoCargar) {
+	public double cargarSaldo(double montoCargar) {
 		if (this.ningunViaje30Dias())
 			this.saldo += montoCargar * 0.9;
 		else
 			this.saldo += montoCargar;
+		return this.saldo;
 	}
 	
 	public boolean ningunViaje30Dias() {
