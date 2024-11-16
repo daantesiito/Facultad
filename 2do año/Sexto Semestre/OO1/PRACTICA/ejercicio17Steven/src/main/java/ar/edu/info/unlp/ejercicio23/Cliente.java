@@ -1,6 +1,8 @@
 package ar.edu.info.unlp.ejercicio23;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cliente extends Persona {
 
@@ -22,7 +24,9 @@ public class Cliente extends Persona {
 			return null;
 	}
 	
-	public double prodPorCategoria() {
-		this.pedidos.stream().mapToDouble(pedido -> pedido.getProducto().getCategoria()).sum();
+	public Bag<String> prodPorCategoria() {
+		Bag<String> productosPorCategoria = new BagImpl<String>();
+		this.pedidos.stream().forEach(pedido -> pedido.agregarALaBag(productosPorCategoria));
+		return productosPorCategoria;
 	}
 }

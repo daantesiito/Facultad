@@ -25,4 +25,8 @@ public class Producto {
 	public String getCategoria() {
 		return this.categoria;
 	}
+	
+	public double getPrecio() {
+		return this.precio;
+	}
 }
