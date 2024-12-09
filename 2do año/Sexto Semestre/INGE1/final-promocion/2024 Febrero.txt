@@ -1,0 +1,8 @@
+Gente, les dejo el enunciado del final de esta mesa por si alguien tiene que prepararlo:
+1. ¿Qué es la Ingeniería de Software?
+2. Dar la definición de stakeholder y dos ejemplos según el contexto del enunciado.
+3. Enumerar y definir las técnicas de elicitación discretas dadas en la materia. ¿Está de acuerdo en usarlas para la elicitación de lo que plantea el contexto?
+4. Definir requerimientos funcionales y no funcionales. Dar 3 ejemplos del contexto para requerimientos no funcionales.
+5. Describir el modelo de trabajo en V. ¿Está de acuerdo con su uso como marco de trabajo para lo que plantea el contexto?
+6. Mencionar y definir la norma de calidad de producto de software.
+7. Tabla de verdad: "Los postulantes acumulan puntos para se seleccionados, para lo cual necesitan 30 puntos, que la vacante a la que postulan esté libre y satisfacer una entrevista. Si tienen menos de 30 puntos o no satisfacen la entrevista, son descartados. Si satisfacen la entrevista pero no se encuentra libre la vacante, se archiva su postulación"
