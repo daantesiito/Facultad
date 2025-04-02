@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 public abstract class Pedido {
 
     ArrayList<Producto> productos;
@@ -6,7 +9,7 @@ public abstract class Pedido {
         this.productos = new ArrayList<>();
     }
 
-    public static void addProducto(Producto p) {
+    public void addProducto(Producto p) {
         this.productos.add(p);
     }
 

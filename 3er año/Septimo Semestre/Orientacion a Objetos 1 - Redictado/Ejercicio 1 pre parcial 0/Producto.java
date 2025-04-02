@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 public abstract class Producto {
 
     ArrayList<Promocion> promocion;
