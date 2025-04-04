@@ -1,17 +1,19 @@
-package ejercicioparcialredictado2952024;
+package ejparcialred;
 
 public class Inmueble implements Bien {
 
     private double numPartida;
     private double valorLote;
     private double valorEdificacion;
-    private Contribuyente propietario;
 
-    public Inmueble(double numPartida, double valorLote, double valorEdificacion, Contribuyente propietario) {
+    public Inmueble(double numPartida, double valorLote, double valorEdificacion) {
         this.numPartida = numPartida;
         this.valorLote = valorLote;
         this.valorEdificacion = valorEdificacion;
-        this.propietario = propietario;
+    }
+
+    public double calcularImpuesto() {
+        return this.valorEdificacion + this.valorLote;
     }
 
 }
