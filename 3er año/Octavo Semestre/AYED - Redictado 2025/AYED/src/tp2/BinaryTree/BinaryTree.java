@@ -106,36 +106,37 @@ public class BinaryTree <T> {
     }
 
 	// 0<=n<=m
-	public void entreNiveles(int n, int m){
-		Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
-		int nivel = 0;
-		
-		cola.enqueue(this);
-		cola.enqueue(null);
+    public void entreNiveles(int n, int m) {
+        if (n > m || this.isEmpty()) 
+        	return;
 
-		while (!cola.isEmpty()) {
-			BinaryTree<T> dato = cola.dequeue();
-			if (!cola.isEmpty()) {
-				nivel++;
-				if (dato.hasLeftChild()) {
-					cola.enqueue(dato.getLeftChild());
-					if (nivel >= n && nivel <= m) {
-						System.out.println(dato.getLeftChild());
-					}
-				}
-				if (dato.hasRightChild()) {
-					cola.enqueue(dato.getRightChild());
-					if (nivel >= n && nivel <= m) {
-						System.out.println(dato.getRightChild());
-					}
-				}
-			}
-			else
-				cola.enqueue(null);
-		}
-		
-		
-		}
+        Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+        int nivel = 0;
+
+        cola.enqueue(this);
+        cola.enqueue(null); 
+
+        while (!cola.isEmpty() && nivel <= m) {
+            BinaryTree<T> dato = cola.dequeue();
+
+            if (dato != null) { 
+                if (nivel >= n) {
+                    System.out.println(dato.getData()); 
+                }
+                if (dato.hasLeftChild())  
+                	cola.enqueue(dato.getLeftChild());
+                if (dato.hasRightChild()) 
+                	cola.enqueue(dato.getRightChild());
+            } else {
+                // fin de nivel
+                nivel++;
+                if (!cola.isEmpty() && nivel <= m) {
+                    cola.enqueue(null); 
+                }
+            }
+        }
+    }
+
 //		
 		
    }

@@ -1,0 +1,31 @@
+package tp2.BinaryTree;
+
+import java.util.LinkedList;
+
+public class punto3ContadorArbol {
+
+	private BinaryTree<Integer> arbol;
+	
+	public punto3ContadorArbol(BinaryTree<Integer> arbol) {
+		this.arbol = arbol;
+	}
+	
+	public LinkedList<Integer> numerosPares() {
+		if (!arbol.isEmpty()) {
+			LinkedList<Integer> lista = new LinkedList<Integer>();
+		
+			return inOrden(arbol,lista);
+		}
+		else
+			return null;
+
+	
+	}
+	
+	private LinkedList<Integer> inOrden(BinaryTree<Integer> arbol, LinkedList<Integer> lista) {
+		
+		
+		return lista;
+	}
+	
+}

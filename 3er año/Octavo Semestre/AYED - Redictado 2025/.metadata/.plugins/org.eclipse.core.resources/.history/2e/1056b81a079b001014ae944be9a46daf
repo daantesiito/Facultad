@@ -1,0 +1,7 @@
+package tp2.BinaryTree;
+
+public class punto5ProfundidadDeArbolBinario {
+
+	BinaryTree<Integer> arbol = new BinaryTree<Integer>();
+	
+}

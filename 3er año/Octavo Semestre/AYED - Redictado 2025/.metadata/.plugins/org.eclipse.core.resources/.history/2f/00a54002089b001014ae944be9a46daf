@@ -1,0 +1,11 @@
+package tp2.BinaryTree;
+
+public class punto5ProfundidadDeArbolBinario {
+
+	BinaryTree<Integer> arbol = new BinaryTree<Integer>();
+	
+	public Integer sumaElementosProfundidad(Integer num) {
+		return suma;
+	}
+	
+}

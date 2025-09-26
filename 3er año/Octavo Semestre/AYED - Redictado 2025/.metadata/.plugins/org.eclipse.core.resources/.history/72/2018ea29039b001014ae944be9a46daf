@@ -1,0 +1,9 @@
+package tp2.BinaryTree;
+
+public class punto4RedBinariaLlena {
+
+	public Integer retardoReenvio() {
+		return suma;
+	}
+	
+}

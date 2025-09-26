@@ -1,0 +1,20 @@
+package tp2.BinaryTree;
+
+public class punto4RedBinariaLlena {
+
+	BinaryTree<Integer> arbol;
+	
+	public Integer retardoReenvio() {
+		Integer suma = 0;
+		
+		
+		return preOrden(suma, arbol);
+	}
+	
+	private Integer preOrden(Integer suma, BinaryTree<Integer> arbol) {
+		
+		
+		return suma;
+	}
+	
+}

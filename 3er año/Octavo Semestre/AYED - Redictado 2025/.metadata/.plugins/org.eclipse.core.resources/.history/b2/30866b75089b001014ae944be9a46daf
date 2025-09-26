@@ -1,0 +1,29 @@
+package tp2.BinaryTree;
+
+import java.util.Queue;
+
+public class punto5ProfundidadDeArbolBinario {
+
+	BinaryTree<Integer> arbol = new BinaryTree<Integer>();
+	
+	public Integer sumaElementosProfundidad(Integer nivel) {
+		Integer nivelActual = 0;
+		Integer suma = 0;
+		Queue<BinaryTree<Integer>> cola = new Queue<BinaryTree<Integer>>();
+		
+		cola.enqueue(arbol.getData());
+		
+		while (!cola.isEmpty()) {
+			BinaryTree<Integer> dato = cola.dequeue();
+			
+			if (nivelActual == nivel) {
+				suma += dato.getData();
+			}
+				
+			
+		}
+		
+		return suma;
+	}
+	
+}

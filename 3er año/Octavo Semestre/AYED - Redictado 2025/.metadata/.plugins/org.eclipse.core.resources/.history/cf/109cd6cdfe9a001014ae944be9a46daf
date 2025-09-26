@@ -1,0 +1,13 @@
+package tp2.BinaryTree;
+
+import java.util.LinkedList;
+
+public class punto3ContadorArbol {
+
+	BinaryTree<Integer> arbol;
+	
+	public LinkedList<Integer> numerosPares() {
+		
+	}
+	
+}

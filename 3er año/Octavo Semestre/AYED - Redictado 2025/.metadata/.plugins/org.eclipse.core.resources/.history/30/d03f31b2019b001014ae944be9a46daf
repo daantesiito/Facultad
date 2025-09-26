@@ -1,0 +1,53 @@
+package tp2.BinaryTree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class punto3ContadorArbol {
+
+	private BinaryTree<Integer> arbol;
+	
+	public punto3ContadorArbol(BinaryTree<Integer> arbol) {
+		this.arbol = arbol;
+	}
+	
+	public LinkedList<Integer> numerosPares() {
+		if (!arbol.isEmpty()) {
+			LinkedList<Integer> lista = new LinkedList<Integer>();
+		
+			return inOrden(arbol,lista);
+			return postOrden(arbol,lista);
+		}
+		else
+			return null;
+	}
+	
+	private LinkedList<Integer> inOrden(BinaryTree<Integer> arbol, LinkedList<Integer> lista) {
+		
+		if (arbol.hasLeftChild())
+			inOrden(arbol.getLeftChild(), lista);
+		
+		if (arbol.getData() % 2 == 0)
+			lista.add(arbol.getData());
+		
+		if (arbol.hasRightChild())
+			inOrden(arbol.getRightChild(), lista);
+		
+		return lista;		
+	}
+	
+	private LinkedList<Integer> postOrden(BinaryTree<Integer> arbol, LinkedList<Integer> lista) {
+		
+		if (arbol.hasLeftChild())
+			postOrden(arbol.getLeftChild(), lista);
+		
+		if (arbol.hasRightChild())
+			postOrden(arbol.getRightChild(), lista);
+		
+		if (arbol.getData() % 2 == 0)
+			lista.add(arbol.getData());
+		
+		return lista;		
+	}
+	
+}

@@ -1,0 +1,29 @@
+package tp2.BinaryTree;
+
+public class punto4RedBinariaLlena {
+
+	BinaryTree<Integer> arbol;
+	
+	public Integer retardoReenvio() {
+		Integer suma = 0;
+		Integer maxSuma = 0;
+		
+		return preOrden(suma, arbol, maxSuma);
+	}
+	
+	private Integer preOrden(Integer suma, BinaryTree<Integer> arbol, Integer maxSuma) {
+		
+		if (arbol.isLeaf()) {
+			suma += arbol.getData();
+			if (suma > maxSuma)
+				maxSuma = suma;
+		}
+		
+		if (arbol.hasLeftChild())
+			suma += suma + preOrden(suma, arbol, maxSuma);
+			
+		
+		return suma;
+	}
+	
+}
