@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Facultad\AYED - Redictado 2025\.metadata\.plugins\org.eclipse.jdt.core
+2277228921.index
+1865797976.index
+591174162.index
