@@ -1,0 +1,61 @@
+package tp2.BinaryTree;
+
+public class punto7 {
+
+	private BinaryTree<Integer> arbol;
+	
+	public boolean isLeftTree(Integer num) {
+		BinaryTree<Integer> nuevoArbol = new BinaryTree<Integer>();
+		nuevoArbol = buscarNum(num, this.arbol);
+		return isLeftTree(nuevoArbol);
+	}
+	
+	private BinaryTree<Integer> buscarNum(Integer num, BinaryTree<Integer> arb) {
+		if (arb.getData().equals(num))
+			return arb;
+		else
+			if (arb.hasLeftChild()) {
+				return buscarNum(num, arb.getLeftChild());
+			}
+			if (arb.hasRightChild()) {
+				return buscarNum(num, arb.getRightChild());
+			}
+		return null;
+	}
+	
+	private boolean isLeftTree(BinaryTree<Integer> arb) {
+		Integer HI = 0;
+		Integer HD = 0;
+		if (arb == null)
+			return false;
+		else
+			if (arb.hasLeftChild()) 
+				HI = contarHijosUnicos(arb.getLeftChild());
+			else 
+				HI = -1;
+			if (arb.hasRightChild()) 
+				HD = contarHijosUnicos(arb.getRightChild());
+			else 
+				HD = -1;
+		if (HI > HD) 
+			return true;
+		else
+			return false;
+	}
+	
+	private Integer contarHijosUnicos(BinaryTree<Integer> arb) {
+		Integer cuenta = 0;
+		if ((arb.hasLeftChild() && !arb.hasRightChild()) || 
+			(arb.hasRightChild() && !arb.hasLeftChild())) {
+			    cuenta += 1;
+		}
+		if (arb.hasLeftChild()) {
+			cuenta += contarHijosUnicos(arb.getLeftChild());
+		}
+		if (arb.hasRightChild()) {
+			cuenta += contarHijosUnicos(arb.getRightChild());
+		}
+		return cuenta;
+	}
+	
+}

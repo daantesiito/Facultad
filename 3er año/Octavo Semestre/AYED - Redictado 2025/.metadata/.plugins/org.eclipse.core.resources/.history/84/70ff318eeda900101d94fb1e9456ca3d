@@ -1,0 +1,27 @@
+package tp3.ejercicio1;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class punto7 {
+
+	private GeneralTree<Integer> arbol;
+	
+	public List<Integer> caminoAHojaMasLejana() {
+		LinkedList<Integer> lista = new LinkedList<Integer>();
+		LinkedList<Integer> listaMax = new LinkedList<Integer>();
+		return caminoAHojaMasLejana(lista, listaMax);
+	}
+	
+	private LinkedList<Integer> caminoAHojaMasLejana(LinkedList<Integer> lista, LinkedList<Integer> listaMax) {
+
+		if (arbol.isLeaf()) {
+			lista.add(arbol.getData());
+			if 
+		}
+		else
+			lista.add(arbol.getData());
+			
+	}
+	
+}

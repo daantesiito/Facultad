@@ -1,0 +1,26 @@
+package tp2.BinaryTree;
+
+public class punto7 {
+
+	private BinaryTree<Integer> arbol;
+	
+	public boolean isLeftTree(Integer num) {
+		BinaryTree<Integer> nuevoArbol = new BinaryTree<Integer>();
+		nuevoArbol = buscarNum(num, this.arbol);
+		return isLeftTree(nuevoArbol);
+	}
+	
+	private BinaryTree<Integer> buscarNum(Integer num, BinaryTree<Integer> arb) {
+		if (arb.getData() == num)
+			return arb;
+		if (arb.hasLeftChild()) {
+			return arb.getLeftChild().buscarNum();
+		}
+	}
+	
+	private boolean isLeftTree(BinaryTree<Integer> arb) {
+		if (arb == null)
+			return false;
+	}
+	
+}

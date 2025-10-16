@@ -1,0 +1,30 @@
+package tp3.ejercicio1;
+
+import java.util.ArrayList;
+
+public class punto9 {
+
+	public static boolean esDeSeleccion (GeneralTree<Integer> arbol) {
+		if (arbol.isEmpty())
+			return true;
+		return recorrido(arbol);
+	}
+	
+	private boolean recorrido(GeneralTree<Integer> arbol) {
+		if (arbol.isLeaf())
+			return false;
+		
+		Integer minHijo = Integer.MAX_VALUE;
+		
+		for (GeneralTree<Integer> c : arbol.getChildren()) {
+			recorrido(arbol);
+			int valorHijo = c.getData();
+			if (valorHijo < minHijo)
+				minHijo.equals(valorHijo);
+		}
+		if (arbol.getData() == minHijo) {
+			return true;
+		}
+	}
+	
+}

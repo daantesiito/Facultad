@@ -1,0 +1,13 @@
+package tp3.ejercicio1;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class punto10 {
+
+	public static List<Integer> resolver(GeneralTree<Integer> arbol) {
+		LinkedList<Integer> lista = new LinkedList<Integer>();
+		
+	}
+	
+}

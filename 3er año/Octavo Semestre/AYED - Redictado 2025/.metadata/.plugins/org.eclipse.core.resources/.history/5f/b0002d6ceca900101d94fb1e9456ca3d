@@ -1,0 +1,13 @@
+package tp3.ejercicio1;
+
+import java.util.List;
+
+public class punto7 {
+
+	private GeneralTree<Integer> arbol;
+	
+	public List<Integer> caminoAHojaMasLejana() {
+		
+	}
+	
+}

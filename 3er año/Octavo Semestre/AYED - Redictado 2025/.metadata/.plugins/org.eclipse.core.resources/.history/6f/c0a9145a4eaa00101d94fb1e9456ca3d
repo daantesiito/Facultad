@@ -1,0 +1,17 @@
+package tp3.ejercicio1;
+
+public class punto9 {
+
+	public static boolean esDeSeleccion (GeneralTree<Integer> arbol) {
+		
+	}
+	
+	private boolean recorrido(GeneralTree<Integer> arbol) {
+		if (arbol.hasChildren()) {
+			for (GeneralTree<Integer> c : arbol.getChildren()) {
+				recorrido(c);
+			}
+		}
+	}
+	
+}

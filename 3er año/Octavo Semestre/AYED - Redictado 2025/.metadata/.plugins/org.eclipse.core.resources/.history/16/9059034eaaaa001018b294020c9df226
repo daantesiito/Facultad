@@ -1,0 +1,33 @@
+package tp3.ejercicio1;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class punto10 {
+
+	public static List<Integer> resolver(GeneralTree<Integer> arbol) {
+		LinkedList<Integer> lista = new LinkedList<Integer>();
+		if (arbol.isEmpty())
+			return null;
+		int nivel = 0;
+		int max = 0;
+		return recorrido(arbol, lista, nivel);
+	}
+	
+	private static List<Integer> recorrido(GeneralTree<Integer> arbol, LinkedList<Integer> lista, int nivel, int max) {
+		if (arbol.getData() == 1) {
+			lista.add(1);
+			max += 1*nivel;
+		}
+		if (arbol.isLeaf()) {
+			return lista;
+		}
+		if (arbol.hasChildren()) {
+			for (GeneralTree<Integer> c : arbol.getChildren()) {
+				recorrido(c, lista, nivel+1, max);
+			}
+		}
+		return lista;
+	}
+	
+}

@@ -1,0 +1,46 @@
+package tp2.BinaryTree;
+
+import java.util.ArrayList;
+import java.util.Queue;
+
+public class punto8 {
+
+	public boolean esPrefijo(BinaryTree<Integer> ab1, BinaryTree<Integer> ab2) {
+		if (ab1.isEmpty() || ab2.isEmpty()) {
+			return false;
+		}
+		ArrayList<Integer> l1 = new ArrayList<Integer>();
+		ArrayList<Integer> l2 = new ArrayList<Integer>();
+		l1 = recorrido(ab1);
+		l2 = recorrido(ab2);
+		return esPrefijo(l1, l2);
+	}
+	
+	private ArrayList<Integer> recorrido(BinaryTree<Integer> ab) {
+		ArrayList<Integer> lista = new ArrayList<Integer>();
+		Queue<BinaryTree<Integer>> cola = new Queue<BinaryTree<Integer>>();
+		cola.enqueue(ab);
+		while (!cola.isEmpty()) {
+			BinaryTree<Integer> dato = cola.dequeue();
+			if (!dato.isEmpty()) {
+				if (dato.hasLeftChild())
+					cola.enqueue(dato.getLeftChild());
+				if (dato.hasRightChild())
+					cola.enqueue(dato.getRightChild());
+			}
+			else
+				if (!cola.isEmpty()) {
+					cola.enqueue(null);
+				}
+		}
+		return lista;
+	}
+	
+	private boolean esPrefijo(ArrayList<Integer> l1, ArrayList<Integer> l2) {
+		if (l2.containsAll(l1))
+			return true;
+		else
+			return false;
+	}
+
+}
