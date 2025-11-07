@@ -1,6 +1,6 @@
 package tp2.BinaryTree;
 
-import java.util.Queue;
+import parciales.Queue;
 
 public class BinaryTree <T> {
 	

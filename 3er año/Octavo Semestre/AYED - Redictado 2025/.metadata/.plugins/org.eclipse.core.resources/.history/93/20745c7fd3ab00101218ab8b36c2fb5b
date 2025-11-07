@@ -1,0 +1,11 @@
+package parciales;
+
+import java.util.LinkedList;
+
+public class parcialdragonprincesa {
+
+	public LinkedList<String> encontrarPrincesa(BinaryTree<Integer> arbol) {
+		
+	}
+	
+}

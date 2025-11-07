@@ -1,6 +1,6 @@
 package tp3.ejercicio1;
 
-import tp1.ejercicio8.Queue;
+import parciales.Queue;
 
 public class punto11 {
 
@@ -11,11 +11,11 @@ public class punto11 {
 	}
 	
 	private static boolean resolverRec(GeneralTree<Integer> arbol) {
-		Queue<Integer> cola = new Queue<Integer>();
+		Queue<GeneralTree<Integer>> cola = new Queue<GeneralTree<Integer>>();
 		Integer sumaElem = 0;
 		Integer nivel = 0;
 		boolean ok = true;
-		cola.enqueue(arbol.getData());
+		cola.enqueue(arbol);
 		cola.enqueue(null);
 		while (!cola.isEmpty() && ok == true) {
 			GeneralTree<Integer> dato = cola.dequeue();

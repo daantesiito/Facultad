@@ -1,0 +1,21 @@
+package parciales;
+
+public class comparadorDeArbolesGenerales {
+
+	public boolean esInferiorProfundo(GeneralTree<Integer> arbol1, GeneralTree<Integer> arbol2) {
+		if (arbol1 == null || arbol1.isEmpty())
+			return true;
+		if (arbol2 == null || arbol2.isEmpty()) 
+			return false;
+		return recorrido(arbol1, arbol2);
+	}
+	
+	private boolean recorrido(GeneralTree<Integer> arbol1, GeneralTree<Integer> arbol2) {
+		if (arbol1.getData() < arbol2.getData()) {
+			for (GeneralTree<Integer> c : arbol1.getChildren()) {
+				
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,22 @@
+package parciales;
+
+import java.util.LinkedList;
+
+public class parcialdragonprincesa {
+
+	public LinkedList<String> princesaAccesible(BinaryTree<Integer> arbol) {
+		LinkedList<String> lista = new LinkedList<String>();
+		if (arbol != null && !arbol.isEmpty()) {
+			recorrido(arbol, lista, listaMax);
+		}
+		return lista;
+	}
+	
+	private void recorrido(BinaryTree<Integer> arbol, LinkedList<String> lista) {
+		if (arbol.getData().equals("Princesa")) {
+			return lista;
+		}
+		if 
+	}
+	
+}

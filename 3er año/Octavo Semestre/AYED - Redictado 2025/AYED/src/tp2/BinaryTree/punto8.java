@@ -1,7 +1,8 @@
 package tp2.BinaryTree;
 
 import java.util.ArrayList;
-import java.util.Queue;
+
+import parciales.Queue;
 
 public class punto8 {
 

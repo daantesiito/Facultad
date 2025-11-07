@@ -1,0 +1,30 @@
+package parciales;
+
+import java.util.LinkedList;
+
+public class parcialdragonprincesa {
+
+	public LinkedList<String> princesaAccesible(BinaryTree<String> arbol) {
+		LinkedList<String> lista = new LinkedList<String>();
+		if (arbol != null && !arbol.isEmpty()) {
+			return recorrido(arbol, lista);
+		}
+		return lista;
+	}
+	
+	private LinkedList<String> recorrido(BinaryTree<String> arbol, LinkedList<String> lista, LinkedList<String> listaMax) {
+		if (arbol.getData().equals("Princesa")) {
+			return listaMax;
+		}
+		if (arbol.hasLeftChild()) {
+			lista.add(arbol.getData());
+			return recorrido(arbol.getLeftChild(), lista, listaMax);
+		}
+		if (arbol.hasRightChild()) {
+			lista.add(arbol.getData());
+			return recorrido(arbol.getRightChild(), lista, listaMax);
+		}
+		return null;
+	}
+	
+}

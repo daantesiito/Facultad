@@ -1,0 +1,13 @@
+package parciales;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class parcial1erfecha2025GT {
+
+	public static List<Integer> caminoPartidadAlternante(GeneralTree<Integer> arbol) {
+		LinkedList<Integer> lista = new LinkedList<Integer>();
+		
+	}
+	
+}
