@@ -1,0 +1,4 @@
+El dispose libera el espacio y ademas para eliminar del vector hay que reducirlo en 1.
+En este caso el eliminar1 y eliminar2, hacen eso pero lo que cambia es que al reducir en 1, 
+el eliminar1 tiene pasado el parametro del vector por referencia y hace que permita modificar el vector.
+En cambio el eliminar2 al pasar el vector por valor, no persiste el cambio que haga.

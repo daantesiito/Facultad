@@ -1,0 +1,11 @@
+Ninguno de las dos resoluciones esta bien ya que:
+
+A: Hace bien el New para reservar memoria en el vector de punteros pero el vector esta pasado como valor y no por referencia
+
+B: Hace bien en pasar el vector por referencia para que se modifique pero no hace el new.
+
+-----------------
+
+El new siempre va ya que es un vector de punteros a empleado
+
+Si fuera un vector de empleados no haria falta.

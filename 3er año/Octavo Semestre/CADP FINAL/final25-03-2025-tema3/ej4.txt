@@ -1,0 +1,32 @@
+a: falso
+
+  Aunque el vector puede tener acceso O(1) por índice, no siempre es mejor.
+
+  Si hay muchas inserciones o eliminaciones en posiciones intermedias, una lista enlazada es más eficiente.
+
+  La palabra "siempre" hace que sea falso.
+
+b: falso
+
+  Corrección = el programa hace lo que debe hacer.
+
+  Eficiencia = lo hace con el mejor uso de tiempo/memoria.
+
+  Un programa puede ser correcto pero ineficiente.
+
+c: falso
+
+  Si recibís el puntero por valor, cualquier modificación se hace sobre una copia → se pierde.
+
+  Para modificar el comienzo de la lista se debe recibir var puntero (por referencia).
+
+d: falso
+
+  En Pascal, si el límite inicial es mayor que el final, el for no ejecuta el cuerpo ni una vez.
+  Ejemplo: for i := 10 to 1 do ... no entra.
+
+e: falso 632ut
+
+f: verdadero 66ut
+
+g: falso 1440ut

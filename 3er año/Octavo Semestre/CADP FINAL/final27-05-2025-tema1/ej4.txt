@@ -1,0 +1,11 @@
+a: verdadero
+
+b: falso
+
+c: verdadero
+
+d: falso
+
+e: falso
+
+f: falso
