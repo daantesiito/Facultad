@@ -1,0 +1,32 @@
+A: verdadero, el parametro por valor solo se copia el valor y si se modifica dentro del modulo, fuera no se ve nada y al terminar el valor original sigue siendo el original.
+
+B: falso, Si se puede ya que seria una variable local del modulo.
+
+c: 
+
+const
+  max1 = 15; max2 = 20;
+
+type
+  rango1 = 1..max1; rango2 = 1..max2;
+  vector = array[1..20] of ^real;
+  estudiante = record
+    nombre  : string[15];
+    apellido: string[15];
+    legajo  : string[10];
+    notas   : ^vector;
+  end;
+
+var
+  e: estudiante; i: rango1; j: rango2; nota: real;
+begin
+  for i := 6 to max1 do begin
+    read(e.nombre); read(e.apellido); read(e.legajo);
+    new(e.notas);
+    for j := 1 to max2 do begin
+      read(nota);
+      new(e.notas^[j]);
+      e.notas^[j]^ := nota;
+    end;
+  end;
+end.
