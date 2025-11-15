@@ -1,0 +1,11 @@
+package tp5;
+
+import java.util.List;
+
+public class ejercicioBancoParcial {
+
+	public List<Persona> recorrer(Graph<Persona> grafo, Empleado emp, int distancia) {
+		List<Persona> resultado = new LinkedList<Persona>();
+	}
+	
+}

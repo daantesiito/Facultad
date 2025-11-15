@@ -1,0 +1,12 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class practicaBFS {
+	
+	public List<String> recorrido(Graph<String> grafo, String comienzo) {
+		LinkedList<String> resultado = new LinkedList<String>();
+	}
+
+}

@@ -1,0 +1,34 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class practicaBFS {
+	
+	public List<String> recorrido(Graph<String> grafo, String comienzo) {
+		LinkedList<String> resultado = new LinkedList<String>();
+		boolean[] marca = new boolean[grafo.getSize()];
+		Vertex<String> vertice = grafo.search(comienzo);
+		if (vertice != null) {
+			bfs(grafo, vertice, marca, resultado);
+		}
+		return resultado;
+	}
+	
+	private void bfs(Graph<String> grafo, Vertex<String> vertice, boolean[] marca, LinkedList<String> resultado) {
+		Queue<Vertex<String>> cola = new Queue<Vertex<String>>();
+		marca[vertice.getPosition()] =  true;
+		cola.enqueue(vertice);
+		cola.enqueue(null);
+		while (!cola.isEmpty()) {
+			Vertex<String> dato = cola.dequeue();
+			if (dato != null) {
+				List<Edge<String>> ady = grafo.getEdges(dato);
+				for (Edge<String> a : ady) {
+					Vertex<String> a.getTarget();
+				}
+			}
+		}
+	}
+
+}

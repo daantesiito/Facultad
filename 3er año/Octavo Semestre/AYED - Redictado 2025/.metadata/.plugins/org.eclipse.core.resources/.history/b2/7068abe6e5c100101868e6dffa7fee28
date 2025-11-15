@@ -1,0 +1,11 @@
+package tp5;
+
+import java.util.List;
+
+public class parcialMapaTurismo {
+	
+	public List<String> resolver(Graph<> mapa, String ciudad, int cantDiasVacas) {
+		List<String> camino = new List<String>();
+		List<String> caminoMax = new List<String>();
+	}
+}

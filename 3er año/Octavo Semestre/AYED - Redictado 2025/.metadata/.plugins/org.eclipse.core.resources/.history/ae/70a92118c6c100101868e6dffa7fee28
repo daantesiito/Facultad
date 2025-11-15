@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package tp5;
+
+import java.util.List;
+
+/**
+ * 
+ */
+public class parcial14junio2025 {
+
+	public List<String> rutaOptimaDistribucion(Graph<String> reino, String castillo, String aldea, int maxPociones) {
+		
+	}
+	
+}

@@ -1,0 +1,20 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ejercicioBancoParcial {
+
+	public List<Persona> recorrer(Graph<Persona> grafo, Empleado emp, int distancia) {
+		LinkedList<Persona> resultado = new LinkedList<Persona>();
+		boolean[] marca = new boolean[grafo.getSize()];
+		Vertex<Persona> origen = grafo.search(emp);
+		if (origen != null) {
+			Queue<Vertex<Persona>> cola = new Queue<>();
+			Queue<Integer> niveles = new Queue<>();
+			cola.enqueue(origen);
+			niveles.enqueue(0);
+		}
+	}
+	
+}

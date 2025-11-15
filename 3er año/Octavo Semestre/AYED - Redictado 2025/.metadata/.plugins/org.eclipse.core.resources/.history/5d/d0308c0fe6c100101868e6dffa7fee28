@@ -1,0 +1,13 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class parcialMapaTurismo {
+	
+	public List<String> resolver(Graph<> mapa, String ciudad, int cantDiasVacas) {
+		LinkedList<String> camino = new LinkedList<String>();
+		LinkedList<String> caminoMax = new LinkedList<String>();
+		boolean[] marca = new boolean[];
+	}
+}

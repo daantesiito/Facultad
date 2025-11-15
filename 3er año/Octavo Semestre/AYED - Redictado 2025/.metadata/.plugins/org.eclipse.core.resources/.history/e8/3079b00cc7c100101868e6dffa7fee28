@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * 
+ */
+public class parcial14junio2025 {
+
+	public List<String> rutaOptimaDistribucion(Graph<String> reino, String castillo, String aldea, int maxPociones) {
+		LinkedList<String> camino = new LinkedList<String>();
+		LinkedList<String> caminoActual = new LinkedList<String>();
+		boolean[] marca = new boolean[reino.getSize()];
+		Vertex<String> Vcastillo = reino.search(castillo);
+		if (Vcastillo != null) {
+			Vertex<String> Valdea = reino.search(aldea);
+			if (Valdea != null) {
+				dfs(reino, Vcastillo, Valdea, camino, caminoActual, marca, maxPociones);
+			}
+		}
+		return camino;
+	}
+	
+}

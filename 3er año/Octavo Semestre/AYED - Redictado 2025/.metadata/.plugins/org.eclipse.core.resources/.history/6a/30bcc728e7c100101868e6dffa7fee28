@@ -1,0 +1,29 @@
+package tp5;
+
+public class CiudadParcial {
+
+	private String nombre;
+	private int dias;
+	
+	public CiudadParcial(String nombre, int dias) {
+		this.nombre = nombre;
+		this.dias = dias;
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public int getDias() {
+		return this.dias;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;;
+	}
+	
+	public int getDias() {
+		return this.dias;
+	}
+	
+}
