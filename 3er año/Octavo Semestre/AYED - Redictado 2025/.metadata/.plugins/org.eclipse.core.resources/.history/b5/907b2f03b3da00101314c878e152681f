@@ -1,0 +1,13 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ParcialGrafosDFSMensajero {
+	
+	public List<String> rutaOptimaDistribucion(Graph<String> reino, String castillo, String aldea, int maxPociones) {
+		List<String> recorridoMax = new LinkedList<String>();
+		List<String> recorridoAct = new LinkedList<String>();
+	}
+
+}

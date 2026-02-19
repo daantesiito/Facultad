@@ -1,0 +1,29 @@
+package tp5;
+
+import java.util.LinkedList;
+
+import parciales.Queue;
+
+public class parcialInvitacionMasterClass {
+
+    public LinkedList<UsuarioParcialBFS> invitacionMasterClass(Graph<String> red, String usuario, int distancia, int limite) {
+        LinkedList<UsuarioParcialBFS> listaInvitados = new LinkedList<UsuarioParcialBFS>();
+        boolean[] marcas = new boolean[red.getSize()];
+        Vertex<String> origen = red.search(usuario);
+        if (usuario != null) {
+            bfs(red, origen, distancia, limite, marcas, listaInvitados);
+        }
+        return listaInvitados;
+    }
+
+    private void bfs(Graph<String> red, Vertex<String> origen, int distancia, int limite, boolean[] marcas, LinkedList<Usuario> listaInvitados) {
+        Queue<Vertex<String>> cola = new Queue<Vertex<String>>();
+        marcas[origen.getPosition()] = true;
+        cola.enqueue(origen);
+        cola.enqueue(null);
+        while (!cola.isEmpty()) {
+        	Vertex<String> dato = cola.dequeue();
+        }
+    }
+
+}

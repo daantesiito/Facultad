@@ -1,0 +1,47 @@
+package tp5;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class ParcialGrafosDFSMensajero {
+	
+	public List<String> rutaOptimaDistribucion(Graph<String> reino, String castillo, String aldea, int maxPociones) {
+		List<String> recorridoMax = new LinkedList<String>();
+		List<String> recorridoAct = new LinkedList<String>();
+		boolean[] marcas = new boolean[reino.getSize()];
+		int pocionesAct = 0;
+		Vertex<String> origen = reino.search(castillo);
+		if (origen != null) {
+			Vertex<String> destino = reino.search(aldea);
+			if (destino != null) {
+				dfs(reino, origen, destino, maxPociones, pocionesAct, recorridoMax, recorridoAct, marcas);
+			}
+		}
+		return recorridoMax;
+	}
+	
+	private void dfs(Graph<String> reino, Vertex<String> origen, Vertex<String> destino, int maxPociones, int pocionesAct, List<String> recorridoMax, List<String> recorridoAct, boolean[] marcas) {
+		marcas[origen.getPosition()] = true;
+		recorridoAct.add(origen.getData());
+		if (origen.getData().equals(destino.getData())) {
+		// if (origen == destino) {
+			if (recorridoAct.size() > recorridoMax.size()) {
+				recorridoMax.clear();
+				recorridoMax.addAll(recorridoAct);
+			}
+		}
+		else {
+			List<Edge<String>> ady = reino.getEdges(origen);
+			for (Edge<String> a : ady) {
+				if (!marcas[a.getTarget().getPosition()]) {
+					if (pocionesAct + a.getWeight() <= maxPociones) {
+						dfs(reino, a.getTarget(), destino, maxPociones, pocionesAct + a.getWeight(), recorridoMax, recorridoAct, marcas);
+					}
+				}
+			}
+		}
+		marcas[origen.getPosition()] = false;
+		recorridoAct.remove(recorridoAct.size() - 1);
+	}
+
+}

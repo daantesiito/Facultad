@@ -1,0 +1,7 @@
+private void marcarRestringidos(List<String> lugaresRestringidos, Graph<String> lugares, boolean[] marcas) {
+        for (String l: lugaresRestringidos) {
+            Vertex<String> lugar = lugares.search(l);
+            if (lugar != null)
+                marcas[lugar.getPosition()] = true;
+        }
+    }

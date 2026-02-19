@@ -1,0 +1,9 @@
+package tp5;
+
+public class ObtenerVerticeDeClase {
+
+	private List<Vertex<String>> Obtener(Graph<UsuarioParcialBFS> grafo) {
+		
+	}
+	
+}

@@ -1,0 +1,11 @@
+package tp5;
+
+import java.util.List;
+
+public class ObtenerVerticeDeClase {
+
+	private List<Vertex<String>> Obtener(Graph<UsuarioParcialBFS> grafo) {
+		
+	}
+	
+}

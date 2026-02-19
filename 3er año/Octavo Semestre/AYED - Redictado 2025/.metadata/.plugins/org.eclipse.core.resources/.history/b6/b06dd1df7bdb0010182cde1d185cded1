@@ -1,0 +1,13 @@
+package tp5;
+
+public class UsuarioParcialBFS {
+	
+	private String nombre;
+	private int distancia;
+	
+	public UsuarioParcialBFS(String nombre, int distancia) {
+		this.nombre = nombre;
+		this.distancia = distancia;
+	}
+
+}
