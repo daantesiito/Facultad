@@ -1,3 +1,7 @@
+// Un comercio dispone de una estructura de datos con las ventas (como máximo 500 ventas) realizadas durante el mes de enero. 
+// De cada venta se conoce el número de venta, monto total y una lista de los productos vendidos (de cada producto vendido se tiene código y cantidad). 
+// Se pide implementar un programa que elimine de la estructura de datos todas las ventas cuya lista de productos contengan exactamente 5 productos.
+
 program final;
 
 const

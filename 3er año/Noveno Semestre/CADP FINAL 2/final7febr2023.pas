@@ -1,3 +1,8 @@
+// Un comercio dispone de la información de sus clientes. De cada cliente se conoce su DNI, fecha y monto
+// de la compra. La información está ordenada por el DNI del cliente. Se pide implementar un programa que
+// genere una estructura de datos que contenga DNI del cliente, la cantidad de compras que realizó y el monto
+// total de las compras, sólo con los clientes que realizaron más de 5 compras.
+
 program final;
 
 type

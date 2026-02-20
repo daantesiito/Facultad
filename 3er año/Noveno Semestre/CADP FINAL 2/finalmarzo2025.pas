@@ -1,3 +1,10 @@
+// Un comercio dispone de una estructura de datos con información de las facturas realizadas durante el último mes (como máximo 1000). 
+// De cada factura se conoce el número de factura, código de sucursal (0..5) a la que pertenece y monto total. 
+// Se pide implementar un programa que lea de teclado un código de sucursal y elimine 
+// de la estructura todas las facturas pertenecientes al código de sucursal leído. 
+// Al finalizar debe informar el monto acumulado en todas las facturas eliminadas. 
+// La solución debe ser óptima en tiempo de ejecución.
+
 program final;
 const
     MAX_NUM = 1000;
