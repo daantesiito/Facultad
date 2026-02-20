@@ -23,6 +23,7 @@ type
         numero: integer;
         monto: real;
         prod_vendidos: lista_productos;
+        // dimL: integer;
     end;
 
     vector_ventas = array [1..MAX_VENTAS] of venta;
@@ -61,6 +62,6 @@ var
     v: vector_ventas;
     dimL: integer;
 begin
-    cargarVector(v,dimL);
+    cargarVector(v,dimL); // se dispone
     eliminar_ventas_5_productos(v,dimL);
 end.
