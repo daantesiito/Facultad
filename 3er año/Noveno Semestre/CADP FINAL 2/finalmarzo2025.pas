@@ -14,7 +14,7 @@ type
 
     vectorFacturas = array [1..MAX_NUM] of factura;
 
-procedure eliminarFactura(numF: integer; var v: vectorFacturas; var contador: real; var dimL: integer);
+procedure eliminarFactura(numF: integer; var v: vectorFacturas; var contador_monto: real; var dimL: integer);
 var
     i: integer;
 begin
@@ -30,10 +30,10 @@ end;
 
 var
     v: vectorFacturas;
-    numF, contador, dimL: integer;
+    numF, contador_monto, dimL: integer;
 begin
     cargarVector(dimL,v); // se dispone
     readln(numF);
-    eliminarFactura(numF,v,contador,dimL);
-    writeln('Cantidad de facturas eliminadas: ', contador);
+    eliminarFactura(numF,v,contador_monto,dimL);
+    writeln('Monto total de facturas eliminadas: ', contador_monto);
 end.
