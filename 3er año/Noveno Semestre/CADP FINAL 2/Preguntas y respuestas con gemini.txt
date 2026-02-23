@@ -1,0 +1,69 @@
+A. Falso, una lista tiene un solo tipo de dato, osea que es homogeneo.
+
+B. Falso porque la función tiene un retorno de un valor, en cambio los procedimientos no.
+
+C. Verdadero porque la A imprime bien por ser una variable del programa principal, y la b al ser variable global se modifica en el procedimiento calculo sin haberla pasado por parámetro, solo por haberla llamado. A: 40, B: 140.
+
+D. Falso, para agregar sin necesidad de realizar un recorrido se añade directamente adelante de todo.
+
+E. Falso, un tipo de dato subrango solo puede ser tipos de datos que tienen una continuación o siguiente valor, por ejemplo un integer es 1, 2, 3, 4. En cambio un dato real no tiene un valor siguiente definido.
+
+F. Verdadero, en el tipo de dato real no es necesario especificar el numero con coma, si es un numero entero se pone.
+
+G. No tengo idea
+
+H. Falso, un programa correcto es el que funciona independientemente de cuantos modulos se usen
+
+GEMINI:
+
+### a. Listas heterogéneas
+
+* **Tu respuesta:** Falso. (Justificación correcta).
+* **Corrección:** ¡Perfecto! **FALSO**. Una lista en Pascal es una estructura de datos *homogénea* porque todos sus nodos deben almacenar exactamente el mismo tipo de dato (aunque ese dato sea un registro complejo). 10/10.
+
+### b. Funciones vs Procedimientos
+
+* **Tu respuesta:** Falso.
+* **Corrección:** **FALSO** tu Falso. ❌ La afirmación es **VERDADERA**.
+* **Justificación de cátedra:** Todo módulo de tipo `function` (que retorna un solo valor en su nombre) se puede transformar en un `procedure`. ¿Cómo? Simplemente agregando un parámetro extra pasado por referencia (`var`) que actúe como el valor de retorno. ¡Cualquier función puede ser un procedimiento, pero no al revés!
+
+### c. Prueba de escritorio con variables globales
+
+* **Tu respuesta:** Verdadero (A: 40, B: 140).
+* **Corrección:** ¡Cuidado acá! Es **FALSO**. ❌ Te olvidaste de que `a` también se modifica adentro del procedimiento. Hagamos el rastro paso a paso:
+1. Arranca: `a := 40`.
+2. Llama a `calculo(a+10)`, es decir, `calculo(50)`. El parámetro `c` vale 50.
+3. Adentro del módulo: `b := a + 100`. Como `a` es la variable global (40), `b` pasa a valer 140.
+4. Siguiente línea: `a := c + 10 + b`. Acá está la trampa. `c` es 50, `b` es 140. Entonces `a := 50 + 10 + 140`. **¡La variable global `a` pasa a valer 200!**
+5. Al imprimir, mostrará: `Valor de a: 200` y `Valor de b: 140`. Por lo tanto, el enunciado mentía.
+
+
+
+### d. Agregar al final de una lista
+
+* **Tu respuesta:** Falso.
+* **Corrección:** Es **VERDADERO**. ❌
+* **Justificación:** Estás pensando en la técnica clásica donde solo tenés el puntero `L` (inicio) y tenés que iterar hasta encontrar el `nil`. Pero si en tu programa mantenés un **puntero al último elemento** (suele llamarse `ult`), podés enganchar el nuevo nodo directamente haciendo `ult^.sig := nuevo` en tiempo , sin recorrer nada. Es una técnica de eficiencia clave en la materia.
+
+### e. Subrango sobre Reales
+
+* **Tu respuesta:** Falso. (Justificación correcta).
+* **Corrección:** ¡Excelente! **FALSO**. Entendiste perfecto el concepto de "tipos ordinales". Los Reales no son ordinales (no tienen un "siguiente" discreto definido), por lo que es imposible hacer un subrango con ellos. 10/10.
+
+### f. Invocación de módulos y pasaje por referencia
+
+* **Tu respuesta:** Verdadero.
+* **Corrección:** ¡Alerta roja! Es **FALSO**. 🚨
+* **Justificación:** Mirá bien el encabezado: `var b: real`. La palabra `var` significa que se pasa por *referencia*. La regla de oro en Pascal es que **no podés pasar valores literales (como un 10) a un parámetro por referencia**. El compilador necesita una *variable* (una caja de memoria) para poder guardar el resultado. Al intentar pasar el `10`, el programa tira error de compilación inmediato.
+
+### g. La ubicación de la sección TYPE
+
+* **Tu respuesta:** No tengo idea.
+* **Corrección:** Es **FALSO**.
+* **Justificación:** La trampa está en la palabra "únicamente". Si bien por orden lógico en el programa principal se pone `const`, luego `type`, y luego `var`, también **podés declarar secciones `type` locales adentro de un procedimiento o función** (antes del `begin` de ese módulo). Por lo tanto, no es el único lugar donde se puede incluir.
+
+### h. Eficiencia vs Cantidad de módulos
+
+* **Tu respuesta:** Falso.
+* **Corrección:** Tu conclusión es correcta (**FALSO**), pero hay que ajustar la justificación.
+* **Justificación de cátedra:** La cantidad de módulos no afecta la *eficiencia* (tiempo de ejecución y uso de memoria). La modularización sirve para mejorar la legibilidad, la reutilización del código y el mantenimiento. Un programa monolítico (sin módulos) puede ser igual o más rápido en ejecutarse que uno recontra modularizado, siempre y cuando el *algoritmo* usado sea el mismo.
