@@ -1,0 +1,59 @@
+A. Falso.
+
+B. Falso, un programa correcto es aquel que funciona correctamente como se pide. Pero usar parametros, modulos, etc; no asegura ni garantiza que el programa sea correcto.
+
+C. Falso, la invocacion al modulo es invalida ya que la funcion "otro" esta dentro del proceso calcular. En este caso el único que sabe usar la funcion previamente dicha es justamente el proceso calcular.
+
+D. Verdadero, siempre y cuando la lista quede reordenada con los punteros bien.
+
+E. Falso, siempre se va a ejecutar al menos 1 sola vez ya que la validación se hace en el until luego de haberse ejecutado las instrucciones.
+
+F. Falso, imprime: a: 175, b: 20, c: 10
+
+----------------------------------------------------------
+
+GEMINI:
+
+A. Tu respuesta: Falso. (Sin justificar).
+
+Corrección: ¡Es FALSO! Pero te faltó la justificación (y en el parcial sin justificación no suma puntos).
+
+Justificación de cátedra: No siempre es obligatorio hacer un new. A un puntero se le puede asignar el valor nil (para inicializarlo vacío) o se le puede asignar la dirección de memoria de otro puntero que ya fue creado (ejemplo: puntero1 := puntero2;). Solo se usa new cuando querés pedir un espacio de memoria dinámica nuevo.
+
+B. Tu respuesta: Falso (con excelente justificación).
+
+Corrección: ¡10/10! Lo explicaste perfecto. Modularizar y parametrizar te da un programa más legible, más fácil de mantener y mejor diseñado, pero si tu lógica matemática o algorítmica está mal, el programa va a seguir siendo incorrecto.
+
+C. Tu respuesta: Falso (con excelente justificación).
+
+Corrección: ¡Otro 10/10! Entendiste a la perfección la regla de Alcance (Scope). Como la función otro está declarada adentro del procedimiento calcular, es un módulo local. El programa principal no tiene ni idea de que existe.
+
+D. Tu respuesta: Verdadero.
+
+Corrección: ¡Alerta roja! 🚨 Es FALSO.
+
+Justificación: ¿Qué pasa si la lista está vacía (L = nil)? Si intentás acceder a L^.sig para reordenar los punteros y borrar el primer elemento de una lista que no tiene nada, el programa crashea con un Runtime Error. Siempre que te digan "siempre es posible" en estructuras dinámicas, desconfiá y pensá en el caso de la estructura vacía.
+
+E. Tu respuesta: Falso (con excelente justificación).
+
+Corrección: ¡10/10! La tenés clarísima. Al ser una estructura de post-condición, evalúa al final, por lo que el cuerpo se ejecuta mínimo 1 vez.
+
+F. Tu respuesta: Falso (con trace: a: 175, b: 20, c: 10).
+
+Corrección: La respuesta es FALSO, pero tu prueba de escritorio tiene un error muy sutil por una de las trampas más crueles de la materia: el Aliasing (cuando dos nombres apuntan a la misma caja de memoria).
+
+Vamos a destriparlo paso a paso:
+
+Programa principal: b := 20; y luego c := 15; (porque 20 - 5 = 15).
+
+Llamamos a calcular(b, c);. El parámetro b (local) recibe 20 por valor. El parámetro x recibe a c por referencia. ¡Atención acá! x y la variable global c son la misma caja de memoria.
+
+Adentro de calcular: x := 10;. Como x es c, la variable global c ahora vale 10.
+
+Siguiente línea: c := c + b;. Usa la c global (10) y la b local (20). La c global ahora vale 30.
+
+Siguiente línea: a := (b + x) * 5;. Acá te equivocaste vos. Como x es el mismo espacio de memoria que c, al haber cambiado c a 30, x también vale 30. La cuenta es: a := (20 + 30) * 5. Esto da 250.
+
+Última línea: b := (a + b) MOD 10;. b local pasa a valer (250 + 20) MOD 10, que da 0.
+
+Al salir e imprimir, quedan las variables globales: a vale 250, b vale 20 (nunca se modificó) y c vale 30. La salida real es 250, 20, 30.

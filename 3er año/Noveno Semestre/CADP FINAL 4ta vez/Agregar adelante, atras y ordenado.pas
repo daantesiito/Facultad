@@ -86,3 +86,23 @@ begin
         ULT^.sig:= aux;
     ULT:= aux;
 end;
+
+procedure AgregarAdelante(var l: lista; c: compra);
+var
+    aux: lista;
+begin
+    new(aux);
+    aux^.dato:= c;
+    aux^.sig:= l;
+    l:= aux;
+end;
+
+procedure agregarAdelante(var l: lista; c: compra);
+var
+    aux: lista;
+begin
+    new(aux);
+    aux^.dato:= c;
+    aux^.sig:= l;
+    l:= aux;
+end;

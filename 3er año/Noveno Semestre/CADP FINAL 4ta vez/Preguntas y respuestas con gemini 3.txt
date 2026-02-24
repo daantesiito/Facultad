@@ -1,0 +1,57 @@
+A. Falso, si el recorrido del for tiene una condicion inicial que supera la condicion de corte nunca entraria.
+
+B. Verdadero.
+
+C. Falso, a los campos de un registro se le puede acceder directamente con el nombre del campo.
+
+D. Falso, una variable global puede ser accedida por absolutamente todo el programa incluyendo principal, modulos, etc.
+
+E. Falso, al puntero se le puede asignar un valor nil o se le puede asignar por referencia a otro puntero.
+
+F. No se que es entrada y salida.
+
+G. Falso, la estructura de datos lista es una estructura homogenea ya que solo contiene un tipo de dato. Este dato puede ser un registro que contiene otro tipo de datos, pero la lista en si es de un unico tipo.
+
+H. Falso, la memoria no se libera si no que se ocupa con el valor del nil, superpone el valor.
+
+------------------------------------------------------------------
+
+GEMINI:
+
+**A. Tu respuesta: Falso (con buena justificación).**
+
+* **Corrección:** ¡**10/10**! Exactamente. Si los límites están "al revés" (por ejemplo `for i := 10 to 1 do`), el ciclo directamente no entra y da 0 vueltas. Impecable.
+
+**B. Tu respuesta: Verdadero.**
+
+* **Corrección:** ¡Ojo acá! ❌ Es **FALSO**.
+* **Justificación de cátedra:** Acordate de lo que charlamos hace un par de mensajes. Modularizar un programa (usar procedures/functions) mejora la legibilidad, el mantenimiento, el diseño y la reutilización. Pero **NO lo hace más eficiente** en términos de uso de memoria o tiempo de ejecución (eso depende puramente del algoritmo, de si es  u , etc.).
+
+**C. Tu respuesta: Falso (con excelente justificación).**
+
+* **Corrección:** ¡**10/10**! Tal cual. En Pascal, para acceder a los campos usás la notación de punto (`variable.campo`). Al llamarlo por su nombre específico, el orden en el que los escribiste en el `Type` no importa en absoluto.
+
+**D. Tu respuesta: Falso.**
+
+* **Corrección:** ¡**10/10**! Las variables globales tienen alcance (scope) sobre absolutamente todo el código que esté por debajo de su declaración. *(Acordate: que el lenguaje lo permita no significa que esté bien hacerlo en la práctica, pero teóricamente es Falso).*
+
+**E. Tu respuesta: Falso.**
+
+* **Corrección:** ¡**10/10**! Me encantó esta porque te acordaste de la corrección anterior. No siempre hay que hacer `new`; podés asignarle `nil` o la dirección de otro puntero. ¡Excelente memoria!
+
+**F. Tu respuesta: "No sé qué es entrada y salida".**
+
+* **Corrección:** Es **FALSO** ❌. Te explico el concepto:
+* *Entrada/Salida (I/O)* se refiere a los módulos `read/readln` (entrada por teclado) y `write/writeln` (salida por pantalla).
+* **Justificación:** En Pascal, el `read` y el `write` solo funcionan con **tipos de datos simples** (Integer, Real, Char, String). Si tu registro tiene adentro un campo que es un arreglo (`array`), un puntero, o un booleano, **no podés** hacerle un `read` o un `write` directo a ese campo porque el compilador te tira error. Por eso la afirmación "sobre TODOS los campos" es falsa.
+
+
+
+**G. Tu respuesta: Falso.**
+
+* **Corrección:** ¡**10/10**! Otra más donde aplicaste lo que vimos antes. La lista es homogénea. Fin de la discusión.
+
+**H. Tu respuesta: Falso.**
+
+* **Corrección:** Es **FALSO**, pero vamos a pulir esa justificación a nivel universitario para que no queden dudas.
+* **Justificación de cátedra:** Asignarle `nil` a un puntero (`p := nil;`) simplemente hace que el puntero "mire hacia la nada". **La memoria dinámica NO se libera** haciendo eso, sino que queda "huérfana" o perdida en el Heap, generando un *Memory Leak* (pérdida de memoria). La única forma de liberar realmente la memoria referenciada es ejecutando el procedimiento **`dispose(p);`**.
