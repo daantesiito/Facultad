@@ -1,0 +1,19 @@
+1.
+a. Explique el mecanismo de interrupcion
+b. explique  las fuentes de una interrupción
+
+2.
+a. explique los tipos de correspondencia
+b. explique las politicas de escritura desde la coherencia de datos
+
+3.
+a. Que entiende por segmentacion de cauce
+b. explique sus ventajas
+
+4.
+a. Describe 3 tipos de atascos en segmentacion
+b. que tipo de retardo tienen
+
+5.
+a. explique un cluster
+b. Que tipo de coherencia de datos tiene un MIMD

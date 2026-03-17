@@ -1,0 +1,9 @@
+1-A) Que elementos componen una máquina con arquitectura Von Neumann? Describir la función de cada uno
+B) Que elementos característicos definen un bus?
+2-A) Esquematice y describa la estructura interna de un controlador programable de interrupciones 
+B) Describa el funcionamiento de la gestión de E/S programada con espera de respuesta 
+3-A) Cuáles son los elementos a tener en cuenta para el diseño de una memoria caché? 
+B) La coherencia de datos de un sistema jerárquico se ve afectada por el uso de DMA? 
+4-A) De que depende el paralelismo de una máquina superescalar? 
+B) Cuál es el objetivo de la técnica de renombre de registros?
+5-A) Que son los MIMD de la taxonomía de flynn. Describa las variantes que conozca

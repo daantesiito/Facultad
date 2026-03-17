@@ -1,0 +1,19 @@
+1.
+a. que metodos como pasaje de parametros podemos utilizar en una computadora
+b. cuales son las diferencias entre terminacion de un subrutina y gestor de interrupciones
+
+2.
+a.Esquematice y describa la estructura interna de un pic
+b.describir el funcionamiento de E/S programada con espera de respuesta
+
+3.
+a.Cuales son los elementos a tener en cuenta para el diseño de una cache
+b.La coherencia de un sistema jerarquico puede verse afectado por el uso del DMA?
+
+4.
+a. De que depende el paralelismo de una maquina superescalar
+b.Cual es el objetivo de usar la tecnica de renombre de registro en un procesador superescalar
+
+5.
+a.Que elementos caracteristicos describen un bus
+b.Que son los MIMD en la taxonomia de flynn
