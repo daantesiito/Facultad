@@ -52,6 +52,17 @@ Process Consumidor::
     }
 }
 
+// Otra solucion es poner el cierre de la seccion critica una linea mas abajo que el cant del await. 
+// Ejemplo:
+Process Productor::
+{ while (true)
+    { produce elemento
+     <await (cant < N); cant++
+     buffer[pri_vacia] = elemento; >
+     pri_vacia = (pri_vacia + 1) mod N;
+    }
+}
+
 ----------------------------------------------
 
 // Agregamos exclusion mutua con pasaP y pasaC, haciendo que entren 1 a la vez
@@ -90,3 +101,5 @@ Process Consumidor::
     consume elemento
     }
 }
+
+// Otra solucion sin usar pasaP y pasaC es como la primera solucion del inciso A.

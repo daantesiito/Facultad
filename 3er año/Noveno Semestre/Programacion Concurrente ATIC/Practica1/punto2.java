@@ -14,5 +14,3 @@ process Contador
         }
     }
 }
-
-// No esta bien y no se como hacerlo.
