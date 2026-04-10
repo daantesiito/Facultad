@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1.practicasoo2.EJERCICIO3;
+package Practica1Ej3;
 
 public class IntRing extends Ring<Integer> {
 

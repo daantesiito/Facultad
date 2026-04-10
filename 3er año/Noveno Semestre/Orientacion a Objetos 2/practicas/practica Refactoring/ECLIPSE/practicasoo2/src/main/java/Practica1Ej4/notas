@@ -1,0 +1,15 @@
+1. Rename Method: procesar → impacto
+ArchivoLíneaCambioPublicacion.java11private int impacto()Publicacion.java14return impacto() * 10;
+Solo afecta Publicacion.java porque procesar es private, nadie de afuera puede llamarlo.
+
+2. Rename Method: calcular → alcance (el de Publicacion)
+ArchivoLíneaCambioPublicacion.java14public int alcance()Perfil.java14p -> p.alcance()
+Afecta Perfil.java porque ahí se llama p.calcular() sobre una Publicacion.
+
+3. Rename Method: calcular → alcance (el de Perfil)
+ArchivoLíneaCambioPerfil.java15public int alcance()
+Solo afecta Perfil.java. Como no hay ningún archivo que llame a calcular() de Perfil en el código dado, no hay más cambios.
+
+4. Rename Parameter: p → publicacion en agregarPublicacion
+ArchivoLíneaCambioPerfil.java10public void agregarPublicacion(Publicacion publicacion)Perfil.java10publicaciones.add(publicacion);
+Solo afecta la firma y el cuerpo del método. Los parámetros son locales, no impactan afuera.

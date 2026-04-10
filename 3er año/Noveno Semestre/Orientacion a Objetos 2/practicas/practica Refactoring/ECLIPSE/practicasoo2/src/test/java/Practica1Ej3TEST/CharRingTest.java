@@ -1,4 +1,4 @@
-package practica1punto3TEST;
+package Practica1Ej3TEST;
 
 import org.junit.jupiter.api.Test;
 
