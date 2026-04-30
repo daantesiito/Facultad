@@ -1,0 +1,27 @@
+a. ¿El código funciona correctamente? Justifique su respuesta. Sí, el código funciona correctamente. El monitor garantiza por sí mismo la Exclusión Mutua implícita, lo que asegura que solo un auto a la vez pueda estar ejecutando el código dentro de los procedimientos entrarPuente o salirPuente
+. Al utilizar la variable cant y la variable de condición cola, el código asegura que si un auto ya está usando el puente (cant > 0), cualquier otro auto que llame a entrarPuente se bloqueará y se irá a dormir ejecutando wait(cola)
+. Cuando el auto que estaba en el puente termina de cruzar y llama a salirPuente, decrementa la cantidad y ejecuta signal(cola) para despertar a un auto demorado (si lo hay) para que este pueda cruzar
+. De esta manera, nunca habrá más de un auto cruzando al mismo tiempo.
+b. ¿Se podría simplificar el programa? ¿Sin monitor? ¿Menos procedimientos? ¿Sin variable condition? En caso afirmativo, rescriba el código. Sí, se puede simplificar muchísimo. Dado que en este problema solo importa usar el puente de a un auto a la vez y no hay reglas complejas que condicionen el acceso, el problema se reduce a brindar Exclusión Mutua básica sobre un único recurso
+. Por lo tanto, no es necesario usar un monitor, variables de condición, ni crear procedimientos. Se puede resolver utilizando únicamente un semáforo inicializado en 1
+.
+Aquí tienes el código reescrito:
+sem puente = 1;
+
+Process Auto [a:1..M] {
+    // Solicita permiso para entrar al puente (Protocolo de entrada)
+    P(puente); 
+    
+    // Sección Crítica
+    “el auto cruza el puente” 
+    
+    // Libera el puente para el siguiente (Protocolo de salida)
+    V(puente); 
+}
+c. ¿La solución original respeta el orden de llegada de los vehículos? Si rescribió el código en el punto b), ¿esa solución respeta el orden de llegada? Ninguna de las dos soluciones respeta estrictamente el orden de llegada.
+Solución original (Monitor): NO respeta el orden. Aunque el wait(cola) encola a los autos dormidos y el signal(cola) despierta al que lleva más tiempo esperando
+, la cátedra utiliza la disciplina Signal and Continue. Esto significa que cuando un auto hace el signal, no le cede el monitor directamente al auto despertado, sino que ese auto despertado debe volver a competir para entrar al monitor
+. Además, la teoría aclara que cuando el monitor se libera, todos los procesos que intentan acceder compiten entre sí y no acceden de acuerdo al orden de llegada
+. Un auto nuevo podría ganarle la entrada al auto que acaba de ser despertado.
+Solución reescrita (Semáforo): TAMPOCO respeta el orden. Aunque en la vida real algunos sistemas operativos implementan colas justas (fair) en los semáforos, el material de la cátedra advierte explícitamente en mayúsculas que "EN LA MATERIA NO SE PUEDE SUPONER ESTE TIPO DE IMPLEMENTACIÓN"
+. Por lo tanto, no se garantiza que el semáforo despierte a los autos en orden. (Si se quisiera forzar el orden, habría que implementar una solución con colas explícitas y arreglos de semáforos privados con la técnica Passing the Baton, tal como hicimos en ejercicios anteriores).
