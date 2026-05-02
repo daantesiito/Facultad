@@ -114,28 +114,16 @@ end Process;
 Monitor Impresora 
 
     cond espera[N];
-    int libre = 1;
-    int esperando = 0;
-    int id_usar = 0;
-    int id_sig = 0;
+    int turno = 0;
 
     Procedure usar(id) {
-        if (libre == 0) {
-            esperando++;
-            wait(espera[id]);
-        } else {
-            libre--;
-        }
-    }
+        if (id != turno)
+            wait(espera[id])
 
     Procedure dejar() {
-        id_usar++;
-        if (esperando > 0) {
-            esperando--;
-            signal(espera[id_usar]);
-        } else {
-            libre++;
-        }
+        turno++;
+        if (turno < N)
+            signal(espera[turno]);
     }
 
 end Monitor;
@@ -143,6 +131,52 @@ end Monitor;
 Process Persona[id: 0..N-1]
 
     Impresora.usar(id);
+    // Usar impresora
+    Impresora.dejar();
+
+end Process;
+
+// INCISO E
+
+Monitor Impresora 
+
+    cond colaEspera;
+    cond empleadoDormido;
+    int esperando = 0;
+    int libre = 1;
+
+    Procedure solicitar_turno() {
+        esperando++;
+        signal(empleadoDormido);
+        wait(colaEspera);
+    }
+
+    Procedure dejar_impresora() {
+        signal(empleadoFin);
+    }
+
+    Procedure dar_turno() {
+        if (esperando == 0) {
+            wait(empleadoDormido);
+        } else {
+            wait(empleadoFin);
+        }
+        esperando--;
+        signal(colaEspera);
+    }
+
+end Monitor;
+
+Process Empleado
+
+    while true
+        Impresora.dar_turno();
+
+end Process
+
+Process Persona[id: 0..N-1]
+
+    Impresora.usar();
     // Usar impresora
     Impresora.dejar();
 
