@@ -152,16 +152,19 @@ Monitor Impresora
     }
 
     Procedure dejar_impresora() {
+        libre = 1;
         signal(empleadoFin);
     }
 
     Procedure dar_turno() {
-        if (esperando == 0) {
+        while (esperando == 0) {
             wait(empleadoDormido);
-        } else {
+        } 
+        while (libre == 0) {
             wait(empleadoFin);
         }
         esperando--;
+        libre = 0;
         signal(colaEspera);
     }
 
