@@ -107,19 +107,19 @@ Monitor Mesa
     }
 
     Procedure salir() {
-        signal(mesa_libre);
+        libre = 1;
+        signal(despertar_autoridad);
     }
 
     Procedure dar_acceso() {
         int id_usar;
 
-        while (esperando == 0) {
+        while (esperando == 0 or libre = 0) {
             wait(despertar_autoridad);
         }
-
-        wait(mesa_libre);
         
         Sacar(colaOrdenada, id_usar);
+        libre = 0;
         esperando--;
         signal(esperar_turno[id_usar]);
     }
