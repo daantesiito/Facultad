@@ -115,3 +115,45 @@ Process Boleteria
     }
 
 end Process;
+
+
+// 3. Resolver con MONITORES la siguiente situación.
+// En un camino turístico hay un puente por donde puede pasar un vehículo a la vez.
+// Hay N autos que deben pasar por él de acuerdo con el orden de llegada.
+// Nota: sólo se pueden usar los procesos Autos (y los monitores que sean necesarios); suponga que existe la función pasar() que simula el paso del auto por el puente.
+
+Monitor Puente 
+
+    int esperando = 0;
+    int libre = 1;
+    cond esperaPaso;
+
+    Procedure solicitar_pasar() {
+        if (libre == 0) {
+            esperando++;
+            wait(esperaPaso);
+        } else {
+            libre = 0;
+        }
+    }
+
+    Procedure salir() {
+        if (esperando > 0) {
+            esperando--;
+            signal(esperaPaso);
+        } else {
+            libre = 1;
+        }
+    }
+
+end Monitor;
+
+Process Auto[id: 0..N-1]
+
+    Puente.solicitar_pasar();
+
+    pasar();
+
+    Puente.salir();
+
+end Process;
