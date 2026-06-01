@@ -1,0 +1,14 @@
+Code Smells encontrados:
+
+1 - Switch Statements: Se da por hecho que si el tipo de documento es PDF entra en la primera parte del codigo y luego hay un IF para ver si es XLS.
+    Habria que aplicar polimorfismo al ser un if complejo.
+
+2 - Duplicate Code: Hay partes exactas del codigo que dicen exactamente lo mismo por lo tanto se hacen metodos nuevos para llamarlos en cada caso.
+
+3 - Long Method: El mismo metodo ejecuta muchas tareas, instancia documento, busca los autores, setea el contenido, exporta y guarda. Esto es dificil de leer y reusar.
+
+Refactorings a aplicar:
+
+1 - Replace Conditional with Polymorphism: Creamos 2 clases nuevas siendo PDF o XLS y se pone abstracta la clase ReportGenerator.
+
+2 - 
