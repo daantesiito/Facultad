@@ -30,7 +30,5 @@ public class ConcreteBuilderBasico extends BuilderEquipo {
 		Componente c = catalogo.getComponente("Gabinete Estandar");
 		this.computadora.addComponente(c);
 	}
-	
-	
 
 }

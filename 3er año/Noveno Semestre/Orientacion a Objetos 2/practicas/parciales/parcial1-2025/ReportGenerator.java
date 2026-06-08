@@ -1,5 +1,5 @@
 public class ReportGenerator {
-    
+
     private String type;
 
     public ReportGenerator(String type) { 
@@ -47,4 +47,5 @@ public class ReportGenerator {
         // guardar el documento
         this.saveExportedFile(docFile);
     }
+
 }
