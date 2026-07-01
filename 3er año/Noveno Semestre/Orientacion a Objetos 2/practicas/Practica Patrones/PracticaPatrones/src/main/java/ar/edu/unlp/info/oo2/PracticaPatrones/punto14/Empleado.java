@@ -2,7 +2,9 @@ package ar.edu.unlp.info.oo2.PracticaPatrones.punto14;
 
 public class Empleado { 
 	
-	public Equipo armarEquipo(BuilderEquipo builder) {
+	private BuilderEquipo builder;
+	
+	public Equipo armarEquipo() {
 		
 		builder.newEquipo(); 
 		
@@ -13,6 +15,10 @@ public class Empleado {
 		builder.buildGrafica();
 		
 		return builder.getEquipo();
+	}
+	
+	public void setBuilder(BuilderEquipo builder) {
+		this.builder = builder;
 	}
 	
 }

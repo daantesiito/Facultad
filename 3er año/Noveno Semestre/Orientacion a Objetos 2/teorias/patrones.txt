@@ -1,0 +1,58 @@
+TEMPLATE METHOD: sirve para cuando tenes un algoritmo con una estructura que es constante pero algunos pasos varian según la clase
+Roles:
+Clase Abstracta: Implementa el "método plantilla" con el esqueleto del algoritmo y define las "operaciones primitivas" (ganchos)
+Clase Concreta: Implementa las operaciones específicas requeridas por la plantilla
+
+STRATEGY: sirve para desacoplar un algoritmo de su contexto, permitiendo que el usuario o el sistema cambie la forma de hacer algo, sin modificar la clase principal
+roles
+Contexto: Mantiene la referencia a la estrategia y delega en ella la tarea
+Estrategia abstracta: Declara la interfaz común para todos los algoritmos
+Estrategias Concretas: Implementan cada algoritmo específico
+Cliente: Generalmente elige y configura la estrategia en el contexto
+
+STATE: cuando un objeto debe cambiar su respuesta ante los mismos mensajes dependiendo de su estado interno actual
+Roles:
+Contexto: Define la interfaz de interés para los clientes y mantiene la instancia del estado actual
+Estado Abstracto: Define la interfaz para encapsular el comportamiento asociado a un estado
+Estados Concretos: Implementan el comportamiento específico y deciden las transiciones al siguiente estado
+
+COMPOSITE: para permitir que los clientes ignoren la diferencia a entre una composición de objetos y un objeto individual, tratándolos a todos bajo una misma interfaz
+Roles:
+Componente Abstracto: Declara la interfaz común y el comportamiento por defecto
+Hoja Leaf: Representa objetos primitivos que no tienen hijos
+Composite: Almacena hijos y delega las operaciones en ellos
+
+ADAPTER: cuando necesitas usar una clase que tiene la funcionalidad necesaria pero su forma no encaja con lo que tu sistema espera
+Roles:
+Target : Interfaz que el cliente espera usar
+Client: Colabora con objetos que siguen la interfaz Target
+Adaptee: Clase existente con interfaz incompatible
+Adapter: Implementa el Target y traduce los mensajes hacia el Adaptee
+
+DECORATOR: para añadir funcionalidades extra a objetos individuales de forma flexible y combinable
+Roles:
+Componente: Interfaz para los objetos a los que se les puede añadir responsabilidades
+Componente Concreto: El objeto original que será decorado
+Decorador: Mantiene la referencia al componente y se ajusta a su interfaz para delegar las llamadas
+Decoradores Concretos: Añaden el comportamiento o estado adicional antes o después de delegar
+
+PROXY: para proporcionar un intermediario que maneje el acceso a un objeto por cuestiones de costo, ubicación o permisos
+Roles:
+Sujeto: Define la interfaz común para el SujetoReal y el Proxy, permitiendo que el cliente trate a ambos por igual
+Proxy: Mantiene una referencia al objeto real, controla el acceso y es responsable de su creación o borrado. Implementa la misma interfaz que el sujeto
+Sujeto Real: Es el objeto real que el proxy representa y al cual termina delegando las peticiones válidas
+Cliente: Colabora con el Sujeto sin saber si es el objeto real o un impostor
+
+FACTORY METHOD: cuando una clase no puede anticipar la clase de objetos que debe crear o quiere delegar esa responsabilidad a sus subclases
+roles
+Producto: Define la interfaz de los objetos que el método de fabricación crea
+Producto Concreto: Implementa la interfaz del Producto
+Creador abstracto: Declara el método de fabricación (puede ser abstracto o tener una implementación por defecto). Suele llamar a este método dentro de sus propias operaciones para obtener un objeto y trabajar con él
+Creador Concreto : Redefine el método de fabricación para instanciar y retornar el Producto Concreto específico
+
+BUILDER: para separar la lógica de la construcción de un objeto complejo, de su representación final, permitiendo crear diferentes configuraciones
+roles
+Director: Conoce los pasos (la "receta") para la construcción
+builder abstracto: Interfaz abstracta para crear las partes del producto
+Constructor Concreto: Implementa la creación real y guarda la referencia al producto en construcción
+Producto: El objeto complejo resultante
